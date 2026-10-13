@@ -1,0 +1,1356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- [H1] Page title, description, social sharing and icons -->
+<meta charset="utf-8">
+<!--
+=====================================================================================================
+  GRACE COMMUNITY CHURCH: index.html   ·   MAP & LEGEND
+  One self-contained page: the CSS is in the <style> block in <head>, the JavaScript in the
+  <script> block at the bottom. Search for a tag in [brackets] below to jump to that part.
+=====================================================================================================
+
+  PAGE MAP (top to bottom)
+  ------------------------
+  <head>
+    [H1] Page title, description, social-share (Open Graph) tags, favicons
+    [H2] Structured data (JSON-LD) for Google: church details + dated events   ← keep events current
+    [H3] Google Fonts: Anton, Archivo (400/600/700), Archivo Black, Permanent Marker.
+         Quotes and the pastor's signature use the system serif (Georgia).
+    [H4] <style>: all CSS (it has its own table of contents at the top)
+  <body>
+    [1]  Skip link (keyboard users jump straight to the content)
+    [2]  Header: logo + main navigation (#site-nav), mobile "Menu" button
+    [3]  Hero carousel (#top): slides welcome / launch / bible / bibleNov / food,
+         then the black "strip" with this Sunday's time, Bible study time and directions
+    [4]  Latest sermon (#sermon)                                                ← update weekly
+    [5]  About (#about): four accordions
+           5a Who we are
+           5b What we believe (#believe)
+           5c Message from our pastor
+           5d Bible study (#bible-study), including last week's Bible study video ← update weekly
+    [6]  Ways to serve (#serve): food drive (#food)
+    [7]  This month at Grace (#gallery): flyer tiles that open in the lightbox
+    [8]  Upcoming services (#upcoming): one card per dated service
+    [9]  Lightbox popup (#lightbox) used by the gallery
+    [10] Plan your visit (#visit): service times, where we meet, joining online,
+         What to expect (#expect)
+    [11] Footer: logo, contact, quick links, "Where we meet" map (#map), copyright
+    [12] <script>: SITE settings (meeting places, background photos), then the page behaviour
+
+  LEGEND: attributes and classes you will see everywhere
+  -----------------------------------------------------
+  data-until="YYYY-MM-DD"  The element is removed the day AFTER this date (by the script in [12]).
+  data-from="YYYY-MM-DD"   The element stays hidden until this date.
+                           Note: both need JavaScript; without it, expired items still show.
+  data-dir                 A "Get directions" link; the script points it at this Sunday's location.
+  data-open                The accordion that starts open.
+  data-cap                 Caption shown in the lightbox for a gallery flyer.
+  .band                    Black section with cream text.     .tint   Soft cream gradient section.
+  .hl                      Tilted yellow highlight block in a headline.
+  .btn / .btn.quiet        Yellow button / outlined button.
+  .m-only                  Nav item shown only in the mobile menu.
+  .d-1 … .d-7              Order of the nav items on wide screens (mobile uses source order).
+  .sr-only                 Text for screen readers only, e.g. "(opens in a new tab)".
+  .js (on <html>)          Added by the first script line; CSS uses it to tell JS-on from JS-off.
+
+  WEEKLY UPDATE CHECKLIST
+  -----------------------
+  After Sunday:     [4] poster image (images/sermon-YYYY-MM-DD.jpg), the YouTube link (2 places),
+                    the play button's aria-label, the title, scripture and date.
+  After Wednesday:  [5d] the Bible study video link (2 places), poster image, title and date;
+                    the flyer's alt text if the graphic changes.
+  New month:        [3] hero slides, [7] flyers, [8] service cards, [10] "Where do you meet?",
+                    [H2] JSON-LD events, and SITE.meetingPlaces in [12].
+
+  VALUES REPEATED ACROSS THE PAGE (change every copy)
+  ---------------------------------------------------
+  Zoom meeting ID 880 2297 9559 and passcode 19061906: shown 5 times, Zoom link 5 times
+  Facebook page link: 6 times ·  Give (Tithe.ly) link: 2 times ·  Phone: 3 times ·  Email: 5 times
+=====================================================================================================
+-->
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Grace Community Church | Philadelphia, PA - Where We Love God, Love People and Do Good!</title>
+<meta name="description" content="Grace Community Church in Philadelphia. Sunday worship at 12:00 PM in person and online, and Bible study Wednesdays at 7:00 PM on Zoom and Facebook Live.">
+<link rel="canonical" href="https://www.gracecommunityphilly.org/">
+<meta property="og:url" content="https://www.gracecommunityphilly.org/">
+<meta property="og:image" content="https://www.gracecommunityphilly.org/images/share.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="Grace Community Church">
+<meta name="twitter:card" content="summary_large_image">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Grace Community Church">
+<meta property="og:description" content="We love God. We love people. We do good.">
+<meta name="theme-color" content="#121110">
+<link rel="icon" href="/favicon.ico" sizes="48x48">
+<link rel="icon" href="/favicon-192.png" type="image/png" sizes="192x192">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<!-- [H2] Structured data for Google. Each "Event" is a dated service: add new ones and remove past ones. -->
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Church", "name": "Grace Community Church", "url": "https://www.gracecommunityphilly.org/", "image": "https://www.gracecommunityphilly.org/images/share.jpg", "slogan": "We love God. We love people. We do good.", "address": {"@type": "PostalAddress", "streetAddress": "1727 Snyder Ave", "addressLocality": "Philadelphia", "addressRegion": "PA", "postalCode": "19145", "addressCountry": "US"}, "email": "info@gracecommunityphilly.org", "telephone": "+1-215-487-9022", "sameAs": ["https://www.facebook.com/gracecommunityphilly/", "https://www.instagram.com/gracecommunityphilly/", "https://www.youtube.com/@GraceCommunityPhilly"], "event": [{"@type": "Event", "name": "Sunday service", "startDate": "2026-10-11T12:00:00-04:00", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "location": {"@type": "Place", "name": "Mother Bethel AME Church", "address": {"@type": "PostalAddress", "streetAddress": "419 S 6th St", "addressLocality": "Philadelphia", "addressRegion": "PA", "postalCode": "19147", "addressCountry": "US"}}}, {"@type": "Event", "name": "Sunday service", "startDate": "2026-10-18T12:00:00-04:00", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "location": {"@type": "Place", "name": "Mother Bethel AME Church", "address": {"@type": "PostalAddress", "streetAddress": "419 S 6th St", "addressLocality": "Philadelphia", "addressRegion": "PA", "postalCode": "19147", "addressCountry": "US"}}}, {"@type": "Event", "name": "Worship with Mt. Zion United Methodist Church", "startDate": "2026-10-25T11:00:00-04:00", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "location": {"@type": "Place", "name": "Mt. Zion United Methodist Church", "address": {"@type": "PostalAddress", "streetAddress": "1530 N 11th St", "addressLocality": "Philadelphia", "addressRegion": "PA", "postalCode": "19122", "addressCountry": "US"}}}, {"@type": "Event", "name": "Grace Community Church official launch service", "startDate": "2026-11-01T15:00:00-05:00", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "location": {"@type": "Place", "name": "Meredith Elementary School (cafeteria)", "address": {"@type": "PostalAddress", "streetAddress": "725 S 5th St", "addressLocality": "Philadelphia", "addressRegion": "PA", "postalCode": "19147", "addressCountry": "US"}}}]}</script>
+<!-- [H3] Web fonts from Google Fonts. Only the styles the page uses: Anton; Archivo 400, 600, 700 (no italic);
+     Archivo Black; Permanent Marker. Add a family or weight here before using it in the CSS. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wght@400;600;700&family=Archivo+Black&family=Permanent+Marker&display=swap">
+<!-- [H4] All page CSS -->
+<style>
+/* Layout: flyer logic at page scale. Cream sheets carry the reading, black bands carry
+   times and places, one tilted yellow block per screen carries the emphasis. */
+/* =====================================================================================
+   CSS TABLE OF CONTENTS (search for the heading text in quotes)
+     "Design tokens"          colours, fonts, logo shapes (the two long data: lines), spacing
+     "Base"                   reset, links, focus outline
+     "Page background photo"  the fixed photo behind the whole page
+     "Buttons"                .btn and .btn.quiet
+     "Gaps the church..."     .todo placeholder boxes
+     "Social icons"
+     "Header"                 sticky header, nav, mobile menu (max-width: 1200px)
+     "Hero carousel"          slides, ticket card, the black strip under the hero
+     "Sections"               shared section spacing and headings
+     "Latest sermon"          video box and poster
+     "Bible study panel"
+     "Upcoming service cards"
+     "About accordions"       values row, pastor letter
+     "Ministries"             Ways to serve, food drive
+     "Gallery"                flyer tiles and the lightbox
+     "Visit"                  service times, FAQ, What to expect
+     "Footer"                 map, contact, links
+   Breakpoints used: 1200px (mobile menu), 860px (hero/sermon stack), 820/760/720/700px,
+   640/600/560/520px, 480px and 380px (small phones).
+   ===================================================================================== */
+/* ---------- Design tokens ---------- */
+:root {
+  color-scheme: only light; /* always the cream look, even on devices set to dark mode */
+  --paper: #fbf6ec;
+  --paper-2: #efe4d0;
+  --card: #fffaf2;
+  --ink: #121110;
+  --ink-soft: #46413b;
+  --edge: #121110;
+  --line: #d9cdb6;
+  --sun: #ffc324;
+  --on-sun: #121110;
+  --band: #121110;
+  --band-2: #1e1c19;
+  --on-band: #fbf6ec;
+  --on-band-soft: #d8d0c0;
+  --ring: #121110;
+
+  --display: "Archivo Black", "Arial Black", Impact, sans-serif;
+  --tall: "Anton", "Arial Narrow", Impact, sans-serif;
+  --body: "Archivo", "Helvetica Neue", Arial, sans-serif;
+  --marker: "Permanent Marker", "Comic Sans MS", cursive;
+  --serif: Georgia, "Times New Roman", serif;  /* system serif: no web font needed for the few quotes */
+
+  --gutter: clamp(16px, 4vw, 40px);
+  --header-h: 76px;
+  /* Logo shapes, used as masks so they take the text colour. Retraced from the high-res logo PNG;
+     the same drawings are saved as images/logo/emblem.svg and wordmark.svg. */
+  --emblem: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 924 1026'%3E%3Cpath fill-rule='evenodd' d='M488 1023l-48 1-42-4-42-8-23-7-19-6-24-9-21-9-20-10-18-9-18-12-19-13-16-12-18-15-17-15-18-18-16-18-12-15-13-18-15-23-12-21-9-18-8-17-10-25-7-21-6-21-5-21-4-22-3-22-2-25-1-25 1-26 3-34 7-40 11-41 15-40 10-22 10-19 20-33 24-33 16-19 15-15 30-28 32-25 34-22 36-19 18-8 23-9 21-7 22-6 22-5 20-3v1l-21 78-2 2-29 8-22 8-18 8-24 12-20 12-22 15-19 15-17 15-15 14-16 18-15 19-15 22-13 22-11 22-9 21-8 22-7 24-5 22-4 26-2 21-1 26 1 27 3 28 5 23h131v-171l160-159 23-89v-2l-10-2 2-4 9-22 10-1 26-83 2-1h8v-1v-56l-26-1v-26v-1h1h25v-1l1-20h28l1 20v1h26v27l-26 1v56v1h12l25 84 9 1 2 1 9 25-1 1h-6v1l3 30v1h118h35l2-1-30-19-35-18-33-13-36-11-1-3-6-28-12-45v-3l25 4 25 6 26 8 27 10 25 11 25 13 22 13 25 17 17 13 20 17 18 17 18 18 16 19 18 24 15 23 11 19 11 21 11 25 10 26 7 23 6 23 5 25 4 28 2 25v26v25l-4 40-8 42-12 41-9 24-9 21-10 20-10 18-11 18-13 19-12 16-15 18-17 18-16 15-18 16-15 12-19 14-20 13-17 10-23 13-22 10-20 7-41 14-25 5-22 4-23 4zM634 642v-138l-172-172h-1l-171 172 1 139 78-1v-106h2h73l1 106h36v-106h75v106zM466 487h-8l-9-1-8-4-6-3-6-6-7-8-4-9-2-9v-12l1-6 3-8 5-8 8-8 8-5 8-3 9-2h7l10 2 8 3 8 5 6 7 6 7 3 7 2 9v12l-1 6-3 8-5 8-7 7-8 6-9 4zM150 786l79-69-12-1h-107l-1 2 5 11 13 25 19 30 3 3zM299 912l69-194v-1h-24l-145 126-1 1 25 22 26 19 28 17 17 8 5 3zM488 948l19-2 20-2 24-5 3-2-77-219-2-1h-26l-2 1-77 219 2 1 19 4 35 5 31 2zM626 912l28-14 24-16 23-17 25-21-146-127h-24l1 4 65 184 3 7zM776 786l10-14 12-20 11-21 6-14h-1h-119l79 70h1z'/%3E%3C/svg%3E");
+  --wordmark: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 2587 347'%3E%3Cpath fill-rule='evenodd' d='M103 187h-23l-11-1-10-2-9-3-10-5-8-6-7-7-8-11-7-14-5-16-2-11-1-15 1-17 2-12 3-12 5-11 6-10 4-5 4-5 10-9 12-7 16-4 18-2h24l18 3 11 3 7 5 5 3 7 8 8 14 5 13v2h-1l-48 9h-1l-3-8-4-4-4-4-9-4-11-1-9 2-6 3-7 7-5 8-4 12-2 14v15l3 18 3 9 4 5 6 7 5 3 6 2 7 1h8l6-1 7-2 7-3 8-5 1-2v-13l-1-2h-31h-2v-35l1-2 77-1h1l1 2-1 75-20 14-14 7-15 5zM647 187h-24l-10-1-16-4-12-6-10-8-11-14-8-15-5-14-3-16v-28l4-21 5-14 7-14 12-13 13-9 7-3 13-3 14-2h20l16 3 13 4 8 5 5 4 8 10 7 11 7 18v1l-3 1-42 10-5-11-5-7-5-4-4-2-10-2-8 1-7 3-7 6-6 8-3 8-2 10-1 15 1 17 2 10 4 10 5 6 5 4 7 3 9 1 8-1 7-3 6-6 4-5 4-10 3-10 41 13 3 1 1 2-3 10-6 14-5 9-6 8-9 8-10 6-8 3zM1068 187h-25l-15-2-15-5-10-6-11-11-10-14-6-13-5-19-1-8v-15v-13l1-9 4-18 6-14 5-8 5-6 6-7 7-5 13-7 17-4 17-1 19 1 13 2 12 5 11 8 9 11 9 14 5 14-1 1-3 1-41 10-1-1-3-9-7-8-5-4-4-2-10-2-8 1-7 3-7 7-5 7-3 9-2 10-1 14 1 16 2 11 3 9 3 4 4 5 3 2 7 3 10 1 10-2 6-3 5-5 4-5 4-10 2-9 1-1 43 14 2 2-3 10-7 15-5 8-8 10-10 8-7 4-8 3zM1248 186l-23 1-16-2-13-4-13-7-11-10-8-10-8-15-5-15-2-12-1-14 1-21 2-12 3-10 6-14 5-8 6-7 5-6 8-6 13-6 9-3 9-2 20-1 18 1 17 4 14 7 13 12 9 12 7 15 5 16 1 14 1 10-3 27-4 15-3 8-5 9-9 12-6 6-10 7-8 4-9 3zM542 184h-53l-1-3-7-25-1-1h-56h-1l-8 29h-109l-2-3-28-55-3-6-5-5-4-2-4-1h-6h-1v1l-1 70-51 1v-179l89-1 17 1 11 2 8 3 8 6 4 4 5 7 3 6 4 13v18l-3 10-3 7-3 5-8 9-8 5-12 5v1l8 3 4 3 11 15 25 50 2 4 61-175 1-2h55l1 2 60 173 1 3zM872 184l-139-1-1-175v-2l1-1 135-1 2 1v38l-85 1v27h77l1 1 1 34-1 2h-1l-77 1-1 1v31l2 2h86v1v38zM1531 184l-42-1v-128l-1 2-30 126h-39l-30-127-1-1v128l-42 1v-179h67l24 99 2 7 25-106 1-1 66 1 1 3v173zM1748 184l-42-1v-128l-31 128-38 1-31-130-1 2v127h-42v-176v-2h67l1 2 25 104 25-104 1-2h66l1 2v174v2zM1878 186l-29 1-16-2-11-3-7-3-10-7-11-12-5-8-3-7-3-12-2-9-1-11v-106l2-3 50 1v116l2 7 6 8 4 4 5 3 11 2 11-2 7-4 3-4 3-4 3-9 1-116 1-2 50 1v2v112l-1 9-3 13-3 7-6 11-6 8-10 9-5 3-9 4-12 3zM2130 184l-48-1-61-95v95h-48l-1-176 1-2h47l61 96 1-95 1-2 47 1zM2217 183h-51v-175v-3l50-1 1 2zM2344 184l-50-1-1-133-50-1h-1l-1-42 1-2 154-1 1 2v43h-2l-50 1v131v2zM2518 184l-51-1-1-74-61-100-2-3 1-1 54-1 2 1 31 56 2 2 33-58h56v1l-7 12-56 91v73zM277 77l12-3 4-2 2-3 3-5v-5v-5l-3-5-4-5-6-2-6-1h-26v36zM1238 144h4l6-2 5-3 6-6 2-3 4-8 2-9 1-8v-23l-2-11-3-8-5-7-4-4-6-5-5-2-5-1h-9l-8 2-7 5-5 5-3 5-3 8-2 8-1 8v20l3 16 3 8 3 4 6 5 7 5 10 2zM469 115l-17-61-17 61zM970 344l-12 1-7-1-6-2-8-5-6-6-5-7-4-9-2-8-1-11 1-10 2-9 4-8 4-6 6-6 8-5 9-3 10-1 8 1 6 1 7 3 5 3 7 6 3 4 3 9v4l-1 1h-15l-3-8-5-5-7-4-9-1-7 1-5 2-6 5-5 8-3 12v12l1 7 5 11 5 5 4 4 5 2h7l9-1 7-5 4-5 3-8v-4l1-1h14l2 1-1 7-3 8-3 6-5 5-6 5-5 3zM1492 344l-13 1-6-1-6-2-9-5-7-7-4-7-4-9-2-8-1-10 1-9 2-8 4-10 5-7 7-6 7-4 9-3 9-1 9 1 13 4 6 4 6 7 4 8 1 6v2h-16l-4-9-4-5-6-3-8-1-8 1-5 2-5 4-3 3-3 5-3 9-1 7 1 13 2 7 3 6 4 6 5 3 6 3h6l9-1 4-2 5-6 3-6 3-9h14l2 1-2 8-2 6-3 6-4 5-8 7-6 3zM1128 343l-15-1-1-40-1-1-40 1v40h-16v-91h14h2v35l1 1 40-1v-35h1h15l1 1v90zM1231 344l-15 1-10-2-6-3-5-4-4-5-3-5-2-7-1-8v-60h15h1v52l1 10 1 5 4 7 3 3 4 2 8 1 8-1 5-2 6-6 2-4 1-5v-9v-53h1h14h2v58l-1 10-2 4-3 8-7 7-9 4zM1394 343h-17l-2-7-1-13-1-7-2-5-3-3-3-2-9-1h-23v37h-16v-91h53l7 2 4 2 6 6 4 7v7l-1 8-3 7-2 3-4 4-3 1 7 5 4 6 1 4 1 19 1 4 3 6zM1650 342h-17v-40v-1h-1h-39l-1 1v40h-17l1-91h15h1v35l1 1h40v-36h1h15h1zM1366 291l5-3 2-3 1-4v-8l-2-4-2-2-3-2-8-1h-26v27l1 1h25z'/%3E%3C/svg%3E");
+}
+
+/* ---------- Base: reset, links, focus outline ---------- */
+*, *::before, *::after { box-sizing: border-box; }
+[hidden] { display: none !important; }
+html:not(.js) [data-from] { display: none !important; }
+html { scroll-padding-top: calc(var(--header-h) + 16px); }
+@media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
+body {
+  margin: 0; background: var(--paper); color: var(--ink);
+  font-family: var(--body); font-size: 1.0625rem; line-height: 1.6;
+  overflow-x: hidden; overflow-x: clip;
+}
+h1, h2, h3, h4, p, ul, ol, dl, dd, figure { margin: 0; }
+ul, ol { padding: 0; list-style: none; }
+img { display: block; max-width: 100%; height: auto; }
+a { color: inherit; text-decoration-thickness: 2px; text-underline-offset: 3px; text-decoration-color: var(--sun); }
+a:hover { text-decoration-color: currentColor; }
+:focus-visible { outline: 3px solid var(--ring); outline-offset: 3px; }
+button { font: inherit; color: inherit; }
+
+/* Page background photo: fixed to the screen, so it stays put while the page scrolls.
+   A cream layer at 85% sits over it. Set the image in SITE.pageImage. */
+.has-page-bg body::before, .has-page-bg body::after { content: ""; position: fixed; left: 0; top: 0; width: 100%; height: 100vh; height: 100lvh; z-index: -1; pointer-events: none; }
+.has-page-bg body::before { background: var(--page-image) center / cover no-repeat; }
+@media (max-width: 700px) { .has-page-bg body::before { background-image: var(--page-image-small, var(--page-image)); } }
+.has-page-bg body::after { background: var(--paper); opacity: .85; }
+.has-page-bg .hero { background: transparent; }
+.has-page-bg .section.tint { background: linear-gradient(rgba(239, 228, 208, .6), rgba(239, 228, 208, 0)); }
+
+.wrap { max-width: 1180px; margin-inline: auto; padding-inline: var(--gutter); }
+.band { background: var(--band); color: var(--on-band); --ring: var(--sun); }
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+
+.skip {
+  position: absolute; left: var(--gutter); top: -100px; z-index: 100;
+  background: var(--sun); color: var(--on-sun); padding: 10px 16px; font-weight: 700;
+}
+.skip:focus { top: calc(env(safe-area-inset-top, 0px) + 8px); }
+
+.label {
+  font-size: .8125rem; font-weight: 700; text-transform: uppercase; letter-spacing: .14em;
+}
+.emblem, .lockup { display: block; background: currentColor; }
+.emblem { aspect-ratio: 924 / 1026; -webkit-mask: var(--emblem) center / contain no-repeat; mask: var(--emblem) center / contain no-repeat; }
+/* The full lockup (footer) is the emblem stacked over the wordmark: two mask layers, no third copy of the artwork.
+   49.64% / 35.717% place and size the emblem exactly as in the original lockup artwork. */
+.lockup { aspect-ratio: 2587 / 1479;
+  -webkit-mask: var(--emblem) 49.64% 0 / 35.717% auto no-repeat, var(--wordmark) 0 100% / 100% auto no-repeat;
+          mask: var(--emblem) 49.64% 0 / 35.717% auto no-repeat, var(--wordmark) 0 100% / 100% auto no-repeat; }
+
+/* Browsers without aspect-ratio (Safari 14 and older) */
+@supports not (aspect-ratio: 1 / 1) {
+  .brand .emblem { height: 49px; } .wordmark { width: 224px; } .hero-emblem { height: 333px; }
+  .foot-brand .lockup { height: 149px; } .video { height: 0; padding-top: 56.25%; } .photo-slot { min-height: 340px; }
+}
+
+/* Buttons */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+  min-height: 48px; padding: 10px 22px;
+  background: var(--sun); color: var(--on-sun); border: 3px solid var(--on-sun);
+  font-weight: 700; font-size: .9375rem; text-transform: uppercase; letter-spacing: .06em;
+  text-decoration: none; cursor: pointer; text-align: center;
+  box-shadow: 4px 4px 0 var(--ink);
+}
+.btn:hover { box-shadow: 6px 6px 0 var(--ink); transform: translate(-2px, -2px); }
+.btn.quiet { background: transparent; color: var(--ink); border-color: var(--ink); box-shadow: none; }
+.btn.quiet:hover { background: var(--ink); color: var(--paper); transform: none; }
+.band .btn { border-color: var(--sun); box-shadow: none; }
+.band .btn:hover { background: var(--on-band); border-color: var(--on-band); transform: none; }
+.band .btn.quiet { color: var(--on-band); border-color: var(--on-band); background: transparent; }
+.band .btn.quiet:hover { background: var(--on-band); color: var(--band); }
+@media (prefers-reduced-motion: no-preference) { .btn { transition: transform .12s, box-shadow .12s, background .12s; } }
+
+/* Gaps the church still needs to fill in */
+.todo {
+  border: 2px dashed currentColor; padding: 14px 16px; display: grid; gap: 4px;
+  font-size: .9375rem; line-height: 1.45;
+}
+.todo b { font-family: var(--marker); font-weight: 400; font-size: 1rem; letter-spacing: .04em; text-transform: uppercase; }
+.todo.inline { display: inline-block; padding: 2px 10px; font-size: .875rem; }
+
+/* Social icons */
+.social { display: flex; gap: 8px; }
+.social a { width: 40px; height: 40px; display: grid; place-items: center; background: var(--ink); color: var(--paper); border: 2px solid var(--ink); }
+.band .social a { background: var(--on-band); color: var(--band); border-color: var(--on-band); }
+.social a:hover, .band .social a:hover { background: var(--sun); color: var(--on-sun); border-color: var(--sun); }
+.social svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.site-nav .soc-li { margin-left: 8px; }
+
+/* Header */
+.site-header {
+  position: sticky; top: env(safe-area-inset-top, 0px); z-index: 50;
+  background: var(--paper); border-bottom: 3px solid var(--ink);
+}
+.site-header .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; min-height: var(--header-h); }
+.brand { display: flex; align-items: center; gap: 12px; text-decoration: none; min-width: 0; }
+.brand .emblem { width: 44px; flex: none; }
+.wordmark { display: block; height: 30px; aspect-ratio: 2587 / 347; flex: none; background: currentColor; -webkit-mask: var(--wordmark) center / contain no-repeat; mask: var(--wordmark) center / contain no-repeat; }
+.nav-toggle {
+  display: none; align-items: center; gap: 10px; min-height: 44px; padding: 6px 14px;
+  background: var(--ink); color: var(--paper); border: 0; cursor: pointer;
+  font-weight: 700; font-size: .875rem; text-transform: uppercase; letter-spacing: .1em;
+}
+.nav-toggle .bars { width: 20px; height: 14px; border-block: 2px solid currentColor; position: relative; }
+.nav-toggle .bars::after { content: ""; position: absolute; inset: 4px 0 auto; border-top: 2px solid currentColor; }
+.site-nav ul { display: flex; align-items: center; gap: 4px; }
+.site-nav .m-only { display: none; }
+/* Mobile-only words and the Bible study button; on desktop the links keep their original order */
+.site-nav .m-txt, .site-nav .bs-cta { display: none; }
+.soc-row { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; }
+@media (min-width: 1201px) {
+  .site-nav .d-1 { order: 1; } .site-nav .d-2 { order: 2; } .site-nav .d-3 { order: 3; } .site-nav .d-4 { order: 4; }
+  .site-nav .d-5 { order: 5; } .site-nav .d-6 { order: 6; } .site-nav .d-7 { order: 7; }
+}
+.site-nav li > a {
+  display: block; padding: 10px 9px; white-space: nowrap; text-decoration: none;
+  font-weight: 700; font-size: .875rem; text-transform: uppercase; letter-spacing: .08em;
+}
+.site-nav li > a:not(.btn):hover, .site-nav li > a[aria-current] { box-shadow: inset 0 -4px 0 var(--sun); }
+.site-nav .btn { min-height: 40px; padding: 6px 16px; margin-left: 8px; box-shadow: none; }
+.site-nav .btn:hover { transform: none; box-shadow: none; background: var(--ink); color: var(--paper); border-color: var(--ink); }
+@media (max-width: 1200px) {
+  .js .nav-toggle { display: inline-flex; }
+  .site-nav { position: absolute; left: 0; right: 0; top: 100%; background: var(--paper); border-bottom: 3px solid var(--ink); padding: 8px var(--gutter) 20px; }
+  .site-nav ul { flex-direction: column; align-items: stretch; gap: 0; }
+  .site-nav .m-only { display: block; }
+  .site-nav .m-txt { display: inline; }
+  .site-nav .bs-cta { display: inline-flex; flex: 1 1 150px; padding-inline: 14px; }
+  .site-nav li + li { border-top: 1px solid var(--line); }
+  .site-nav li > a { padding: 14px 4px; font-size: 1rem; }
+  .site-nav .soc-li { padding-block: 14px 4px; }
+  .site-nav .social a { width: 48px; height: 48px; }
+  .site-nav .give-li { border-top: 0; padding-top: 12px; }
+  .site-nav .btn { margin-left: 0; min-height: 48px; }
+  .js .site-nav:not(.open) { display: none; }
+  html:not(.js) .site-header { position: static; }
+  html:not(.js) .site-nav { position: static; border: 0; padding: 0 0 12px; flex-basis: 100%; }
+  html:not(.js) .site-header .wrap { flex-wrap: wrap; }
+}
+@media (max-width: 480px) { .wordmark { height: 24px; } .brand { gap: 8px; } .brand .emblem { width: 36px; } }
+@media (max-width: 380px) { .wordmark { height: 20px; } .brand .emblem { width: 32px; } }
+
+/* Hero carousel: slides share one grid cell so the hero never changes height */
+.hero { background: linear-gradient(var(--paper), var(--paper-2)); overflow-x: hidden; overflow-x: clip; }
+.hero { --hero-overlay: var(--paper); }
+.hero.dark .hero-stage { --hero-overlay: var(--band); --paper: var(--band); --ink: var(--on-band); --ink-soft: var(--on-band-soft); --ring: var(--sun); color: var(--ink); }
+.hero.dark .hero-stage .btn { box-shadow: none; border-color: var(--sun); }
+.hero.dark .hero-stage .btn.quiet { border-color: var(--ink); }
+.hero.dark .ticket { outline: 2px solid var(--sun); }
+.hero-stage { position: relative; }
+.hero-bgs { position: absolute; inset: 0; overflow: hidden; }
+.hero-bg { position: absolute; inset: 0; background: center / cover no-repeat; opacity: 0; }
+.hero-bg.is-active { opacity: 1; }
+.hero-bg.has-img::after { content: ""; position: absolute; inset: 0; background: var(--hero-overlay); opacity: .85; }
+@media (prefers-reduced-motion: no-preference) { .hero-bg { transition: opacity .6s ease; } }
+.hero-inner { position: relative; padding-block: clamp(36px, 6vw, 72px) clamp(20px, 3vw, 32px); }
+.slides { display: grid; }
+.slide {
+  grid-area: 1 / 1; min-width: 0;
+  display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 340px); gap: clamp(28px, 5vw, 56px); align-items: center;
+}
+.js .slide:not(.is-active) { visibility: hidden; opacity: 0; }
+@media (prefers-reduced-motion: no-preference) {
+  .js .slide { transition: opacity .5s ease, visibility 0s linear .5s; }
+  .js .slide.is-active { transition: opacity .5s ease; }
+}
+html:not(.js) .slide { grid-area: auto; }
+html:not(.js) .slides { gap: 56px; }
+.hero-copy { container-type: inline-size; min-width: 0; }
+.hero-h { display: grid; gap: 18px; }
+.h1-name { font-family: var(--body); font-size: .875rem; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; color: var(--ink-soft); }
+.h1-motto { font-family: var(--display); font-weight: 400; text-transform: uppercase; font-size: clamp(1.75rem, 5.2vw, 4.25rem); line-height: 1; white-space: nowrap; letter-spacing: -.02em; display: grid; justify-items: start; gap: .06em; }
+.h1-motto .hl { background: var(--sun); color: var(--on-sun); padding: .04em .22em .08em; margin-left: -.12em; transform: rotate(-2deg); transform-origin: left center; }
+@media (max-width: 860px) { .h1-motto { font-size: clamp(1.5rem, 8.4vw, 3.25rem); } }
+@supports (width: 1cqi) { .h1-motto { font-size: clamp(1.5rem, 9.6cqi, 5rem); } }
+.lede { font-size: clamp(1.0625rem, 1.6vw, 1.25rem); max-width: 34em; margin-top: 30px; color: var(--ink-soft); }
+.actions { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 28px; }
+.zoom-id { display: flex; flex-wrap: wrap; gap: 4px 22px; margin-top: 14px; font-size: .9375rem; font-weight: 600; }
+.zoom-id b { font-family: var(--tall); font-weight: 400; font-size: 1.25rem; letter-spacing: .03em; margin-left: 4px; user-select: all; }
+.hero-emblem { width: min(300px, 100%); justify-self: end; }
+.hero-ctl { display: flex; align-items: center; gap: 6px; margin-top: clamp(24px, 4vw, 44px); flex-wrap: wrap; }
+html:not(.js) .hero-ctl { display: none; }
+.hero-ctl button { min-width: 44px; height: 44px; display: grid; place-items: center; background: transparent; border: 2px solid var(--ink); cursor: pointer; padding: 0; }
+.hero-ctl button:hover { background: var(--ink); color: var(--paper); }
+.hero-ctl svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
+.hero-ctl .dots { display: flex; margin-inline: 6px; }
+.hero-ctl .dots button { border: 0; min-width: 36px; }
+.hero-ctl .dots button:hover { background: transparent; }
+.hero-ctl .dots button::before { content: ""; width: 14px; height: 14px; border: 2px solid var(--ink); }
+.hero-ctl .dots button:hover::before { background: var(--ink); }
+.hero-ctl .dots button[aria-current="true"]::before { width: 30px; background: var(--sun); }
+
+.ticket {
+  background: var(--band); color: var(--on-band); --ring: var(--sun);
+  padding: 28px 26px 30px; display: grid; gap: 10px; justify-items: start;
+  transform: rotate(2deg); box-shadow: 12px 12px 0 var(--sun);
+  max-width: 380px; justify-self: end; width: 100%;
+}
+.ticket .tag { font-family: var(--marker); background: var(--sun); color: var(--on-sun); padding: 2px 14px; font-size: 1.25rem; transform: rotate(-3deg); margin-bottom: 6px; }
+.ticket .when { font-family: var(--tall); font-size: clamp(4rem, 9vw, 5.5rem); line-height: 1; color: var(--sun); text-transform: uppercase; letter-spacing: .01em; }
+.ticket .time { font-family: var(--tall); font-size: 1.75rem; line-height: 1.1; text-transform: uppercase; letter-spacing: .02em; margin-bottom: 6px; }
+.ticket .what { font-family: var(--display); font-size: 1.375rem; line-height: 1.15; text-transform: uppercase; }
+.ticket p.where { color: var(--on-band-soft); font-size: 1rem; }
+.ticket a { font-weight: 700; margin-top: 6px; }
+
+.strip .wrap { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); padding-block: 26px; }
+.strip .cell { padding-inline: clamp(12px, 3vw, 36px); display: grid; gap: 2px; align-content: center; }
+.strip .cell + .cell { border-left: 3px solid var(--sun); }
+.strip .cell:first-child { padding-left: 0; }
+.strip .label { color: var(--sun); }
+.strip .big { font-family: var(--tall); font-size: clamp(2rem, 4.4vw, 3rem); line-height: 1.05; text-transform: uppercase; }
+.strip .small { color: var(--on-band-soft); font-size: .9375rem; }
+.strip a.cell { text-decoration: none; }
+.strip a.cell:hover .big { color: var(--sun); }
+.strip a.cell .small { text-decoration: underline; text-decoration-color: var(--sun); text-underline-offset: 3px; }
+.strip .acts { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; align-content: center; }
+.strip .acts .btn { min-height: 46px; padding: 8px 18px; }
+@media (max-width: 860px) {
+  .slide { grid-template-columns: minmax(0, 1fr); align-items: start; gap: 22px; }
+  .hero-emblem { display: none; }
+  .hero-inner { padding-block: 28px 18px; }
+  .hero-h { gap: 12px; }
+  .lede { margin-top: 18px; font-size: 1rem; line-height: 1.5; }
+  .actions { margin-top: 18px; gap: 10px; }
+  .hero-ctl { margin-top: 20px; }
+  /* the date card becomes a one-line tag */
+  .ticket { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 12px; padding: 10px 14px; transform: none; box-shadow: 5px 5px 0 var(--sun); width: auto; max-width: 100%; justify-self: start; }
+  .ticket .tag { font-size: 1rem; padding: 0 10px; margin: 0; transform: rotate(-2deg); }
+  .ticket .when { font-size: 2rem; }
+  .ticket .time { font-size: 1.25rem; margin: 0; }
+  .ticket .what, .ticket .where { display: none; }
+  .zoom-id { margin-top: 10px; font-size: .875rem; gap: 2px 16px; }
+  .zoom-id b { font-size: 1.0625rem; }
+  .strip .wrap { grid-template-columns: repeat(2, minmax(0, 1fr)); padding-block: 16px; }
+  .strip .cell { padding-inline: 14px; }
+  .strip .cell:first-child { padding-left: 0; }
+  .strip .big { font-size: 1.75rem; }
+  .strip .small { font-size: .8125rem; line-height: 1.35; }
+  .strip .label { font-size: .6875rem; letter-spacing: .1em; }
+  .strip .acts { grid-column: 1 / -1; padding: 14px 0 0; margin-top: 14px; border-left: 0; border-top: 3px solid var(--sun); }
+  .strip .acts .btn { flex: 1 1 140px; font-size: .8125rem; letter-spacing: .04em; padding: 8px 8px; white-space: nowrap; }
+}
+
+/* Sections */
+.section { padding-block: clamp(56px, 8vw, 104px); }
+.section.tint { background: linear-gradient(var(--paper-2), var(--paper)); }
+.band.section { border-top: 8px solid var(--sun); }
+.section-head { display: grid; gap: 12px; margin-bottom: clamp(28px, 4vw, 48px); max-width: 46rem; }
+.section-head h2 { font-family: var(--display); font-weight: 400; text-transform: uppercase; font-size: clamp(2rem, 5.4vw, 3.5rem); line-height: 1; letter-spacing: -.015em; text-wrap: balance; }
+.section-head p { color: var(--ink-soft); font-size: 1.125rem; }
+.band .section-head p { color: var(--on-band-soft); }
+
+/* Latest sermon */
+.sermon { display: grid; grid-template-columns: minmax(0, 3fr) minmax(0, 2fr); gap: clamp(28px, 5vw, 64px); align-items: center; }
+.video { aspect-ratio: 16 / 9; max-width: 100%; background: var(--band); border: 3px solid var(--edge); box-shadow: 10px 10px 0 var(--sun); position: relative; }
+.video iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+.video-poster { position: absolute; inset: 0; display: block; }
+.video-poster img { width: 100%; height: 100%; object-fit: cover; }
+.video-poster .play { position: absolute; left: 50%; top: 50%; width: 84px; height: 84px; margin: -42px 0 0 -42px; background: var(--sun); border: 3px solid var(--on-sun); display: grid; place-items: center; box-shadow: 6px 6px 0 var(--on-sun); }
+.video-poster:hover .play { transform: translate(-2px, -2px); box-shadow: 8px 8px 0 var(--on-sun); }
+.video-poster .play svg { width: 40px; height: 40px; fill: var(--on-sun); }
+.video-poster .host { position: absolute; left: 0; top: 0; background: var(--band); color: var(--on-band); padding: 6px 12px; font-size: .75rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
+.sermon-copy { display: grid; gap: 14px; justify-items: start; }
+.sermon-copy .label { color: var(--ink-soft); }
+.sermon-copy h2 { font-family: var(--display); font-weight: 400; text-transform: uppercase; font-size: clamp(1.75rem, 3.6vw, 2.75rem); line-height: 1.02; letter-spacing: -.015em; text-wrap: balance; }
+.sermon-copy .ref { font-family: var(--tall); font-size: 1.375rem; text-transform: uppercase; letter-spacing: .02em; }
+.sermon-copy p:not(.label):not(.ref) { color: var(--ink-soft); max-width: 40ch; }
+.sermon-copy .actions { margin-top: 10px; }
+@media (max-width: 860px) { .sermon { grid-template-columns: minmax(0, 1fr); } }
+@media (max-width: 480px) { .video { box-shadow: 6px 6px 0 var(--sun); } }
+
+/* Bible study panel: details beside the series graphic, then last week's video */
+.bs-row { display: grid; grid-template-columns: minmax(0, 3fr) minmax(0, 2fr); gap: clamp(28px, 5vw, 56px); align-items: center; }
+.bs-col { display: grid; gap: 16px; align-content: start; }
+.bs-col p { max-width: 60ch; }
+.bs-flyer { display: block; width: 100%; max-width: 400px; justify-self: end; border: 3px solid var(--edge); box-shadow: 8px 8px 0 var(--sun); }
+.bs-flyer img { display: block; width: 100%; height: auto; }
+.bs-watch { margin-top: 10px; padding-top: 30px; border-top: 3px solid var(--edge); }
+.bs-title { font-family: var(--display); font-weight: 400; text-transform: uppercase; font-size: clamp(1.5rem, 3vw, 2.25rem); line-height: 1.02; letter-spacing: -.015em; text-wrap: balance; }
+@media (max-width: 860px) {
+  .bs-row { grid-template-columns: minmax(0, 1fr); }
+  .bs-flyer { justify-self: start; }
+}
+@media (max-width: 480px) { .bs-flyer { box-shadow: 6px 6px 0 var(--sun); } }
+
+/* Upcoming service cards */
+.cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 30px; }
+.svc { background: var(--card); border: 3px solid var(--edge); box-shadow: 10px 10px 0 var(--sun); display: flex; flex-direction: column; min-width: 0; }
+.svc .date { background: var(--band); color: var(--sun); font-family: var(--tall); font-size: clamp(1.75rem, 3.4vw, 2.375rem); line-height: 1.1; text-transform: uppercase; text-align: center; padding: 14px 12px; letter-spacing: .01em; }
+.svc .body { padding: 22px 24px 26px; display: grid; gap: 10px; align-content: start; flex: 1; }
+.svc h3 { font-family: var(--display); font-weight: 400; font-size: 1.25rem; line-height: 1.2; text-transform: uppercase; letter-spacing: .01em; }
+.svc p { color: var(--ink-soft); }
+.svc h3 + p { color: var(--ink); font-weight: 700; }
+.svc address { font-style: normal; color: var(--ink-soft); }
+.svc .go { font-weight: 700; margin-top: 4px; }
+@media (max-width: 480px) { .cards { gap: 26px; } .svc { box-shadow: 6px 6px 0 var(--sun); } }
+
+/* About accordions */
+.acc { border: 3px solid var(--edge); background: var(--card); }
+.acc + .acc { margin-top: 14px; }
+.acc h3 { font: inherit; }
+.acc-btn {
+  display: flex; align-items: center; gap: 16px; width: 100%; text-align: left;
+  padding: 18px 22px; background: transparent; border: 0; cursor: pointer;
+  font-family: var(--display); font-size: clamp(1.0625rem, 2.2vw, 1.3125rem); text-transform: uppercase; letter-spacing: .01em;
+}
+html:not(.js) .acc-btn { cursor: default; }
+.acc-btn .pm { flex: none; width: 32px; height: 32px; background: var(--sun); position: relative; }
+.acc-btn .pm::before, .acc-btn .pm::after { content: ""; position: absolute; left: 8px; right: 8px; top: 14.5px; height: 3px; background: var(--on-sun); }
+.acc-btn .pm::after { transform: rotate(90deg); }
+.acc-btn[aria-expanded="true"] .pm::after, html:not(.js) .acc-btn .pm::after { transform: none; }
+.acc-btn[aria-expanded="true"] { background: var(--band); color: var(--on-band); --ring: var(--sun); outline-offset: -6px; }
+.acc-panel { padding: 26px 22px 30px; display: grid; gap: 18px; border-top: 3px solid var(--edge); }
+.acc-panel > p { max-width: 65ch; }
+.acc-panel > p.src { font-family: var(--serif); font-style: italic; color: var(--ink-soft); }
+.values { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); background: var(--band); color: var(--on-band); }
+.values li { padding: 20px 16px; text-align: center; display: grid; gap: 2px; }
+.values li + li { border-left: 3px solid var(--sun); }
+.values .label { color: var(--sun); }
+.values strong { font-family: var(--tall); font-weight: 400; font-size: clamp(1.75rem, 4vw, 2.75rem); line-height: 1.05; text-transform: uppercase; }
+@media (max-width: 560px) { .values { grid-template-columns: minmax(0, 1fr); } .values li + li { border-left: 0; border-top: 3px solid var(--sun); } }
+.creed { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+.creed li { background: var(--band); color: var(--on-band); border-left: 8px solid var(--sun); padding: 18px 22px 20px; display: grid; gap: 6px; align-content: start; }
+.creed h4 { font-family: var(--display); font-weight: 400; font-size: 1.125rem; text-transform: uppercase; letter-spacing: .02em; }
+.creed q { font-family: var(--serif); font-style: italic; font-size: 1.125rem; line-height: 1.4; color: var(--sun); }
+@media (max-width: 640px) { .creed { grid-template-columns: minmax(0, 1fr); } }
+.pastor { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 300px); gap: 36px; align-items: start; }
+.pastor .col { display: grid; gap: 14px; }
+.photo-slot { aspect-ratio: 4 / 5; max-width: 100%; border: 3px solid var(--edge); box-shadow: 8px 8px 0 var(--sun); overflow: hidden; background: var(--paper-2); }
+.letter p { max-width: 62ch; }
+.letter blockquote { margin: 4px 0; padding: 14px 20px; border-left: 8px solid var(--sun); background: var(--band); color: var(--sun); font-family: var(--serif); font-style: italic; font-size: 1.125rem; line-height: 1.45; }
+.letter cite { font-style: normal; font-family: var(--body); font-size: .875rem; color: var(--on-band-soft); white-space: nowrap; }
+.letter .sign { font-family: var(--serif); font-style: italic; margin-top: 6px; }
+.letter .sign strong { font-family: var(--display); font-style: normal; font-weight: 400; text-transform: uppercase; letter-spacing: .01em; }
+.photo-slot img { width: 100%; height: 100%; object-fit: cover; }
+@media (max-width: 700px) { .pastor { grid-template-columns: minmax(0, 1fr); } .photo-slot { max-width: 280px; order: -1; } }
+
+/* Ministries */
+#serve-empty { color: var(--on-band-soft); }
+.min-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
+.min { background: var(--band-2); padding: 28px 26px 30px; display: grid; gap: 14px; align-content: start; min-width: 0; border-top: 4px solid var(--sun); }
+.min.wide { grid-column: 1 / -1; }
+.min-top { display: flex; align-items: center; gap: 16px; }
+.min svg { width: 44px; height: 44px; flex: none; fill: none; stroke: var(--sun); stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; }
+.min h3 { font-family: var(--display); font-weight: 400; font-size: clamp(1.25rem, 2.6vw, 1.625rem); line-height: 1.1; text-transform: uppercase; }
+.min .when { font-family: var(--tall); font-size: 1.75rem; line-height: 1.1; color: var(--sun); text-transform: uppercase; letter-spacing: .01em; }
+.min p { color: var(--on-band-soft); max-width: 60ch; }
+.min p strong { color: var(--on-band); }
+.min .actions { margin-top: 6px; }
+.food { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 28px 40px; margin-top: 6px; }
+.food h4 { font-size: .8125rem; font-weight: 700; text-transform: uppercase; letter-spacing: .14em; color: var(--sun); margin-bottom: 12px; }
+.items { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+.items li { background: var(--band); border-left: 6px solid var(--sun); padding: 10px 14px; font-weight: 700; }
+.drops { display: grid; gap: 16px; }
+.drops li { display: grid; gap: 2px; }
+.drops strong { font-family: var(--display); font-weight: 400; text-transform: uppercase; font-size: 1rem; }
+.drops address { font-style: normal; color: var(--on-band-soft); }
+@media (max-width: 760px) { .min-grid, .food { grid-template-columns: minmax(0, 1fr); } }
+@media (max-width: 400px) { .items { grid-template-columns: minmax(0, 1fr); } }
+
+/* Gallery */
+.gallery { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(20px, 3.5vw, 40px); }
+@media (max-width: 520px) { .gallery { grid-template-columns: minmax(0, 1fr); } }
+.gallery.single { grid-template-columns: minmax(0, 520px); }
+.tile { display: block; width: 100%; padding: 0; margin: 0; border: 3px solid var(--edge); background: var(--card); cursor: zoom-in; aspect-ratio: 1 / 1; max-width: 100%; overflow: hidden; }
+.tile img { width: 100%; height: 100%; object-fit: cover; }
+.tile:hover, .tile:focus-visible { box-shadow: 8px 8px 0 var(--sun); }
+html:not(.js) .tile { cursor: default; }
+dialog.lightbox { border: 0; padding: 0; background: var(--band); color: var(--on-band); --ring: var(--sun); max-width: min(94vw, 1040px); max-height: 94vh; overflow: auto; }
+dialog.lightbox::backdrop { background: rgba(8, 8, 7, .86); }
+.lb-bar { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 10px 10px 10px 18px; position: sticky; top: 0; background: var(--band); }
+.lb-bar p { font-weight: 700; font-size: .9375rem; min-width: 0; }
+.lb-btns { display: flex; gap: 8px; flex: none; }
+.lb-btns button { min-width: 44px; min-height: 44px; padding: 0 14px; background: var(--sun); color: var(--on-sun); border: 0; cursor: pointer; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; font-size: .8125rem; }
+.lightbox img { width: 100%; max-height: calc(94vh - 70px); object-fit: contain; }
+
+/* Visit */
+.visit { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); gap: clamp(32px, 5vw, 64px); align-items: start; }
+.times { background: var(--card); border: 3px solid var(--edge); box-shadow: 10px 10px 0 var(--sun); }
+.times h3 { background: var(--band); color: var(--sun); font-family: var(--tall); font-weight: 400; font-size: 2rem; text-transform: uppercase; padding: 12px 24px; letter-spacing: .01em; }
+.times dl { padding: 8px 24px 18px; }
+.times .row { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 4px 16px; align-items: baseline; padding-block: 16px; }
+.times .row + .row { border-top: 1px solid var(--line); }
+.times dt { font-weight: 700; }
+.times dd.t { font-family: var(--tall); font-size: 1.75rem; line-height: 1; font-variant-numeric: tabular-nums; }
+.times dd.w { grid-column: 1 / -1; color: var(--ink-soft); font-size: .9375rem; }
+.faq { display: grid; gap: 26px; }
+.faq h3 { font-family: var(--display); font-weight: 400; font-size: 1.1875rem; text-transform: uppercase; margin-bottom: 6px; }
+.faq p { color: var(--ink-soft); max-width: 60ch; }
+.meet { display: grid; gap: 12px; color: var(--ink-soft); max-width: 60ch; }
+.meet li { padding-left: 14px; border-left: 4px solid var(--sun); }
+.meet b { display: block; color: var(--ink); }
+.expect { margin-top: clamp(40px, 6vw, 72px); padding-top: clamp(28px, 4vw, 44px); border-top: 3px solid var(--edge); }
+.expect h3 { font-family: var(--display); font-weight: 400; font-size: clamp(1.5rem, 3.4vw, 2.25rem); text-transform: uppercase; letter-spacing: -.01em; margin-bottom: 22px; }
+.expect ul { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px 40px; }
+.expect li { padding-left: 16px; border-left: 4px solid var(--sun); color: var(--ink-soft); max-width: 58ch; }
+.expect li b { display: block; font-family: var(--display); font-weight: 400; text-transform: uppercase; font-size: 1.0625rem; color: var(--ink); margin-bottom: 4px; }
+@media (max-width: 720px) { .expect ul { grid-template-columns: minmax(0, 1fr); } }
+@media (max-width: 820px) { .visit { grid-template-columns: minmax(0, 1fr); } }
+@media (max-width: 480px) { .times { box-shadow: 6px 6px 0 var(--sun); } }
+
+/* Footer */
+.map-h { margin-top: 44px; }
+.foot-map { position: relative; height: clamp(240px, 32vw, 340px); margin-top: 0; border: 3px solid var(--sun); background:
+  linear-gradient(var(--band-2) 2px, transparent 2px) 0 0 / 100% 56px,
+  linear-gradient(90deg, var(--band-2) 2px, transparent 2px) 0 0 / 72px 100%, var(--band); overflow: hidden; }
+.foot-map iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+.map-link { position: absolute; inset: 0; display: grid; place-items: center; text-decoration: none; outline-offset: -8px; }
+.map-card { display: flex; align-items: center; gap: 14px; background: var(--sun); color: var(--on-sun); padding: 12px 20px 12px 14px; border: 3px solid var(--on-sun); box-shadow: 6px 6px 0 var(--on-sun); max-width: calc(100% - 32px); }
+.map-card svg { width: 34px; height: 34px; flex: none; fill: none; stroke: currentColor; stroke-width: 2; stroke-linejoin: round; }
+.map-card > span { display: grid; line-height: 1.25; min-width: 0; }
+.map-card b { font-family: var(--display); font-weight: 400; text-transform: uppercase; overflow-wrap: anywhere; }
+.map-card i { font-style: normal; font-size: .8125rem; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; text-decoration: underline; text-underline-offset: 3px; }
+.foot-map.live .map-link { inset: auto auto 14px 14px; display: block; max-width: calc(100% - 28px); outline-offset: 3px; }
+.foot-map.live .map-card { max-width: 100%; }
+.foot-map.live .map-card { padding: 8px 14px 8px 10px; box-shadow: 4px 4px 0 var(--on-sun); }
+.foot-map.live .map-card svg { width: 26px; height: 26px; }
+@media (max-width: 600px) {
+  .foot-map { height: 320px; }
+  .map-card { gap: 10px; padding: 8px 12px 8px 10px; }
+  .map-card b { font-size: .8125rem; line-height: 1.25; }
+  .map-card i { font-size: .6875rem; letter-spacing: .06em; line-height: 1.4; margin-top: 2px; }
+  .foot-map.live .map-card svg { width: 22px; height: 22px; }
+}
+.site-footer { border-top: 8px solid var(--sun); padding-block: 56px 28px; }
+.foot-grid { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr) minmax(0, 1fr); gap: 40px; }
+.foot-brand { display: grid; gap: 18px; justify-items: start; align-content: start; }
+.foot-brand .lockup { width: min(260px, 100%); }
+.foot-brand p { font-family: var(--marker); font-size: 1.125rem; color: var(--sun); }
+.site-footer h2 { font-size: .8125rem; font-weight: 700; text-transform: uppercase; letter-spacing: .14em; color: var(--sun); margin-bottom: 14px; }
+.contact { display: grid; gap: 14px; }
+.contact dt { font-size: .8125rem; text-transform: uppercase; letter-spacing: .1em; color: var(--on-band-soft); }
+.contact dd { font-weight: 600; overflow-wrap: anywhere; user-select: all; }
+.foot-links { display: grid; gap: 2px; }
+.foot-links a { font-weight: 600; display: inline-block; padding-block: 5px; }
+.contact a, .foot-base a { display: inline-block; padding-block: 4px; }
+.contact .note { font-weight: 400; font-size: .875rem; color: var(--on-band-soft); user-select: auto; margin-top: 4px; }
+.foot-base { margin-top: 44px; padding-top: 20px; border-top: 1px solid var(--band-2); display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; font-size: .875rem; color: var(--on-band-soft); }
+@media (max-width: 820px) { .foot-grid { grid-template-columns: minmax(0, 1fr); gap: 32px; } }
+</style>
+</head>
+<body>
+
+<!-- Marks the page as JavaScript-enabled before anything draws (see .js in the legend) -->
+<script>document.documentElement.classList.add('js');</script>
+
+<!-- ===== [1] SKIP LINK ===== -->
+<a class="skip" href="#main">Skip to main content</a>
+
+<!-- ===== [2] HEADER + MAIN NAVIGATION ===== -->
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="Grace Community Church, home">
+      <span class="emblem" aria-hidden="true"></span>
+      <span class="wordmark" aria-hidden="true"></span>
+    </a>
+    <button class="nav-toggle" id="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
+      <span class="bars" aria-hidden="true"></span><span id="nav-toggle-text">Menu</span>
+    </button>
+    <nav class="site-nav" id="site-nav" aria-label="Main">
+      <!-- Nav items are in MOBILE order; .d-1 … .d-7 set the desktop order, .m-only items show on mobile only -->
+      <ul>
+        <li class="m-only"><a href="#visit">Service times</a></li>
+        <li class="d-5"><a href="https://www.facebook.com/gracecommunityphilly/" target="_blank" rel="noopener">Watch online<span class="sr-only"> (opens in a new tab)</span></a></li>
+        <li class="d-4"><a href="#visit">Visit</a></li>
+        <li class="m-only"><a href="#upcoming" data-dir>Get directions</a></li>
+        <li class="m-only"><a href="#expect">What to expect</a></li>
+        <li class="d-1"><a href="#about">About<span class="m-txt"> Grace</span></a></li>
+        <li class="d-3"><a href="#upcoming">Upcoming<span class="m-txt"> services</span></a></li>
+        <li class="d-2"><a href="#serve">Ways to serve</a></li>
+        <li class="soc-li d-6"><div class="soc-row"><div class="social">
+          <a href="https://www.facebook.com/gracecommunityphilly/" target="_blank" rel="noopener" aria-label="Facebook (opens in a new tab)"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+          <a href="https://www.instagram.com/gracecommunityphilly/" target="_blank" rel="noopener" aria-label="Instagram (opens in a new tab)"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="2.5" width="19" height="19" rx="5"/><circle cx="12" cy="12" r="4.2"/><path d="M17.400 6.600h.01"/></svg></a>
+          <a href="https://www.youtube.com/@GraceCommunityPhilly" target="_blank" rel="noopener" aria-label="YouTube (opens in a new tab)"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="4"/><path d="M10 9.200v5.600l5-2.800z"/></svg></a>
+        </div><a class="btn quiet bs-cta" href="#bible-study">Bible study</a></div></li>
+        <li class="give-li d-7"><a class="btn" href="https://give.tithe.ly/?formId=fb740478-bf59-4165-99b2-cd8ca88a021e" target="_blank" rel="noopener">Give<span class="sr-only"> (opens in a new tab)</span></a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+<!-- ===== /[2] END HEADER ===== -->
+
+<main id="main">
+
+<!-- ===== [3] HERO CAROUSEL #top =====
+     Each .slide is one panel. data-slide names it (used by SITE.heroImages), data-name is read out
+     to screen readers, data-until / data-from add or retire it by date. The first slide holds the page's only <h1>. -->
+<section class="hero" id="top" aria-roledescription="carousel" aria-label="Highlights">
+  <div class="hero-stage">
+  <div class="hero-bgs" aria-hidden="true" id="hero-bgs"></div>
+  <div class="wrap hero-inner" id="hero-carousel">
+    <div class="slides" id="hero-slides" aria-live="off">
+      <!-- Slide: Welcome (always shown) -->
+      <div class="slide is-active" role="group" aria-roledescription="slide" aria-label="Welcome" data-slide="welcome" data-name="Welcome">
+        <div class="hero-copy">
+          <h1 class="hero-h"><span class="h1-name">Grace Community Church · Philadelphia, PA</span> <span class="h1-motto"><span>We love God.</span><span>We love people.</span><span class="hl">We do good.</span></span></h1>
+          <p class="lede">Worship with us in person and online every Sunday at 12:00 PM, and study the Bible with us on Wednesday nights.<span data-until="2026-11-01"> Our official launch service is Sunday, November 1 at 3:00 PM.</span></p>
+          <div class="actions">
+            <a class="btn" href="#visit">Plan your visit</a>
+            <a class="btn quiet" href="https://www.facebook.com/gracecommunityphilly/" target="_blank" rel="noopener">Watch online<span class="sr-only"> (opens in a new tab)</span></a>
+          </div>
+        </div>
+        <span class="emblem hero-emblem" aria-hidden="true"></span>
+      </div>
+      <!-- Slide: Launch service (until Nov 1) -->
+      <div class="slide" role="group" aria-roledescription="slide" aria-label="Launch service" data-slide="launch" data-name="Launch service" data-until="2026-11-01">
+        <div class="hero-copy">
+          <h2 class="hero-h"><span class="h1-name">Save the date</span> <span class="h1-motto"><span>Official</span><span>launch</span><span class="hl">service.</span></span></h2>
+          <p class="lede">Join us on Sunday, November 1, 2026 at 3:00 PM for the official launch of Grace Community Church at Meredith Elementary School (cafeteria), 725 S 5th St, Philadelphia.</p>
+          <div class="actions">
+            <a class="btn" href="#upcoming">See upcoming services</a>
+          </div>
+        </div>
+        <div class="ticket">
+          <span class="tag">Save the date</span>
+          <p class="when">Nov 1</p>
+          <p class="time">Sunday · 3:00 PM</p>
+          <p class="what">Official launch service</p>
+          <p class="where">Meredith Elementary School (cafeteria), 725 S 5th St</p>
+        </div>
+      </div>
+      <!-- Slide: October Bible study (until Oct 31) -->
+      <div class="slide" role="group" aria-roledescription="slide" aria-label="Bible study" data-slide="bible" data-name="Bible study" data-until="2026-10-31">
+        <div class="hero-copy">
+          <h2 class="hero-h"><span class="h1-name">Bible study · The Apostles’ Creed</span> <span class="h1-motto"><span>Bible study:</span><span class="hl">Faith 101.</span></span></h2>
+          <p class="lede">Line by line, we break down the core tenets of the Christian faith. Every Wednesday in October on Zoom and Facebook Live.</p>
+          <p class="zoom-id"><span>Meeting ID: <b>880 2297 9559</b></span> <span>Passcode: <b>19061906</b></span></p>
+          <div class="actions">
+            <a class="btn" href="https://us06web.zoom.us/j/88022979559?pwd=G7K6SVRMGFtdgMQQwhhbsYrDfUQAPT.1" target="_blank" rel="noopener">Join on Zoom<span class="sr-only"> (opens in a new tab)</span></a>
+            <a class="btn quiet" href="/biblestudy/thisweek/lesson.pdf">Download this week’s lesson</a>
+          </div>
+        </div>
+        <div class="ticket">
+          <span class="tag">Wednesdays in October</span>
+          <p class="when">7:00 PM</p>
+          <p class="time">Zoom + Facebook Live</p>
+          <p class="what">Faith 101</p>
+          <p class="where">The Apostles’ Creed, line by line.</p>
+        </div>
+      </div>
+      <!-- Slide: November Bible study (Nov 1–30) -->
+      <div class="slide" role="group" aria-roledescription="slide" aria-label="Bible study" data-slide="bibleNov" data-name="Bible study" data-from="2026-11-01" data-until="2026-11-30">
+        <div class="hero-copy">
+          <h2 class="hero-h"><span class="h1-name">Bible study · November</span> <span class="h1-motto"><span>Methodism: 101</span><span>What do we</span><span class="hl">believe</span></span></h2>
+          <p class="lede">Our November Bible study. Every Wednesday in November at 7:00 PM on Zoom and Facebook Live.</p>
+          <p class="zoom-id"><span>Meeting ID: <b>880 2297 9559</b></span> <span>Passcode: <b>19061906</b></span></p>
+          <div class="actions">
+            <a class="btn" href="https://us06web.zoom.us/j/88022979559?pwd=G7K6SVRMGFtdgMQQwhhbsYrDfUQAPT.1" target="_blank" rel="noopener">Join on Zoom<span class="sr-only"> (opens in a new tab)</span></a>
+            <a class="btn quiet" href="/biblestudy/thisweek/lesson.pdf">Download this week’s lesson</a>
+          </div>
+        </div>
+        <div class="ticket">
+          <span class="tag">Wednesdays in November</span>
+          <p class="when">7:00 PM</p>
+          <p class="time">Zoom + Facebook Live</p>
+          <p class="what">Methodism: 101</p>
+          <p class="where">What Do We Believe</p>
+        </div>
+      </div>
+      <!-- Slide: Food drive (until Nov 1) -->
+      <div class="slide" role="group" aria-roledescription="slide" aria-label="Food drive" data-slide="food" data-name="Food drive" data-until="2026-11-01">
+        <div class="hero-copy">
+          <h2 class="hero-h"><span class="h1-name">Food Drive 2026</span> <span class="h1-motto"><span>Give thanks</span><span class="hl">&amp; give back.</span></span></h2>
+          <p class="lede">Your generosity helps feed families and build stronger communities. Together we can make a difference.</p>
+          <div class="actions">
+            <a class="btn" href="#food">What to bring and where</a>
+          </div>
+        </div>
+        <div class="ticket">
+          <span class="tag">Drive ends</span>
+          <p class="when">Nov 1</p>
+          <p class="time">Started Sept 20</p>
+          <p class="what">Two drop-off locations</p>
+          <p class="where">S. 21st St, Philadelphia, PA 19146</p>
+        </div>
+      </div>
+    </div>
+    <!-- Carousel controls: previous, dots (built by the script), next, pause -->
+    <div class="hero-ctl">
+      <button type="button" id="hs-prev" aria-label="Previous slide"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
+      <div class="dots" role="group" aria-label="Choose a slide" id="hs-dots"></div>
+      <button type="button" id="hs-next" aria-label="Next slide"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
+      <button type="button" id="hs-pause" aria-label="Pause slide rotation"><svg viewBox="0 0 24 24" aria-hidden="true"><path id="hs-pause-icon" d="M9 5v14M15 5v14"/></svg></button>
+    </div>
+  </div>
+  </div>
+  <!-- Black strip under the hero. The script rewrites the Sunday cell from SITE.meetingPlaces. -->
+  <div class="band strip" aria-label="For first-time visitors">
+    <div class="wrap">
+      <a class="cell" href="#visit" id="sun-cell">
+        <span class="label" id="sun-label">Sunday Worship Experience</span>
+        <span class="big" id="sun-time">12:00 PM</span>
+        <span class="small" id="sun-place">In person and online. See all service times</span>
+      </a>
+      <div class="cell">
+        <span class="label">Bible Study</span>
+        <span class="big">Wed 7:00 PM</span>
+        <span class="small">Zoom and Facebook Live</span>
+      </div>
+      <div class="cell acts">
+        <a class="btn" href="#upcoming" data-dir>Get directions</a>
+        <a class="btn quiet" href="#expect">What to expect</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== /[3] END HERO ===== -->
+
+<!-- ===== [4] LATEST SERMON #sermon   ← UPDATE WEEKLY =====
+     Change: poster image, YouTube link (poster AND button), the aria-label, title, scripture/date line. -->
+<section class="section" id="sermon" aria-labelledby="sermon-h">
+  <div class="wrap sermon">
+    <div class="video" id="sermon-video">
+      <a class="video-poster" id="sermon-poster" href="https://www.youtube.com/watch?v=ulzyHtQF1J8" target="_blank" rel="noopener" aria-label="Play the latest sermon: If You Want Better Answers, Ask Better Questions">
+        <img src="images/sermon-2026-10-11.jpg" width="1280" height="720" alt="" decoding="async">
+        <span class="play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+        <span class="host" aria-hidden="true">Watch on YouTube</span>
+      </a>
+    </div>
+    <div class="sermon-copy">
+      <p class="label">Latest sermon</p>
+      <h2 id="sermon-h">If You Want Better Answers, Ask Better Questions</h2>
+      <p class="ref">John 18:33–40 (NRSVUE) · Sunday, October 11, 2026</p>
+      <p>Missed Sunday? Watch the message here, then join us in person or online next Sunday at 12:00 PM.</p>
+      <div class="actions">
+        <a class="btn" id="sermon-yt" href="https://www.youtube.com/watch?v=ulzyHtQF1J8" target="_blank" rel="noopener">Watch on YouTube<span class="sr-only"> (opens in a new tab)</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== /[4] END LATEST SERMON ===== -->
+
+<!-- ===== [5] ABOUT #about =====
+     Four accordions. All open without JavaScript; the script collapses all but the one marked data-open. -->
+<section class="section tint" id="about" aria-labelledby="about-h">
+  <div class="wrap">
+    <div class="section-head">
+      <h2 id="about-h">About Grace Community Church</h2>
+      <p>Who we are and what we believe.</p>
+    </div>
+
+    <div class="acc">
+      <!-- [5a] Who we are (starts open) -->
+      <h3><button class="acc-btn" type="button" id="acc-b1" aria-controls="acc-p1" data-open><span class="pm" aria-hidden="true"></span>Who we are</button></h3>
+      <div class="acc-panel" id="acc-p1" role="region" aria-labelledby="acc-b1">
+        <p>Grace Community Church is a church in Philadelphia built on three commitments.</p>
+        <ul class="values">
+          <li><span class="label">We</span><strong>Love God</strong></li>
+          <li><span class="label">We</span><strong>Love people</strong></li>
+          <li><span class="label">We</span><strong>Do good</strong></li>
+        </ul>
+        <p>Words can only capture a fraction of what makes our church family so special, but at our core, we are a community rooted in faith, grace, and purpose. Built on a strong biblical foundation, we are driven to live out the gospel every day.</p>
+        <p>We are a vibrant, multi-generational church with a deep heart for outreach, dedicated to bringing hope, light, and real support to our surrounding neighborhood and beyond. We offer a welcoming space to cultivate genuine Christian community—a place where people of all ages can build meaningful relationships, encourage one another, and belong.</p>
+        <p>Through every season of life, we maintain an unyielding commitment to spiritual growth, nurturing disciples and following the Holy Spirit’s guidance. Blessed by God’s daily grace, we walk together in unity, love, and joy, striving to make a lasting, positive difference in our church and in the world around us.</p>
+      </div>
+    </div>
+
+    <!-- [5b] What we believe #believe -->
+    <div class="acc" id="believe">
+      <h3><button class="acc-btn" type="button" id="acc-b2" aria-controls="acc-p2"><span class="pm" aria-hidden="true"></span>What we believe</button></h3>
+      <div class="acc-panel" id="acc-p2" role="region" aria-labelledby="acc-b2">
+        <p>We believe in God the Father Almighty, maker of heaven and earth. We believe in Jesus Christ, His only Son and our Lord, who was crucified, rose again on the third day and will return. We believe in the Holy Spirit, in one universal Church, in the forgiveness of sins, in the resurrection of the body and in life everlasting.</p>
+        <p class="src">Drawn from the Apostles’ Creed.</p>
+      </div>
+    </div>
+
+    <div class="acc">
+      <!-- [5c] Message from our pastor -->
+      <h3><button class="acc-btn" type="button" id="acc-b4" aria-controls="acc-p4"><span class="pm" aria-hidden="true"></span>Message from our pastor</button></h3>
+      <div class="acc-panel" id="acc-p4" role="region" aria-labelledby="acc-b4">
+        <div class="pastor">
+          <div class="col letter">
+            <p>Dear Friend,</p>
+            <p>On behalf of the Grace Community Church family, welcome to our digital home! We are so glad you have taken the time to visit our website and discover what we are all about.</p>
+            <p>We are standing at the threshold of a dynamic, exciting new season. I believe God is leading us onto a fresh and uncharted path filled with energy, innovation, and purpose. We are stepping boldly into new territory together, expectant for all the ways God will move in our lives and in our surrounding community. As we launch into this new chapter, please know that you aren’t just a site visitor—you are warmly invited to step into this adventure with us.</p>
+            <p>A scripture that continues to inspire our vision for this journey comes from the book of Numbers, where Moses invites his family to join them on the trail to the promised land:</p>
+            <blockquote>“We’re leaving for the place the Lord has promised us. He has said that all will go well for us. So come along, and we will make sure that all goes well for you.” <cite>(Numbers 10:29 CEV)</cite></blockquote>
+            <p>Just like Moses, we want to invite you to “come along” and help shape what’s next. Whether you are exploring faith for the very first time, looking for a place to belong, or ready to deepen your walk with Jesus, there is a place for you here at Grace Community Church.</p>
+            <p>Feel free to connect with us if you have any questions or if we can support you in any way. We can’t wait to meet you in person soon!</p>
+            <p class="sign">Always with love (and forever in His service),<br><strong>Rev. Arian B. Harris</strong></p>
+          </div>
+          <div class="photo-slot"><img src="images/pastor.jpg" width="720" height="900" alt="Rev. Arian B. Harris" loading="lazy" decoding="async"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- [5d] Bible study #bible-study: details, series graphic, then last week's video (UPDATE WEEKLY) -->
+    <div class="acc" id="bible-study">
+      <h3><button class="acc-btn" type="button" id="acc-b5" aria-controls="acc-p5"><span class="pm" aria-hidden="true"></span>Bible study</button></h3>
+      <div class="acc-panel" id="acc-p5" role="region" aria-labelledby="acc-b5">
+        <p>Study the Bible with us every Wednesday at 7:00 PM. Join the conversation on Zoom, or watch on Facebook Live.</p>
+        <ul class="values">
+          <li><span class="label">Every Wednesday</span><strong>7:00 PM</strong></li>
+          <li><span class="label">Join on</span><strong>Zoom</strong></li>
+          <li><span class="label">Watch on</span><strong>Facebook Live</strong></li>
+        </ul>
+        <div class="bs-row">
+          <div class="bs-col">
+            <p data-until="2026-10-31"><strong>October: Faith 101.</strong> The Apostles’ Creed, line by line. Every Wednesday in October we break down the core tenets of the Christian faith.</p>
+            <p data-from="2026-11-01" data-until="2026-11-30"><strong>November: Methodism 101.</strong> What do we believe? Our November Bible study meets every Wednesday in November.</p>
+            <div>
+              <p class="zoom-id" style="margin-top:0"><span>Meeting ID: <b>880 2297 9559</b></span> <span>Passcode: <b>19061906</b></span></p>
+              <p style="margin-top:8px">Zoom link: <a href="https://us06web.zoom.us/j/88022979559?pwd=G7K6SVRMGFtdgMQQwhhbsYrDfUQAPT.1" target="_blank" rel="noopener">us06web.zoom.us/j/88022979559<span class="sr-only"> (opens in a new tab)</span></a></p>
+            </div>
+            <div class="actions" style="margin-top:4px">
+              <a class="btn" href="https://us06web.zoom.us/j/88022979559?pwd=G7K6SVRMGFtdgMQQwhhbsYrDfUQAPT.1" target="_blank" rel="noopener">Join on Zoom<span class="sr-only"> (opens in a new tab)</span></a>
+              <a class="btn quiet" href="/biblestudy/thisweek/lesson.pdf">Download this week’s lesson</a>
+            </div>
+          </div>
+          <a class="bs-flyer" href="images/bible-study-series.jpg" target="_blank" rel="noopener" aria-label="Open the Bible study graphic full size (opens in a new tab)"><img src="images/bible-study-series.jpg" width="1080" height="1080" alt="Bible Study, Faith 101: The Apostles’ Creed, Part 1: Says Who? Wednesday, October 7 at 7:00 PM ET on Zoom and Facebook Live. Zoom Meeting ID 880 2297 9559, passcode 19061906." loading="lazy" decoding="async"></a>
+        </div>
+        <!-- Last week's Bible study video: change the YouTube link (2 places), poster image, title and date -->
+        <div class="bs-row bs-watch">
+          <div class="video" id="bs-video">
+            <a class="video-poster" id="bs-poster" href="https://www.youtube.com/watch?v=Lcsy_MHc4Yo" target="_blank" rel="noopener" aria-label="Play last week’s Bible study: The Apostles’ Creed, Part 1: Says Who?">
+              <img src="images/bible-study-video.jpg" width="1280" height="720" alt="" loading="lazy" decoding="async">
+              <span class="play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+              <span class="host" aria-hidden="true">Watch on YouTube</span>
+            </a>
+          </div>
+          <div class="sermon-copy">
+            <p class="label">Last week’s Bible study</p>
+            <h4 class="bs-title">The Apostles’ Creed, Part 1: Says Who?</h4>
+            <p class="ref">Wednesday, October 7, 2026</p>
+            <p>Missed Wednesday? Catch up here, then join us live next Wednesday at 7:00 PM.</p>
+            <div class="actions">
+              <a class="btn" href="https://www.youtube.com/watch?v=Lcsy_MHc4Yo" target="_blank" rel="noopener">Watch on YouTube<span class="sr-only"> (opens in a new tab)</span></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== /[5] END ABOUT ===== -->
+
+<!-- ===== [6] WAYS TO SERVE #serve =====
+     One <article class="min"> per opportunity. When every one has expired, the "New opportunities" line shows instead. -->
+<section class="band section" id="serve" aria-labelledby="min-h">
+  <div class="wrap">
+    <div class="section-head">
+      <h2 id="min-h">Ways to serve</h2>
+      <p>We are called to be the hands and feet of Jesus. That means we show what love looks like through our actions.</p>
+    </div>
+    <div class="min-grid">
+      <article class="min wide" id="food" data-until="2026-11-01">
+        <div class="min-top">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 9.5h18l-1.800 10.500H4.800z"/><path d="M8 9.5l3-6"/><path d="M16 9.5l-3-6"/><path d="M9 13v3.500M12 13v3.500M15 13v3.500"/></svg>
+          <h3>Give Thanks &amp; Give Back Food Drive 2026</h3>
+        </div>
+        <p class="when">Sept 20 – Nov 1, 2026</p>
+        <p>We are joining with Greater Mount Sinai Baptist Church, St. Paul Chapel Baptist Church and Fresh Fire Word of Life Ministries. Your generosity helps feed families and build stronger communities.</p>
+        <div class="food">
+          <div>
+            <h4>Requested items</h4>
+            <ul class="items">
+              <li>Canned green beans</li><li>Canned corn</li><li>Boxed macaroni</li>
+              <li>Box stuffing</li><li>Cranberry sauce</li><li>Gravy</li>
+            </ul>
+          </div>
+          <div>
+            <h4>Drop-off locations</h4>
+            <ul class="drops">
+              <li><strong>Greater Mt. Sinai Baptist Church</strong><address>1228-30 S. 21st St, Philadelphia, PA 19146</address>
+                <a href="https://www.google.com/maps/dir/?api=1&amp;destination=1228+S+21st+St%2C+Philadelphia%2C+PA+19146" target="_blank" rel="noopener">Get directions<span class="sr-only"> to Greater Mt. Sinai Baptist Church (opens in a new tab)</span></a></li>
+              <li><strong>St. Paul Chapel Baptist Church</strong><address>1217 S. 21st St, Philadelphia, PA 19146</address>
+                <a href="https://www.google.com/maps/dir/?api=1&amp;destination=1217+S+21st+St%2C+Philadelphia%2C+PA+19146" target="_blank" rel="noopener">Get directions<span class="sr-only"> to St. Paul Chapel Baptist Church (opens in a new tab)</span></a></li>
+            </ul>
+          </div>
+        </div>
+      </article>
+    </div>
+    <p id="serve-empty" hidden>New opportunities to serve will be posted here.</p>
+  </div>
+</section>
+
+<!-- ===== /[6] END WAYS TO SERVE ===== -->
+
+<!-- ===== [7] THIS MONTH AT GRACE #gallery =====
+     One <button class="tile"> per flyer; data-cap is its lightbox caption. The section hides itself when no flyers are current. -->
+<section class="section" id="gallery" aria-labelledby="gal-h">
+  <div class="wrap">
+    <div class="section-head">
+      <h2 id="gal-h">This month at Grace</h2>
+      <p>Here’s what’s happening this month, and you’re invited to all of it. Tap a flyer for the details.</p>
+    </div>
+    <div class="gallery" id="gallery-grid">
+      <button class="tile" type="button" data-until="2026-10-18" data-cap="Sunday Worship Service at Historic Mother Bethel AME Church, October 11 and 18 at 12:00 PM"><img src="images/flyer-worship.jpg" width="1000" height="1000" alt="Flyer: We invite you to our Sunday Worship Service at Historic Mother Bethel AME Church, 419 S 6th St, Philadelphia, PA 19147. Sunday October 11 and Sunday October 18 at 12:00 PM, also streaming on Facebook Live" loading="lazy" decoding="async"></button>
+      <button class="tile" type="button" data-until="2026-10-31" data-cap="Bible Study: Faith 101, every Wednesday in October at 7:00 PM"><img src="images/flyer-bible-study.jpg" width="1000" height="1000" alt="Flyer: Bible Study, Faith 101, every Wednesday in October at 7:00 PM on Facebook Live and Zoom" loading="lazy" decoding="async"></button>
+    </div>
+  </div>
+</section>
+
+<!-- ===== /[7] END GALLERY ===== -->
+
+<!-- ===== [8] UPCOMING SERVICES #upcoming =====
+     One <article class="svc"> card per service, retired by data-until. #svc-empty shows when none are left. -->
+<section class="section tint" id="upcoming" aria-labelledby="upcoming-h">
+  <div class="wrap">
+    <div class="section-head">
+      <h2 id="upcoming-h">Upcoming services</h2>
+      <p>Where we are meeting in person.</p>
+    </div>
+    <div class="cards" id="svc-cards">
+      <article class="svc" data-until="2026-10-18">
+        <p class="date">Oct 11 &amp; 18</p>
+        <div class="body">
+          <h3>Sunday service at 12:00 PM</h3>
+          <p>Mother Bethel AME Church</p>
+          <address>419 S 6th St, Philadelphia, PA 19147</address>
+          <a class="go" href="https://www.google.com/maps/dir/?api=1&amp;destination=419+S+6th+St%2C+Philadelphia%2C+PA+19147" target="_blank" rel="noopener">Get directions<span class="sr-only"> to Mother Bethel AME Church (opens in a new tab)</span></a>
+        </div>
+      </article>
+      <article class="svc" data-until="2026-10-25">
+        <p class="date">Oct 25 · 11:00 AM</p>
+        <div class="body">
+          <h3>Worship with Mt. Zion United Methodist Church</h3>
+          <address>1530 N 11th St, Philadelphia, PA 19122</address>
+          <a class="go" href="https://www.google.com/maps/dir/?api=1&amp;destination=1530+N+11th+St%2C+Philadelphia%2C+PA+19122" target="_blank" rel="noopener">Get directions<span class="sr-only"> to Mt. Zion United Methodist Church (opens in a new tab)</span></a>
+        </div>
+      </article>
+      <article class="svc" data-until="2026-11-01">
+        <p class="date">Nov 1 · 3:00 PM</p>
+        <div class="body">
+          <h3>Official launch service</h3>
+          <p>Meredith Elementary School (cafeteria)</p>
+          <address>725 S 5th St, Philadelphia, PA 19147</address>
+          <a class="go" href="https://www.google.com/maps/dir/?api=1&amp;destination=725+S+5th+St%2C+Philadelphia%2C+PA+19147" target="_blank" rel="noopener">Get directions<span class="sr-only"> to Meredith Elementary School (opens in a new tab)</span></a>
+        </div>
+      </article>
+    </div>
+    <p id="svc-empty" hidden>We meet every Sunday at Meredith Elementary School (cafeteria), 725 S 5th St, Philadelphia, PA 19147. Service times are under <a href="#visit">Plan your visit</a>.</p>
+  </div>
+</section>
+
+<!-- ===== /[8] END UPCOMING SERVICES ===== -->
+
+<!-- ===== [9] LIGHTBOX POPUP #lightbox (filled in by the script when a flyer is tapped) ===== -->
+<dialog class="lightbox" id="lightbox" aria-labelledby="lb-cap">
+  <div class="lb-bar">
+    <p id="lb-cap"></p>
+    <div class="lb-btns">
+      <button type="button" id="lb-prev" aria-label="Previous graphic">Prev</button>
+      <button type="button" id="lb-next" aria-label="Next graphic">Next</button>
+      <button type="button" id="lb-close">Close</button>
+    </div>
+  </div>
+  <img id="lb-img" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="">
+</dialog>
+
+<!-- ===== /[9] END LIGHTBOX ===== -->
+
+<!-- ===== [10] PLAN YOUR VISIT #visit =====
+     Service times card, "Where do you meet?" (dated lines), joining online, then What to expect #expect. -->
+<section class="section" id="visit" aria-labelledby="visit-h">
+  <div class="wrap">
+    <div class="section-head">
+      <h2 id="visit-h">Plan your visit</h2>
+      <p>New here? This is when we meet and how to find us.</p>
+    </div>
+    <div class="visit">
+      <div class="times">
+        <h3>Service times</h3>
+        <dl>
+          <div class="row"><dt>Sunday Worship Experience</dt><dd class="t">12:00 PM</dd><dd class="w">In person and online on Facebook Live &amp; YouTube</dd></div>
+          <div class="row"><dt>Bible Study</dt><dd class="t">7:00 PM</dd><dd class="w">Every Wednesday on Zoom and Facebook Live</dd></div>
+          <div class="row"><dt>Outreach Opportunities</dt><dd class="t">Varies</dd><dd class="w">Dates and places will be placed under <a href="#serve">Ways to Serve</a></dd></div>
+        </dl>
+      </div>
+      <div class="faq">
+        <div>
+          <h3>Where do you meet?</h3>
+          <ul class="meet">
+            <li data-until="2026-10-18"><b>Sundays, October 11 &amp; 18 · 12:00 PM</b>Mother Bethel AME Church, 419 S 6th St, Philadelphia, PA 19147</li>
+            <li data-until="2026-10-25"><b>Sunday, October 25 · 11:00 AM</b>Worship with Mt. Zion United Methodist Church, 1530 N 11th St, Philadelphia, PA 19122</li>
+            <li data-until="2026-11-01"><b>Sunday, November 1 · 3:00 PM</b>Official launch service at Meredith Elementary School (cafeteria), 725 S 5th St, Philadelphia, PA 19147</li>
+            <li><b>Every Sunday after our November 1 launch</b>Meredith Elementary School (cafeteria), 725 S 5th St, Philadelphia, PA 19147</li>
+          </ul>
+        </div>
+        <div>
+          <h3>How do I join online?</h3>
+          <p>Sunday worship streams on Facebook Live and YouTube at 12:00 PM. Wednesday Bible study is on Zoom and Facebook Live at 7:00 PM.</p>
+          <p class="zoom-id"><span>Meeting ID: <b>880 2297 9559</b></span> <span>Passcode: <b>19061906</b></span></p>
+          <div class="actions" style="margin-top:14px">
+            <a class="btn" href="https://www.facebook.com/gracecommunityphilly/" target="_blank" rel="noopener">Watch on Facebook Live<span class="sr-only"> (opens in a new tab)</span></a>
+            <a class="btn quiet" href="https://us06web.zoom.us/j/88022979559?pwd=G7K6SVRMGFtdgMQQwhhbsYrDfUQAPT.1" target="_blank" rel="noopener">Join on Zoom<span class="sr-only"> (opens in a new tab)</span></a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- What to expect #expect -->
+    <div class="expect" id="expect">
+      <h3>What to expect</h3>
+      <ul>
+        <li><b>A real welcome</b>You are not just a visitor here. Whether you are exploring faith for the first time, looking for a place to belong, or ready to go deeper, there is a place for you.</li>
+        <li><b>Worship in person or online</b>Sunday worship is the heart of our week. If you can’t be in the room, the service streams on Facebook Live and YouTube.</li>
+        <li data-until="2026-11-01"><b>A church on the move</b>Until our launch on November 1 we worship in guest locations, so check this Sunday’s location before you leave home. From November 1 our home is Meredith Elementary School.</li>
+        <li><b>Someone to ask</b>Not sure where to go or what to bring? Call <a href="tel:+12154879022">(215) 487-9022</a> or email <a href="mailto:info@gracecommunityphilly.org">info@gracecommunityphilly.org</a> and we will help you plan your visit.</li>
+      </ul>
+      <div class="actions">
+        <a class="btn" href="#upcoming" data-dir>Get directions</a>
+        <a class="btn quiet" href="#visit">See service times</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== /[10] END PLAN YOUR VISIT ===== -->
+</main>
+
+<!-- ===== [11] FOOTER: logo, contact, quick links, map ===== -->
+<footer class="band site-footer">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <span class="lockup" role="img" aria-label="Grace Community Church"></span>
+        <p>We love God. We love people. We do good.</p>
+        <div class="social">
+          <a href="https://www.facebook.com/gracecommunityphilly/" target="_blank" rel="noopener" aria-label="Facebook (opens in a new tab)"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+          <a href="https://www.instagram.com/gracecommunityphilly/" target="_blank" rel="noopener" aria-label="Instagram (opens in a new tab)"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="2.5" width="19" height="19" rx="5"/><circle cx="12" cy="12" r="4.2"/><path d="M17.400 6.600h.01"/></svg></a>
+          <a href="https://www.youtube.com/@GraceCommunityPhilly" target="_blank" rel="noopener" aria-label="YouTube (opens in a new tab)"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="4"/><path d="M10 9.200v5.600l5-2.800z"/></svg></a>
+        </div>
+      </div>
+      <div>
+        <h2>Contact</h2>
+        <dl class="contact">
+          <div><dt>Office address</dt><dd>1727 Snyder Ave, Philadelphia, PA 19145</dd></div>
+          <div><dt>Phone</dt><dd><a href="tel:+12154879022">(215) 487-9022</a></dd></div>
+          <div><dt>Email</dt><dd><a href="mailto:info@gracecommunityphilly.org">info@gracecommunityphilly.org</a></dd></div>
+        </dl>
+      </div>
+      <div>
+        <h2>Find your way</h2>
+        <ul class="foot-links">
+          <li><a href="#upcoming">Upcoming services</a></li>
+          <li><a href="#visit">Plan your visit</a></li>
+          <li><a href="#serve">Ways to serve</a></li>
+          <li><a href="https://give.tithe.ly/?formId=fb740478-bf59-4165-99b2-cd8ca88a021e" target="_blank" rel="noopener">Give online<span class="sr-only"> (opens in a new tab)</span></a></li>
+        </ul>
+      </div>
+    </div>
+    <!-- Map: the script swaps in this Sunday's place (from SITE.meetingPlaces) and embeds a Google map -->
+    <h2 class="map-h" id="map-h">Where we meet this Sunday</h2>
+    <div class="foot-map" id="map">
+      <a class="map-link" id="map-link" href="https://www.google.com/maps/search/?api=1&amp;query=Meredith+Elementary+School%2C+725+S+5th+St%2C+Philadelphia%2C+PA+19147" target="_blank" rel="noopener">
+        <span class="map-card">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21.5s-7-6.1-7-11.5a7 7 0 0 1 14 0c0 5.400-7 11.500-7 11.500z"/><circle cx="12" cy="10" r="2.6"/></svg>
+          <span><b id="map-place">Meredith Elementary School (cafeteria), 725 S 5th St, Philadelphia, PA 19147</b><i><span id="map-when">Our Sunday home from November 1</span> · Open in Google Maps<span class="sr-only"> (opens in a new tab)</span></i></span>
+        </span>
+      </a>
+    </div>
+    <div class="foot-base">
+      <span>© <span id="year">2026</span> Grace Community Church</span>
+      <a href="#top">Back to top</a>
+    </div>
+  </div>
+</footer>
+<!-- ===== /[11] END FOOTER ===== -->
+
+<!-- ===== [12] SCRIPT: settings first, then the page behaviour (see the contents list inside) ===== -->
+<script>
+/* =====================================================================================
+   SCRIPT CONTENTS
+     1. SITE settings: meeting places (drives the strip, directions links and footer map),
+        page background photo, optional hero slide photos
+     2. Dated content: removes data-until / data-from items that are out of date
+     3. Hero carousel: auto-rotation, arrows, dots, pause, swipe
+     4. Video players: YouTube loads only after someone presses play
+     5. Footer map + this Sunday's time/place in the hero strip + "Get directions" links
+     6. Mobile menu
+     7. Accordions (and opening them from #believe / #bible-study links)
+     8. Gallery lightbox
+     9. Highlight the nav link for the section on screen
+   ===================================================================================== */
+/* Fill these in. Every matching button, link and contact line on the page updates itself. */
+/* Settings. Links, phone, email, the office address and the sermon details are plain text in the
+   page above: to change one, search for it and replace it there. Nothing here repeats them. */
+var SITE = {
+  // Where the church meets, in date order. The strip under the hero, every "Get directions" button and
+  // the footer map all use the first entry whose "until" date has not passed; the last entry has no "until" and stays for good. "embed" is optional: Google's own embed
+  // address for that place (Google Maps > Share > Embed a map > Copy HTML, the part inside src="...").
+  meetingPlaces: [
+    { until: "2026-10-18", name: "Mother Bethel AME Church", address: "419 S 6th St, Philadelphia, PA 19147", time: "12:00 PM", when: "Sundays, Oct 11 & 18 · 12:00 PM", embed: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3058.914331494515!2d-75.15433712403855!3d39.94330588431766!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c6c89dce8724e3%3A0xe65f30c2230e5a33!2sMother%20Bethel%20African%20Methodist%20Episcopal%20Church!5e0!3m2!1sen!2sus!4v1791393170178!5m2!1sen!2sus" },
+    { until: "2026-10-25", name: "Mt. Zion United Methodist Church", address: "1530 N 11th St, Philadelphia, PA 19122", time: "11:00 AM", when: "Sunday, Oct 25 · 11:00 AM", embed: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3057.449277796189!2d-75.15594892403706!3d39.976064082342106!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c6c8750d33f387%3A0x758ef05e2a5f6aa5!2sMt.%20Zion%20United%20Methodist%20Church!5e0!3m2!1sen!2sus!4v1791393211512!5m2!1sen!2sus" },
+    { until: "2026-11-01", name: "Meredith Elementary School (cafeteria)", address: "725 S 5th St, Philadelphia, PA 19147", time: "3:00 PM", when: "Sunday, Nov 1 · 3:00 PM · Official launch service", embed: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3059.082793589414!2d-75.15323662403868!3d39.939537684544746!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c6c89f0419216f%3A0x3e01c45119eaad6f!2sMeredith%20Elementary%20School!5e0!3m2!1sen!2sus!4v1791393246819!5m2!1sen!2sus" },
+    { name: "Meredith Elementary School (cafeteria)", address: "725 S 5th St, Philadelphia, PA 19147", time: "12:00 PM", when: "Every Sunday", embed: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3059.082793589414!2d-75.15323662403868!3d39.939537684544746!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c6c89f0419216f%3A0x3e01c45119eaad6f!2sMeredith%20Elementary%20School!5e0!3m2!1sen!2sus!4v1791393246819!5m2!1sen!2sus" }
+  ],
+
+  // Whole-page background photo. It stays fixed while the page scrolls, under a cream layer at 85%.
+  // The image files sit in the "images" folder next to this page. Use "" for plain cream.
+  pageImage:      "images/background.jpg",
+  pageImageSmall: "images/background-phone.jpg",   // taller crop used on phones; "" to use the main photo everywhere
+
+  // Optional photo behind each hero slide (1920x1080), e.g. welcome: "images/hero-welcome.jpg".
+  heroImages:  { welcome: "", launch: "", bible: "", bibleNov: "", food: "" },
+  // Colour laid over each slide photo at 85% opacity: "light" (cream, dark text) or "dark" (black, light text).
+  heroTone:    "light"
+};
+var EMBEDS = true; // true on the hosted site; the Claude preview cannot show YouTube or Google Maps frames
+
+(function () {
+  var $ = function (s, r) { return (r || document).querySelector(s); };
+  var $$ = function (s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); };
+
+  /* Dated content looks after itself. data-until="YYYY-MM-DD" removes something the day after that date;
+     data-from="YYYY-MM-DD" keeps it back until that date. Used on hero slides, flyers, service cards,
+     the food drive and dated lines of text. */
+  var today = new Date(); today.setHours(0, 0, 0, 0);
+  function day(v) { var d = v.split("-"); return new Date(+d[0], +d[1] - 1, +d[2]); }
+  $$("[data-until], [data-from]").forEach(function (el) {
+    var until = el.getAttribute("data-until"), from = el.getAttribute("data-from");
+    if ((until && day(until) < today) || (from && day(from) > today)) el.parentNode.removeChild(el);
+  });
+  if (!$("#svc-cards .svc")) { $("#svc-cards").hidden = true; $("#svc-empty").hidden = false; }
+  if (!$("#serve .min")) $("#serve-empty").hidden = false;
+  var tileCount = $$("#gallery-grid .tile").length;
+  if (!tileCount) $("#gallery").hidden = true; else if (tileCount === 1) $("#gallery-grid").classList.add("single");
+  $("#year").textContent = Math.max(2026, today.getFullYear());
+
+  /* Hero carousel: rotates every 7 seconds. It waits while a mouse is over it or keyboard focus is inside it,
+     and stops for good when someone uses a control, swipes, or presses pause. It starts stopped for reduced-motion. */
+  var slides = $$("#hero-slides .slide"), pauseBtn = $("#hs-pause"), pauseIcon = $("#hs-pause-icon"),
+      region = $("#hero-carousel"), live = $("#hero-slides"), cur = 0, timer = null, hovered = false, focused = false,
+      playing = !(window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches);
+  if (SITE.pageImage) {
+    document.documentElement.style.setProperty("--page-image", 'url("' + SITE.pageImage + '")');
+    if (SITE.pageImageSmall) document.documentElement.style.setProperty("--page-image-small", 'url("' + SITE.pageImageSmall + '")');
+    document.documentElement.classList.add("has-page-bg");
+  }
+  /* one background layer and one marker per slide that is still current */
+  var imgs = SITE.heroImages || {}, anyImg = false;
+  var bgs = slides.map(function (sl, n) {
+    var bg = document.createElement("div"); bg.className = "hero-bg" + (n ? "" : " is-active");
+    var src = imgs[sl.getAttribute("data-slide")];
+    if (src) { bg.style.backgroundImage = 'url("' + src + '")'; bg.classList.add("has-img"); anyImg = true; }
+    $("#hero-bgs").appendChild(bg); return bg;
+  });
+  if (SITE.heroTone === "dark" && anyImg) $(".hero").classList.add("dark");
+  var dots = slides.map(function (sl, n) {
+    var label = (n + 1) + " of " + slides.length + ": " + sl.getAttribute("data-name");
+    sl.setAttribute("aria-label", label);
+    var d = document.createElement("button"); d.type = "button"; d.setAttribute("aria-label", "Slide " + label);
+    d.addEventListener("click", function () { manual(n); });
+    $("#hs-dots").appendChild(d); return d;
+  });
+  if (slides.length < 2) { $(".hero-ctl").hidden = true; playing = false; }
+  function go(i) {
+    cur = (i + slides.length) % slides.length;
+    slides.forEach(function (sl, n) { sl.classList.toggle("is-active", n === cur); });
+    bgs.forEach(function (bg, n) { bg.classList.toggle("is-active", n === cur); });
+    dots.forEach(function (d, n) { if (n === cur) d.setAttribute("aria-current", "true"); else d.removeAttribute("aria-current"); });
+  }
+  function sync() {
+    clearInterval(timer); timer = null;
+    if (playing && !hovered && !focused && !document.hidden) timer = setInterval(function () { go(cur + 1); }, 7000);
+    live.setAttribute("aria-live", playing ? "off" : "polite");
+    pauseBtn.setAttribute("aria-label", playing ? "Pause slide rotation" : "Start slide rotation");
+    pauseIcon.setAttribute("d", playing ? "M9 5v14M15 5v14" : "M8 5v14l11-7z");
+  }
+  function manual(i) { playing = false; go(i); sync(); }
+  $("#hs-prev").addEventListener("click", function () { manual(cur - 1); });
+  $("#hs-next").addEventListener("click", function () { manual(cur + 1); });
+  pauseBtn.addEventListener("click", function () { playing = !playing; sync(); });
+  /* hover only counts for a real mouse, so a tap on a phone no longer freezes the slider */
+  if (window.PointerEvent) {
+    region.addEventListener("pointerenter", function (ev) { if (ev.pointerType === "mouse") { hovered = true; sync(); } });
+    region.addEventListener("pointerleave", function (ev) { if (ev.pointerType === "mouse") { hovered = false; sync(); } });
+  }
+  region.addEventListener("focusin", function () { focused = true; sync(); });
+  region.addEventListener("focusout", function (ev) { if (!region.contains(ev.relatedTarget)) { focused = false; sync(); } });
+  /* swipe left or right on a touch screen */
+  var sx = null, sy = 0;
+  region.addEventListener("touchstart", function (ev) { sx = ev.touches[0].clientX; sy = ev.touches[0].clientY; }, { passive: true });
+  region.addEventListener("touchend", function (ev) {
+    if (sx === null) return;
+    var dx = ev.changedTouches[0].clientX - sx, dy = ev.changedTouches[0].clientY - sy; sx = null;
+    if (Math.abs(dx) > 45 && Math.abs(dx) > Math.abs(dy) * 1.5) manual(cur + (dx < 0 ? 1 : -1));
+  }, { passive: true });
+  document.addEventListener("visibilitychange", sync);
+  go(0); sync();
+
+  /* Latest sermon: the page shows a poster, and the YouTube player loads only when someone presses play.
+     YouTube refuses to play inside a file opened straight from a computer (file://), so there, and in
+     the Claude preview, pressing play opens the video on YouTube instead. */
+  /* The same player is used for the latest sermon and for last week's Bible study. */
+  function lazyVideo(posterId, boxId, title) {
+    var poster = document.getElementById(posterId);
+    if (!poster) return;
+    var vid = (poster.getAttribute("href").match(/(?:v=|youtu\.be\/|embed\/|live\/|shorts\/)([\w-]{11})/) || [])[1];
+    if (!(vid && EMBEDS && location.protocol !== "file:")) return;
+    $(".host", poster).textContent = "Play video";
+    poster.removeAttribute("target");
+    poster.addEventListener("click", function (ev) {
+      ev.preventDefault();
+      var f = document.createElement("iframe");
+      f.src = "https://www.youtube-nocookie.com/embed/" + vid + "?autoplay=1&rel=0";
+      f.title = title; f.referrerPolicy = "strict-origin-when-cross-origin";
+      f.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"; f.allowFullscreen = true;
+      var box = document.getElementById(boxId); while (box.firstChild) box.removeChild(box.firstChild); box.appendChild(f); f.focus();
+    });
+  }
+  lazyVideo("sermon-poster", "sermon-video", "Latest sermon video");
+  lazyVideo("bs-poster", "bs-video", "Last week’s Bible study video");
+
+  /* Footer map: shows where the church meets this Sunday. People can drag and zoom it; the label opens Google Maps. */
+  var spot = null;
+  (SITE.meetingPlaces || []).forEach(function (m) { if (!spot && (!m.until || day(m.until) >= today)) spot = m; });
+  if (spot) {
+    var full = spot.name + ", " + spot.address, q = encodeURIComponent(full);
+    $("#map-place").textContent = full; $("#map-when").textContent = spot.when;
+    $("#map-link").href = "https://www.google.com/maps/search/?api=1&query=" + q;
+    $("#map-h").textContent = spot.until ? "Where we meet this Sunday" : "Where we meet";
+    /* first-time visitors: this Sunday's time and place under the hero, and directions straight to it */
+    $("#sun-label").textContent = spot.until ? "This Sunday" : "Every Sunday";
+    $("#sun-time").textContent = spot.time;
+    $("#sun-place").textContent = spot.name + ". See all service times";
+    $$("[data-dir]").forEach(function (a) {
+      a.href = "https://www.google.com/maps/dir/?api=1&destination=" + q; a.target = "_blank"; a.rel = "noopener";
+      var note = document.createElement("span"); note.className = "sr-only"; note.textContent = " to " + spot.name + " (opens in a new tab)";
+      a.appendChild(note);
+    });
+    if (EMBEDS) {
+      var mf = document.createElement("iframe");
+      mf.src = spot.embed || ("https://www.google.com/maps?q=" + q + "&z=15&output=embed");
+      mf.title = "Google Map showing " + full; mf.loading = "lazy"; mf.referrerPolicy = "strict-origin-when-cross-origin"; mf.allowFullscreen = true;
+      $("#map").prepend(mf); $("#map").classList.add("live");
+    }
+  }
+
+  /* Mobile menu */
+  var toggle = $("#nav-toggle"), nav = $("#site-nav"), toggleText = $("#nav-toggle-text");
+  function setMenu(open) {
+    nav.classList.toggle("open", open);
+    toggle.setAttribute("aria-expanded", String(open));
+    toggleText.textContent = open ? "Close" : "Menu";
+  }
+  toggle.addEventListener("click", function () { setMenu(!nav.classList.contains("open")); });
+  nav.addEventListener("click", function (ev) { if (ev.target.closest("a")) setMenu(false); });
+  document.addEventListener("keydown", function (ev) {
+    if (ev.key === "Escape" && nav.classList.contains("open")) { setMenu(false); toggle.focus(); }
+  });
+
+  /* Accordions: every panel is open without JavaScript; here we collapse all but the first */
+  $$(".acc-btn").forEach(function (btn) {
+    var panel = document.getElementById(btn.getAttribute("aria-controls"));
+    var open = btn.hasAttribute("data-open");
+    btn.setAttribute("aria-expanded", String(open)); panel.hidden = !open;
+    btn.addEventListener("click", function () {
+      var now = btn.getAttribute("aria-expanded") !== "true";
+      btn.setAttribute("aria-expanded", String(now)); panel.hidden = !now;
+    });
+  });
+
+  function openBelief() { var bb = $("#acc-b2"); if (bb.getAttribute("aria-expanded") !== "true") bb.click(); }
+  $$("a[href='#believe']").forEach(function (a) { a.addEventListener("click", openBelief); });
+  if (location.hash === "#believe") openBelief();
+
+  function openBible() { var bb = $("#acc-b5"); if (bb.getAttribute("aria-expanded") !== "true") bb.click(); }
+  $$("a[href='#bible-study']").forEach(function (a) { a.addEventListener("click", openBible); });
+  if (location.hash === "#bible-study") openBible();
+
+  /* Gallery lightbox */
+  var box = $("#lightbox"), tiles = $$("#gallery-grid .tile"), at = 0;
+  function show(i) {
+    at = (i + tiles.length) % tiles.length;
+    var img = $("img", tiles[at]);
+    $("#lb-img").src = img.src; $("#lb-img").alt = img.alt;
+    $("#lb-cap").textContent = tiles[at].dataset.cap;
+  }
+  if (box.showModal) {
+    tiles.forEach(function (t, i) { t.addEventListener("click", function () { show(i); box.showModal(); }); });
+    $("#lb-close").addEventListener("click", function () { box.close(); });
+    $("#lb-prev").addEventListener("click", function () { show(at - 1); });
+    $("#lb-next").addEventListener("click", function () { show(at + 1); });
+    box.addEventListener("click", function (ev) { if (ev.target === box) box.close(); });
+    box.addEventListener("keydown", function (ev) {
+      if (ev.key === "ArrowLeft") show(at - 1);
+      if (ev.key === "ArrowRight") show(at + 1);
+    });
+    box.addEventListener("close", function () { tiles[at].focus(); });
+  }
+
+  /* Mark the section in view in the nav */
+  if ("IntersectionObserver" in window) {
+    var links = {};
+    $$(".site-nav a[href^='#']").forEach(function (a) { links[a.getAttribute("href").slice(1)] = a; });
+    var spy = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        var a = links[en.target.id];
+        if (!a) return;
+        if (en.isIntersecting) { $$(".site-nav a[aria-current]").forEach(function (x) { x.removeAttribute("aria-current"); }); a.setAttribute("aria-current", "location"); }
+      });
+    }, { rootMargin: "-45% 0px -50% 0px" });
+    ["about", "serve", "upcoming", "visit"].forEach(function (id) { spy.observe(document.getElementById(id)); });
+  }
+})();
+</script>
+</body>
+</html>
