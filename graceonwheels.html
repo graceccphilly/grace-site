@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<!-- graceonwheels.html: shares its header, footer, CSS (assets/site.css) and script (assets/site.js) with the home page. -->
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Project: Grace on Wheels | Grace Community Church, Philadelphia</title>
+<meta name="description" content="Donate a car, truck, van or bus to Grace Community Church. Tell us about the vehicle in a short form and we will call you about next steps.">
+<link rel="canonical" href="https://gracecommunityphilly.org/graceonwheels">
+<meta property="og:url" content="https://gracecommunityphilly.org/graceonwheels">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Grace Community Church">
+<meta property="og:title" content="Project: Grace on Wheels | Grace Community Church, Philadelphia">
+<meta property="og:description" content="Donate a car, truck, van or bus to Grace Community Church. Tell us about the vehicle in a short form and we will call you about next steps.">
+<meta property="og:image" content="https://gracecommunityphilly.org/images/share.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#121110">
+<link rel="icon" href="/favicon.ico" sizes="48x48">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wght@400;600;700&family=Archivo+Black&family=Permanent+Marker&display=swap">
+<link rel="stylesheet" href="assets/site.css">
+<script>document.documentElement.classList.add('js');</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to main content</a>
+
+<!-- ===== HEADER + MAIN NAVIGATION (the same as the home page; links go back to its sections) ===== -->
+<header class="site-header" id="top">
+  <div class="wrap">
+    <a class="brand" href="index.html" aria-label="Grace Community Church, home">
+      <span class="emblem" aria-hidden="true"></span>
+      <span class="wordmark" aria-hidden="true"></span>
+    </a>
+    <button class="nav-toggle" id="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
+      <span class="bars" aria-hidden="true"></span><span id="nav-toggle-text">Menu</span>
+    </button>
+    <nav class="site-nav" id="site-nav" aria-label="Main">
+      <!-- Nav items are in MOBILE order; .d-1 … .d-7 set the desktop order, .m-only items show on mobile only -->
+      <ul>
+        <li class="m-only"><a href="index.html#visit">Service times</a></li>
+        <li class="d-5"><a href="https://www.facebook.com/gracecommunityphilly/" target="_blank" rel="noopener">Watch online<span class="sr-only"> (opens in a new tab)</span></a></li>
+        <li class="d-4"><a href="index.html#visit">Visit</a></li>
+        <li class="m-only"><a href="index.html#upcoming" data-dir>Get directions</a></li>
+        <li class="m-only"><a href="index.html#expect">What to expect</a></li>
+        <li class="d-1"><a href="index.html#about">About<span class="m-txt"> Grace</span></a></li>
+        <li class="d-3"><a href="index.html#upcoming">Upcoming<span class="m-txt"> services</span></a></li>
+        <li class="d-2"><a href="index.html#serve">Ways to serve</a></li>
+        <li class="soc-li d-6"><div class="soc-row"><div class="social">
+          <a href="https://www.facebook.com/gracecommunityphilly/" target="_blank" rel="noopener" aria-label="Facebook (opens in a new tab)"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+          <a href="https://www.instagram.com/gracecommunityphilly/" target="_blank" rel="noopener" aria-label="Instagram (opens in a new tab)"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="2.5" width="19" height="19" rx="5"/><circle cx="12" cy="12" r="4.2"/><path d="M17.400 6.600h.01"/></svg></a>
+          <a href="https://www.youtube.com/@GraceCommunityPhilly" target="_blank" rel="noopener" aria-label="YouTube (opens in a new tab)"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="4"/><path d="M10 9.200v5.600l5-2.800z"/></svg></a>
+        </div><a class="btn quiet bs-cta" href="index.html#bible-study">Bible study</a></div></li>
+        <li class="give-li d-7"><a class="btn" href="give.html">Give</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<!--
+  GRACE ON WHEELS (graceonwheels.html): vehicle donations
+    [1] Page heading
+    [2] What it is, and what we accept
+    [3] How it works: four steps
+    [4] The vehicle form #vehicle-form. Where it sends: SITE.formEndpoint in assets/site.js
+        (Google Apps Script → the "Vehicle donations" tab of the church's Google Sheet, plus an email to info@).
+    [5] Questions
+-->
+<main id="main">
+
+<header class="page-hero">
+  <div class="wrap">
+    <p class="eyebrow">Project: Grace on Wheels</p>
+    <h1>Donate a car, truck or <span class="hl">van.</span></h1>
+    <p class="lede">Put a vehicle you no longer need to work for the ministry and our South Philly&nbsp;neighbors.</p>
+    <div class="actions" style="margin-top:8px">
+      <a class="btn" href="#vehicle">Tell us about your vehicle</a>
+      <a class="btn quiet" href="#how">How it works</a>
+    </div>
+  </div>
+</header>
+
+<section class="section first-sec" aria-labelledby="what-h">
+  <div class="wrap contact-grid">
+    <div class="f-copy">
+      <p class="label">Vehicle donations</p>
+      <h2 id="what-h" class="bs-title">Your old vehicle, a new ministry</h2>
+      <p>Grace Community Church is a church on the move. A donated vehicle helps us carry food to families, bring neighbors to worship and get volunteers where they are&nbsp;needed.</p>
+      <p>Tell us about you and the vehicle in a short form, and someone from Grace will call you about next&nbsp;steps.</p>
+    </div>
+    <div class="side-card band">
+      <h3 class="label">We accept</h3>
+      <p>Cars, station wagons, SUVs, pickup trucks, vans and buses.</p>
+      <h3 class="label">Running or not</h3>
+      <p>Tell us the condition in the form, and we’ll let you know if we can take it.</p>
+      <h3 class="label">Your title</h3>
+      <p>Have it ready if you can. Not sure where it is? Tell us, and we’ll talk it&nbsp;through.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section tint" id="how" aria-labelledby="how-h">
+  <div class="wrap">
+    <div class="section-head">
+      <h2 id="how-h">How it works</h2>
+      <p>Four steps from your driveway to the ministry.</p>
+    </div>
+    <ol class="steps">
+      <li><b>Tell us about it</b><p>Fill in the short form below with your details and the vehicle’s.</p></li>
+      <li><b>We call you</b><p>Someone from Grace calls to talk through the vehicle and answer your questions.</p></li>
+      <li><b>Hand it over</b><p>We agree on a day to sign over the title and pick up or drop off the vehicle.</p></li>
+      <li><b>Get your receipt</b><p>We send a written receipt for your records.</p></li>
+    </ol>
+  </div>
+</section>
+
+<section class="section" id="vehicle" aria-labelledby="vehicle-h">
+  <div class="wrap">
+    <div class="section-head">
+      <h2 id="vehicle-h">Tell us about your vehicle</h2>
+      <p>It takes about three minutes. We’ll call you about next steps.</p>
+    </div>
+    <div class="wheels-form">
+      <div>
+        <form class="form" id="vehicle-form" novalidate data-form="vehicle" data-done="v-done" data-subject="Vehicle donation (Project: Grace on Wheels)">
+          <fieldset class="f-group">
+            <legend>Your information</legend>
+            <div class="f-row two"><label>First name <span class="req">(required)</span><input type="text" id="v-first" name="first_name" data-label="First name" autocomplete="given-name" required></label><label>Last name <span class="req">(required)</span><input type="text" id="v-last" name="last_name" data-label="Last name" autocomplete="family-name" required></label></div>
+            <div class="f-row two"><label>Email <span class="req">(required)</span><input type="email" id="v-email" name="email" data-label="Email" autocomplete="email" required></label><label>Phone number <span class="req">(required)</span><input type="tel" id="v-phone" name="phone" data-label="Phone" autocomplete="tel" required></label></div>
+            <div class="f-row"><label>Street address <span class="req">(required)</span><input type="text" id="v-street" name="street" data-label="Street address" autocomplete="street-address" required></label></div>
+            <div class="f-row three addr"><label>City <span class="req">(required)</span><input type="text" id="v-city" name="city" data-label="City" autocomplete="address-level2" required></label><label>State <span class="req">(required)</span><input type="text" id="v-state" name="state" data-label="State" autocomplete="address-level1" required value="PA" maxlength="2"></label><label>ZIP code <span class="req">(required)</span><input type="text" id="v-zip" name="zip" data-label="ZIP code" autocomplete="postal-code" required inputmode="numeric" maxlength="10"></label></div>
+          </fieldset>
+          <fieldset class="f-group">
+            <legend>The vehicle</legend>
+            <div class="f-row three"><label>Year <span class="req">(required)</span><input type="text" id="v-year" name="year" data-label="Year" required inputmode="numeric" maxlength="4" placeholder="2015"></label><label>Make <span class="req">(required)</span><input type="text" id="v-make" name="make" data-label="Make" required placeholder="Toyota"></label><label>Model <span class="req">(required)</span><input type="text" id="v-model" name="model" data-label="Model" required placeholder="Sienna"></label></div>
+            <div class="f-row two"><label>Miles (about) <span class="req">(required)</span><input type="text" id="v-miles" name="miles" data-label="Miles" required inputmode="numeric" placeholder="85,000"></label><label>Type <span class="req">(required)</span><select id="v-type" name="type" data-label="Type" required><option value="">Choose one</option><option>Sedan</option><option>Station wagon</option><option>SUV</option><option>Pickup truck</option><option>Van</option><option>Bus</option><option>Other</option></select></label></div>
+            <div class="f-row two"><label>Condition <span class="req">(required)</span><select id="v-condition" name="condition" data-label="Condition" required><option value="">Choose one</option><option>Runs and drives</option><option>Runs, but needs work</option><option>Does not run</option></select></label><label>Do you have the title? <span class="req">(required)</span><select id="v-title" name="title" data-label="Title" required><option value="">Choose one</option><option>Yes, in my name</option><option>Yes, but not in my name</option><option>No</option><option>Not sure</option></select></label></div>
+            <div class="f-row two"><label>VIN <span class="opt">(optional)</span><input type="text" id="v-vin" name="vin" data-label="VIN" maxlength="17"></label><label>Color <span class="opt">(optional)</span><input type="text" id="v-color" name="color" data-label="Color"></label></div>
+            <label class="f-row">Anything else we should know? <span class="opt">(optional)</span><textarea id="v-notes" name="notes" rows="3" data-label="Notes" placeholder="Where the vehicle is, keys, recent repairs…"></textarea></label>
+          </fieldset>
+          <label class="choice consent"><input type="checkbox" id="v-consent" name="consent" value="yes" data-label="OK to contact" required><span>It’s OK for Grace Community Church to contact me about this donation. <span class="req">(required)</span></span></label>
+          <div class="hp" aria-hidden="true"><label>Leave this empty <input name="website" tabindex="-1" autocomplete="off"></label></div>
+          <p class="f-error" role="alert" hidden></p>
+          <button class="btn" type="submit">Send vehicle details</button>
+          <p class="fine">We only use this to arrange your donation, and we never share your information.</p>
+        </form>
+        <div class="f-done" id="v-done" tabindex="-1" hidden>
+          <h2>Thank you!</h2>
+          <p class="done-msg">We got your vehicle details and will call you soon about next steps.</p>
+          <a class="btn quiet" href="give.html">See other ways to give</a>
+        </div>
+      </div>
+      <aside class="contact-side">
+        <div class="side-card band">
+          <h2 class="label">Questions first?</h2>
+          <p>Call <a href="tel:+12154879022">(215)&nbsp;487-9022</a> or email <a href="mailto:info@gracecommunityphilly.org?subject=Grace%20on%20Wheels">info@gracecommunityphilly.org</a>.</p>
+        </div>
+        <div class="side-card">
+          <h2 class="label">About taxes</h2>
+          <p>Grace Community Church is a registered 501(c)(3) organization. How much you can deduct for a vehicle depends on what happens to it and on IRS rules, so check with a tax advisor.</p>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ===== [11] FOOTER: logo, contact, quick links, map ===== -->
+<footer class="band site-footer">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <span class="lockup" role="img" aria-label="Grace Community Church"></span>
+        <p>We love God. We love people. We do good.</p>
+        <div class="social">
+          <a href="https://www.facebook.com/gracecommunityphilly/" target="_blank" rel="noopener" aria-label="Facebook (opens in a new tab)"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+          <a href="https://www.instagram.com/gracecommunityphilly/" target="_blank" rel="noopener" aria-label="Instagram (opens in a new tab)"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="2.5" width="19" height="19" rx="5"/><circle cx="12" cy="12" r="4.2"/><path d="M17.400 6.600h.01"/></svg></a>
+          <a href="https://www.youtube.com/@GraceCommunityPhilly" target="_blank" rel="noopener" aria-label="YouTube (opens in a new tab)"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="4"/><path d="M10 9.200v5.600l5-2.800z"/></svg></a>
+        </div>
+      </div>
+      <div>
+        <h2>Contact</h2>
+        <dl class="contact">
+          <div><dt>Office address</dt><dd>1727 Snyder Ave, Philadelphia, PA&nbsp;19145</dd></div>
+          <div><dt>Phone</dt><dd><a href="tel:+12154879022">(215) 487-9022</a></dd></div>
+          <div><dt>Email</dt><dd><a href="mailto:info@gracecommunityphilly.org">info@gracecommunityphilly.org</a></dd></div>
+        </dl>
+      </div>
+      <div>
+        <h2>Find your way</h2>
+        <ul class="foot-links">
+          <li><a href="index.html#upcoming">Upcoming services</a></li>
+          <li><a href="index.html#visit">Plan your visit</a></li>
+          <li><a href="index.html#serve">Ways to serve</a></li>
+          <li><a href="give.html">Give</a></li>
+          <li><a href="graceonwheels.html">Grace on Wheels</a></li>
+          <li><a href="contact.html">Contact us</a></li>
+        </ul>
+      </div>
+    </div>
+    <!-- Map: the script swaps in this Sunday's place (from SITE.meetingPlaces) and embeds a Google map -->
+    <h2 class="map-h" id="map-h">Where we meet this Sunday</h2>
+    <div class="foot-map" id="map">
+      <a class="map-link" id="map-link" href="https://www.google.com/maps/search/?api=1&amp;query=Meredith+Elementary+School%2C+725+S+5th+St%2C+Philadelphia%2C+PA+19147" target="_blank" rel="noopener">
+        <span class="map-card">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21.5s-7-6.1-7-11.5a7 7 0 0 1 14 0c0 5.400-7 11.500-7 11.500z"/><circle cx="12" cy="10" r="2.6"/></svg>
+          <span><b id="map-place">Meredith Elementary School (cafeteria), 725&nbsp;S&nbsp;5th&nbsp;St, Philadelphia, PA&nbsp;19147</b><i><span id="map-when">Our Sunday home from November&nbsp;1</span>&nbsp;· Open in Google Maps<span class="sr-only"> (opens in a new tab)</span></i></span>
+        </span>
+      </a>
+    </div>
+    <div class="foot-base">
+      <span>© <span id="year">2026</span> Grace Community Church</span>
+      <a href="#top">Back to top</a>
+    </div>
+  </div>
+</footer>
+<!-- ===== /[11] END FOOTER ===== -->
+
+<script src="assets/site.js"></script>
+</body>
+</html>

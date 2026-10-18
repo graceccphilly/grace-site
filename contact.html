@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<!-- contact.html: shares its header, footer, CSS (assets/site.css) and script (assets/site.js) with the home page. -->
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Contact Us | Grace Community Church, Philadelphia</title>
+<meta name="description" content="Questions, prayer requests or planning a visit? Send Grace Community Church a message, call (215) 487-9022 or email info@gracecommunityphilly.org.">
+<link rel="canonical" href="https://gracecommunityphilly.org/contact">
+<meta property="og:url" content="https://gracecommunityphilly.org/contact">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Grace Community Church">
+<meta property="og:title" content="Contact Us | Grace Community Church, Philadelphia">
+<meta property="og:description" content="Questions, prayer requests or planning a visit? Send Grace Community Church a message, call (215) 487-9022 or email info@gracecommunityphilly.org.">
+<meta property="og:image" content="https://gracecommunityphilly.org/images/share.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#121110">
+<link rel="icon" href="/favicon.ico" sizes="48x48">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wght@400;600;700&family=Archivo+Black&family=Permanent+Marker&display=swap">
+<link rel="stylesheet" href="assets/site.css">
+<script>document.documentElement.classList.add('js');</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to main content</a>
+
+<!-- ===== HEADER + MAIN NAVIGATION (the same as the home page; links go back to its sections) ===== -->
+<header class="site-header" id="top">
+  <div class="wrap">
+    <a class="brand" href="index.html" aria-label="Grace Community Church, home">
+      <span class="emblem" aria-hidden="true"></span>
+      <span class="wordmark" aria-hidden="true"></span>
+    </a>
+    <button class="nav-toggle" id="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
+      <span class="bars" aria-hidden="true"></span><span id="nav-toggle-text">Menu</span>
+    </button>
+    <nav class="site-nav" id="site-nav" aria-label="Main">
+      <!-- Nav items are in MOBILE order; .d-1 … .d-7 set the desktop order, .m-only items show on mobile only -->
+      <ul>
+        <li class="m-only"><a href="index.html#visit">Service times</a></li>
+        <li class="d-5"><a href="https://www.facebook.com/gracecommunityphilly/" target="_blank" rel="noopener">Watch online<span class="sr-only"> (opens in a new tab)</span></a></li>
+        <li class="d-4"><a href="index.html#visit">Visit</a></li>
+        <li class="m-only"><a href="index.html#upcoming" data-dir>Get directions</a></li>
+        <li class="m-only"><a href="index.html#expect">What to expect</a></li>
+        <li class="d-1"><a href="index.html#about">About<span class="m-txt"> Grace</span></a></li>
+        <li class="d-3"><a href="index.html#upcoming">Upcoming<span class="m-txt"> services</span></a></li>
+        <li class="d-2"><a href="index.html#serve">Ways to serve</a></li>
+        <li class="soc-li d-6"><div class="soc-row"><div class="social">
+          <a href="https://www.facebook.com/gracecommunityphilly/" target="_blank" rel="noopener" aria-label="Facebook (opens in a new tab)"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+          <a href="https://www.instagram.com/gracecommunityphilly/" target="_blank" rel="noopener" aria-label="Instagram (opens in a new tab)"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="2.5" width="19" height="19" rx="5"/><circle cx="12" cy="12" r="4.2"/><path d="M17.400 6.600h.01"/></svg></a>
+          <a href="https://www.youtube.com/@GraceCommunityPhilly" target="_blank" rel="noopener" aria-label="YouTube (opens in a new tab)"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="4"/><path d="M10 9.200v5.600l5-2.800z"/></svg></a>
+        </div><a class="btn quiet bs-cta" href="index.html#bible-study">Bible study</a></div></li>
+        <li class="give-li d-7"><a class="btn" href="give.html">Give</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<!--
+  CONTACT (contact.html)
+    [1] Page heading
+    [2] Form #contact-form. Where it sends is set by SITE.formEndpoint in assets/site.js
+        (Google Apps Script → the "Contact" tab of the church's Google Sheet, plus an email to info@).
+        No address set = it opens the visitor's email app with the message filled in, addressed to info@.
+        Links can pre-select a reason: contact.html?reason=giving (the data-key of a reason below).
+    [3] Other ways to reach us, and this Sunday's time and place (filled in from SITE.meetingPlaces)
+-->
+<main id="main">
+
+<header class="page-hero">
+  <div class="wrap">
+    <p class="eyebrow">Contact us</p>
+    <h1>We’d love to hear from <span class="hl">you.</span></h1>
+    <p class="lede">Planning a visit, have a question or need prayer? Send us a note and someone from Grace will get back to&nbsp;you.</p>
+  </div>
+</header>
+
+<section class="section first-sec" aria-label="Contact form and details">
+  <div class="wrap contact-grid">
+    <div>
+      <form class="form" id="contact-form" novalidate data-form="contact" data-done="f-done" data-subject="Message from the website">
+        <div class="f-row two">
+          <label>First name <span class="req">(required)</span><input id="c-first" name="first_name" data-label="First name" autocomplete="given-name" required></label>
+          <label>Last name <span class="req">(required)</span><input id="c-last" name="last_name" data-label="Last name" autocomplete="family-name" required></label>
+        </div>
+        <div class="f-row two">
+          <label>Email <span class="req">(required)</span><input type="email" id="c-email" name="email" data-label="Email" autocomplete="email" required></label>
+          <label>Phone <span class="opt">(optional)</span><input type="tel" id="c-phone" name="phone" data-label="Phone" autocomplete="tel"></label>
+        </div>
+        <fieldset class="f-row">
+          <legend>What brings you here?</legend>
+          <div class="choices">
+            <label class="choice"><input type="radio" name="reason" value="Planning to visit" data-key="visit" checked><span>I’m planning to visit</span></label>
+            <label class="choice"><input type="radio" name="reason" value="New and want to connect" data-key="connect"><span>I’m new and want to connect</span></label>
+            <label class="choice"><input type="radio" name="reason" value="Volunteer" data-key="volunteer"><span>I’d like to volunteer</span></label>
+            <label class="choice"><input type="radio" name="reason" value="Prayer request" data-key="prayer"><span>Prayer request</span></label>
+            <label class="choice"><input type="radio" name="reason" value="Talk with the pastor" data-key="pastor"><span>Talk with the pastor</span></label>
+            <label class="choice"><input type="radio" name="reason" value="Giving question" data-key="giving"><span>A question about giving</span></label>
+            <label class="choice"><input type="radio" name="reason" value="Something else" data-key="other"><span>Something else</span></label>
+          </div>
+        </fieldset>
+        <fieldset class="f-row">
+          <legend>I’m interested in <span class="opt">(optional)</span></legend>
+          <div class="choices">
+            <label class="choice"><input type="checkbox" name="interests" value="Sunday worship"><span>Sunday worship</span></label>
+            <label class="choice"><input type="checkbox" name="interests" value="Bible study"><span>Bible study</span></label>
+            <label class="choice"><input type="checkbox" name="interests" value="Serving"><span>Serving</span></label>
+            <label class="choice"><input type="checkbox" name="interests" value="Membership"><span>Becoming a member</span></label>
+            <label class="choice"><input type="checkbox" name="interests" value="Baptism"><span>Baptism</span></label>
+            <label class="choice"><input type="checkbox" name="interests" value="Email updates"><span>Email updates</span></label>
+          </div>
+        </fieldset>
+        <label class="f-row">Your message <span class="opt">(optional)</span><textarea id="c-message" name="message" data-label="Message" rows="5"></textarea></label>
+        <label class="f-row">How did you hear about us? <span class="opt">(optional)</span>
+          <select id="c-heard" name="heard_from" data-label="Heard about us from">
+            <option value="">Choose one</option>
+            <option>A friend or family member</option>
+            <option>Facebook</option>
+            <option>Instagram</option>
+            <option>Google search</option>
+            <option>A flyer or event</option>
+            <option>Other</option>
+          </select>
+        </label>
+        <label class="choice consent"><input type="checkbox" id="c-consent" name="consent" value="yes" data-label="OK to contact" required><span>It’s OK for Grace Community Church to contact me by email or phone. <span class="req">(required)</span></span></label>
+        <div class="hp" aria-hidden="true"><label>Leave this empty <input name="website" tabindex="-1" autocomplete="off"></label></div>
+        <p class="f-error" role="alert" hidden></p>
+        <button class="btn" type="submit">Send message</button>
+        <p class="fine">We only use this to reply to you, and we never share your information.</p>
+      </form>
+      <div class="f-done" id="f-done" tabindex="-1" hidden>
+        <h2>Thank you!</h2>
+        <p class="done-msg">We got your message and will be in touch soon.</p>
+        <a class="btn quiet" href="index.html">Back to the home page</a>
+      </div>
+    </div>
+
+    <aside class="contact-side">
+      <div class="side-card band">
+        <h2 class="label">Call or email</h2>
+        <p><a href="tel:+12154879022">(215)&nbsp;487-9022</a></p>
+        <p><a href="mailto:info@gracecommunityphilly.org">info@gracecommunityphilly.org</a></p>
+        <h2 class="label">Office address</h2>
+        <p>1727 Snyder Ave<br>Philadelphia, PA&nbsp;19145</p>
+        <h2 class="label">Message us</h2>
+        <p>@gracecommunityphilly on <a href="https://www.facebook.com/gracecommunityphilly/" target="_blank" rel="noopener">Facebook<span class="sr-only"> (opens in a new tab)</span></a> and <a href="https://www.instagram.com/gracecommunityphilly/" target="_blank" rel="noopener">Instagram<span class="sr-only"> (opens in a new tab)</span></a></p>
+      </div>
+      <div class="side-card">
+        <h2 class="label" data-sun="label">Every Sunday</h2>
+        <p class="side-big" data-sun="when">12:00&nbsp;PM</p>
+        <p><b data-sun="name">Meredith Elementary School (cafeteria)</b><br><span data-sun="address">725&nbsp;S&nbsp;5th&nbsp;St, Philadelphia, PA&nbsp;19147</span></p>
+        <a class="btn" href="index.html#upcoming" data-dir>Get directions</a>
+      </div>
+    </aside>
+  </div>
+</section>
+
+</main>
+
+<!-- ===== [11] FOOTER: logo, contact, quick links, map ===== -->
+<footer class="band site-footer">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <span class="lockup" role="img" aria-label="Grace Community Church"></span>
+        <p>We love God. We love people. We do good.</p>
+        <div class="social">
+          <a href="https://www.facebook.com/gracecommunityphilly/" target="_blank" rel="noopener" aria-label="Facebook (opens in a new tab)"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+          <a href="https://www.instagram.com/gracecommunityphilly/" target="_blank" rel="noopener" aria-label="Instagram (opens in a new tab)"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="2.5" width="19" height="19" rx="5"/><circle cx="12" cy="12" r="4.2"/><path d="M17.400 6.600h.01"/></svg></a>
+          <a href="https://www.youtube.com/@GraceCommunityPhilly" target="_blank" rel="noopener" aria-label="YouTube (opens in a new tab)"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="4"/><path d="M10 9.200v5.600l5-2.800z"/></svg></a>
+        </div>
+      </div>
+      <div>
+        <h2>Contact</h2>
+        <dl class="contact">
+          <div><dt>Office address</dt><dd>1727 Snyder Ave, Philadelphia, PA&nbsp;19145</dd></div>
+          <div><dt>Phone</dt><dd><a href="tel:+12154879022">(215) 487-9022</a></dd></div>
+          <div><dt>Email</dt><dd><a href="mailto:info@gracecommunityphilly.org">info@gracecommunityphilly.org</a></dd></div>
+        </dl>
+      </div>
+      <div>
+        <h2>Find your way</h2>
+        <ul class="foot-links">
+          <li><a href="index.html#upcoming">Upcoming services</a></li>
+          <li><a href="index.html#visit">Plan your visit</a></li>
+          <li><a href="index.html#serve">Ways to serve</a></li>
+          <li><a href="give.html">Give</a></li>
+          <li><a href="graceonwheels.html">Grace on Wheels</a></li>
+          <li><a href="contact.html">Contact us</a></li>
+        </ul>
+      </div>
+    </div>
+    <!-- Map: the script swaps in this Sunday's place (from SITE.meetingPlaces) and embeds a Google map -->
+    <h2 class="map-h" id="map-h">Where we meet this Sunday</h2>
+    <div class="foot-map" id="map">
+      <a class="map-link" id="map-link" href="https://www.google.com/maps/search/?api=1&amp;query=Meredith+Elementary+School%2C+725+S+5th+St%2C+Philadelphia%2C+PA+19147" target="_blank" rel="noopener">
+        <span class="map-card">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21.5s-7-6.1-7-11.5a7 7 0 0 1 14 0c0 5.400-7 11.500-7 11.500z"/><circle cx="12" cy="10" r="2.6"/></svg>
+          <span><b id="map-place">Meredith Elementary School (cafeteria), 725&nbsp;S&nbsp;5th&nbsp;St, Philadelphia, PA&nbsp;19147</b><i><span id="map-when">Our Sunday home from November&nbsp;1</span>&nbsp;· Open in Google Maps<span class="sr-only"> (opens in a new tab)</span></i></span>
+        </span>
+      </a>
+    </div>
+    <div class="foot-base">
+      <span>© <span id="year">2026</span> Grace Community Church</span>
+      <a href="#top">Back to top</a>
+    </div>
+  </div>
+</footer>
+<!-- ===== /[11] END FOOTER ===== -->
+
+<script src="assets/site.js"></script>
+</body>
+</html>

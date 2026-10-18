@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<!-- give.html: shares its header, footer, CSS (assets/site.css) and script (assets/site.js) with the home page. -->
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Give | Grace Community Church, Philadelphia</title>
+<meta name="description" content="Give to Grace Community Church online, by Cash App or in person, and see where your gift goes: weekly ministry, Thanksgiving, winter coats, Christmas toys, vehicles and equipment.">
+<link rel="canonical" href="https://gracecommunityphilly.org/give">
+<meta property="og:url" content="https://gracecommunityphilly.org/give">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Grace Community Church">
+<meta property="og:title" content="Give | Grace Community Church, Philadelphia">
+<meta property="og:description" content="Give to Grace Community Church online, by Cash App or in person, and see where your gift goes: weekly ministry, Thanksgiving, winter coats, Christmas toys, vehicles and equipment.">
+<meta property="og:image" content="https://gracecommunityphilly.org/images/share.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#121110">
+<link rel="icon" href="/favicon.ico" sizes="48x48">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wght@400;600;700&family=Archivo+Black&family=Permanent+Marker&display=swap">
+<link rel="stylesheet" href="assets/site.css">
+<script>document.documentElement.classList.add('js');</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to main content</a>
+
+<!-- ===== HEADER + MAIN NAVIGATION (the same as the home page; links go back to its sections) ===== -->
+<header class="site-header" id="top">
+  <div class="wrap">
+    <a class="brand" href="index.html" aria-label="Grace Community Church, home">
+      <span class="emblem" aria-hidden="true"></span>
+      <span class="wordmark" aria-hidden="true"></span>
+    </a>
+    <button class="nav-toggle" id="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
+      <span class="bars" aria-hidden="true"></span><span id="nav-toggle-text">Menu</span>
+    </button>
+    <nav class="site-nav" id="site-nav" aria-label="Main">
+      <!-- Nav items are in MOBILE order; .d-1 … .d-7 set the desktop order, .m-only items show on mobile only -->
+      <ul>
+        <li class="m-only"><a href="index.html#visit">Service times</a></li>
+        <li class="d-5"><a href="https://www.facebook.com/gracecommunityphilly/" target="_blank" rel="noopener">Watch online<span class="sr-only"> (opens in a new tab)</span></a></li>
+        <li class="d-4"><a href="index.html#visit">Visit</a></li>
+        <li class="m-only"><a href="index.html#upcoming" data-dir>Get directions</a></li>
+        <li class="m-only"><a href="index.html#expect">What to expect</a></li>
+        <li class="d-1"><a href="index.html#about">About<span class="m-txt"> Grace</span></a></li>
+        <li class="d-3"><a href="index.html#upcoming">Upcoming<span class="m-txt"> services</span></a></li>
+        <li class="d-2"><a href="index.html#serve">Ways to serve</a></li>
+        <li class="soc-li d-6"><div class="soc-row"><div class="social">
+          <a href="https://www.facebook.com/gracecommunityphilly/" target="_blank" rel="noopener" aria-label="Facebook (opens in a new tab)"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+          <a href="https://www.instagram.com/gracecommunityphilly/" target="_blank" rel="noopener" aria-label="Instagram (opens in a new tab)"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="2.5" width="19" height="19" rx="5"/><circle cx="12" cy="12" r="4.2"/><path d="M17.400 6.600h.01"/></svg></a>
+          <a href="https://www.youtube.com/@GraceCommunityPhilly" target="_blank" rel="noopener" aria-label="YouTube (opens in a new tab)"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="4"/><path d="M10 9.200v5.600l5-2.800z"/></svg></a>
+        </div><a class="btn quiet bs-cta" href="index.html#bible-study">Bible study</a></div></li>
+        <li class="give-li d-7"><a class="btn" href="give.html" aria-current="page">Give</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<!--
+  GIVE (give.html)
+    [1] Page heading
+    [2] Ways to give #ways: online (Tithe.ly), Cash App, in person
+    [3] Where your gift goes #initiatives: small cards. Seasonal ones have data-until and retire themselves.
+        To add one, copy the TEMPLATE at the bottom of the list.
+    [4] Giving initiatives #projects: one card each. Each has its own address:
+        give.html#thanksgivingmeal, #christmastoys, #graceonwheels, #instruments.
+        Grace on Wheels has its own page (graceonwheels.html). Equipment opens the pop-up form at the bottom.
+-->
+<main id="main">
+
+<header class="page-hero">
+  <div class="wrap">
+    <p class="eyebrow">Give</p>
+    <h1>Thank you for <span class="hl">giving.</span></h1>
+    <p class="lede">Every gift helps us love God, love people and do good in South&nbsp;Philly.</p>
+  </div>
+</header>
+
+<section class="section first-sec" id="ways" aria-labelledby="ways-h">
+  <div class="wrap">
+    <div class="section-head">
+      <h2 id="ways-h">Ways to give</h2>
+    </div>
+    <div class="ways">
+      <div class="way band">
+        <p class="label">Online</p>
+        <h3>Give with Tithe.ly</h3>
+        <p>By card or bank account, once or every week.</p>
+        <a class="btn" href="https://give.tithe.ly/?formId=fb740478-bf59-4165-99b2-cd8ca88a021e" target="_blank" rel="noopener">Give online<span class="sr-only"> (opens in a new tab)</span></a>
+      </div>
+      <div class="way band">
+        <p class="label">Cash App</p>
+        <h3>$gracecommunityphilly</h3>
+        <p>Add a note if your gift is for one of the initiatives below.</p>
+        <a class="btn" href="https://cash.app/$gracecommunityphilly" target="_blank" rel="noopener">Open Cash App<span class="sr-only"> (opens in a new tab)</span></a>
+      </div>
+      <div class="way band">
+        <p class="label">In person</p>
+        <h3>On Sunday</h3>
+        <p>During the offering at Sunday worship.</p>
+        <a class="btn quiet" href="index.html#visit">Where we meet</a>
+      </div>
+    </div>
+    <p class="tax-note">Thank you for supporting the ministry and vision of Grace Community Church. We are a registered 501(c)(3) organization, and all financial gifts are tax-deductible to the fullest extent allowed by&nbsp;law.</p>
+  </div>
+</section>
+
+<section class="section tint" id="initiatives" aria-labelledby="init-h">
+  <div class="wrap">
+    <div class="section-head">
+      <h2 id="init-h">Where your gift goes</h2>
+      <p>Give to the church’s ministry, or to one of the initiatives&nbsp;below.</p>
+    </div>
+    <div class="gifts">
+      <article class="gift">
+        <p class="label">Every week</p>
+        <h3>Tithes &amp; offerings</h3>
+        <p>Supports worship, Bible study, care for our members and the everyday work of the church.</p>
+        <p class="how"><b>How:</b> give <a href="https://give.tithe.ly/?formId=fb740478-bf59-4165-99b2-cd8ca88a021e" target="_blank" rel="noopener">online<span class="sr-only"> with Tithe.ly (opens in a new tab)</span></a> or by <a href="https://cash.app/$gracecommunityphilly" target="_blank" rel="noopener">Cash&nbsp;App<span class="sr-only"> (opens in a new tab)</span></a>.</p>
+      </article>
+      <article class="gift" data-until="2026-11-01">
+        <p class="label">Through Nov&nbsp;1</p>
+        <h3>Give Thanks &amp; Give Back</h3>
+        <p>Holiday sides for <strong>150 families</strong>, with three partner churches. Canned green beans and corn, boxed macaroni and stuffing, cranberry sauce, gravy and cornbread mix.</p>
+        <p class="how"><b>How:</b> bring items to our launch service on Nov&nbsp;1, or see <a href="index.html#food">drop-off spots</a>.</p>
+      </article>
+      <article class="gift" data-until="2026-12-12">
+        <p class="label">$4 a coat</p>
+        <h3>Warm coats</h3>
+        <p>We collect coats for One Warm Coat to share with neighbors this winter. <strong>$4 dry-cleans one coat.</strong> Goal: 300&nbsp;coats.</p>
+        <p class="how"><b>How:</b> bring coats on Sat, Dec&nbsp;12, or give with the note “Coats.”</p>
+      </article>
+      <!-- TEMPLATE: copy this block for a new initiative, then delete the word "hidden".
+      <article class="gift" data-until="YYYY-MM-DD" hidden>
+        <p class="label">When or how much</p>
+        <h3>Initiative name</h3>
+        <p>One or two sentences: what it is and who it helps.</p>
+        <p class="how"><b>How:</b> how to give to this one.</p>
+      </article>
+      -->
+    </div>
+    <p class="fine">Questions about giving, or need a giving statement? <a href="contact.html?reason=giving">Contact us</a>.</p>
+  </div>
+</section>
+
+<!-- GIVING INITIATIVES #projects: one <article class="min"> card each (the same cards as "Ways to serve" on the home page).
+     Each has its own address: give.html#thanksgivingmeal, #christmastoys, #graceonwheels, #instruments. -->
+<section class="band section" id="projects" aria-labelledby="proj-h">
+  <div class="wrap">
+    <div class="section-head">
+      <h2 id="proj-h">Giving initiatives</h2>
+      <p>Four ways your gift makes a difference this season. Give money, a vehicle or&nbsp;equipment.</p>
+    </div>
+    <div class="min-grid">
+      <article class="min" id="thanksgivingmeal" data-until="2026-11-26">
+        <div class="min-top">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="13" r="6.500"/><circle cx="12" cy="13" r="3"/><path d="M3 4v5.500M3 9.500c1.500 0 1.500-1.500 1.500-1.500V4M3 9.500V20M21 4c-1.500 1-2 3-2 5.500h2V20"/></svg>
+          <h3>Thanksgiving Meal</h3>
+        </div>
+        <p class="when">Thu, Nov&nbsp;26&nbsp;· 12–4&nbsp;PM</p>
+        <p>A free community meal on Thanksgiving Day. Your gift covers the food and supplies, so every guest can sit down and eat on us. Location to be&nbsp;announced.</p>
+        <div class="actions">
+          <a class="btn" href="https://give.tithe.ly/?formId=fb740478-bf59-4165-99b2-cd8ca88a021e" target="_blank" rel="noopener">Give to the meal<span class="sr-only"> (opens Tithe.ly in a new tab)</span></a>
+        </div>
+        <p class="note">Choose the Thanksgiving fund in Tithe.ly, or add the note “Thanksgiving Meal.”</p>
+      </article>
+      <article class="min" id="christmastoys" data-until="2026-12-19">
+        <div class="min-top">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.500" y="9" width="17" height="11.500"/><path d="M2.500 9h19V6h-19zM12 6v14.500M12 6c-1.500-3-5-3.500-5-1.500S10 6 12 6zM12 6c1.500-3 5-3.500 5-1.500S14 6 12 6z"/></svg>
+          <h3>Christmas Toy Distribution</h3>
+        </div>
+        <p class="when">Sat, Dec&nbsp;19&nbsp;· 12–4&nbsp;PM</p>
+        <p>South Philly kids pick out a gift, grab snacks and take photos with Rev.&nbsp;Santa at Meredith Elementary. Our goal: <strong>1,000&nbsp;toys</strong>, so no child goes home empty-handed.</p>
+        <div class="actions">
+          <a class="btn" href="https://give.tithe.ly/?formId=fb740478-bf59-4165-99b2-cd8ca88a021e" target="_blank" rel="noopener">Give toys<span class="sr-only"> (opens Tithe.ly in a new tab)</span></a>
+        </div>
+        <p class="note">Choose the Christmas toys fund in Tithe.ly, or add the note “Toys.”</p>
+      </article>
+      <article class="min" id="graceonwheels">
+        <div class="min-top">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 16.500V12l2-5h11l3 5h2v4.500h-2"/><path d="M7 16.500h8"/><circle cx="6" cy="17" r="2"/><circle cx="17" cy="17" r="2"/><path d="M5.500 12H19M10.500 7v5"/></svg>
+          <h3>Project: Grace on Wheels</h3>
+        </div>
+        <p class="when">Vehicle donations</p>
+        <p>Have a car, truck, van or bus you no longer need? Donate it and put it to work for the ministry and our neighbors. Tell us about it in a short form, and we’ll call you about next steps.</p>
+        <div class="actions">
+          <a class="btn" href="graceonwheels.html">Donate a vehicle</a>
+        </div>
+      </article>
+      <article class="min" id="instruments">
+        <div class="min-top">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.500" y="11" width="19" height="9"/><path d="M6 11v5M10 11v5M14 11v5M18 11v5"/><path d="M12 8V3.500M9.500 3.500h5"/></svg>
+          <h3>Instruments, A/V equipment and laptops</h3>
+        </div>
+        <p class="when">Equipment donations</p>
+        <p>As we move into our permanent home, we’re building our music and media ministry: keyboards and drums, microphones and speakers, mixers, cameras and computers. Tell us what you have, and we’ll arrange drop-off or pick-up.</p>
+        <div class="actions">
+          <a class="btn" href="contact.html?reason=giving" data-dialog="dlg-equipment">Donate equipment</a>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- POP-UP FORM: Donate instruments, A/V equipment or laptops. Where it sends: SITE.formEndpoint in assets/site.js. -->
+<dialog class="donate" id="dlg-equipment" aria-labelledby="dlg-equipment-h">
+  <div class="d-head">
+    <h2 id="dlg-equipment-h">Donate instruments, A/V equipment or laptops</h2>
+    <button type="button" class="d-close" data-close aria-label="Close">×</button>
+  </div>
+  <form class="form d-form" novalidate data-form="equipment" data-done="eq-done" data-subject="Equipment donation (Instruments, A/V equipment and laptops)">
+    <p class="d-intro">Tell us what you have, and we’ll be in touch to arrange it.</p>
+    <fieldset class="f-group">
+      <legend>Your information</legend>
+      <div class="f-row two"><label>First name <span class="req">(required)</span><input type="text" id="eq-first" name="first_name" data-label="First name" autocomplete="given-name" required></label><label>Last name <span class="req">(required)</span><input type="text" id="eq-last" name="last_name" data-label="Last name" autocomplete="family-name" required></label></div>
+      <div class="f-row two"><label>Email <span class="req">(required)</span><input type="email" id="eq-email" name="email" data-label="Email" autocomplete="email" required></label><label>Phone number <span class="req">(required)</span><input type="tel" id="eq-phone" name="phone" data-label="Phone" autocomplete="tel" required></label></div>
+      <div class="f-row"><label>Street address <span class="req">(required)</span><input type="text" id="eq-street" name="street" data-label="Street address" autocomplete="street-address" required></label></div>
+      <div class="f-row three addr"><label>City <span class="req">(required)</span><input type="text" id="eq-city" name="city" data-label="City" autocomplete="address-level2" required></label><label>State <span class="req">(required)</span><input type="text" id="eq-state" name="state" data-label="State" autocomplete="address-level1" required value="PA" maxlength="2"></label><label>ZIP code <span class="req">(required)</span><input type="text" id="eq-zip" name="zip" data-label="ZIP code" autocomplete="postal-code" required inputmode="numeric" maxlength="10"></label></div>
+    </fieldset>
+    <fieldset class="f-group">
+      <legend>What you’d like to donate</legend>
+      <fieldset class="f-row">
+        <legend>Choose everything that applies <span class="req">(choose at least one)</span></legend>
+        <div class="choices" data-need-one>
+          <label class="choice"><input type="checkbox" name="items" value="Keyboard" data-label="Items"><span>Keyboard</span></label>
+          <label class="choice"><input type="checkbox" name="items" value="Organ" data-label="Items"><span>Organ</span></label>
+          <label class="choice"><input type="checkbox" name="items" value="Drum set" data-label="Items"><span>Drum set</span></label>
+          <label class="choice"><input type="checkbox" name="items" value="Amp" data-label="Items"><span>Amp</span></label>
+          <label class="choice"><input type="checkbox" name="items" value="Microphone" data-label="Items"><span>Microphone</span></label>
+          <label class="choice"><input type="checkbox" name="items" value="Speakers" data-label="Items"><span>Speakers</span></label>
+          <label class="choice"><input type="checkbox" name="items" value="Power amp" data-label="Items"><span>Power amp</span></label>
+          <label class="choice"><input type="checkbox" name="items" value="Mixer" data-label="Items"><span>Mixer</span></label>
+          <label class="choice"><input type="checkbox" name="items" value="Camera" data-label="Items"><span>Camera</span></label>
+          <label class="choice"><input type="checkbox" name="items" value="Laptop" data-label="Items"><span>Laptop</span></label>
+          <label class="choice"><input type="checkbox" name="items" value="Desktop computer" data-label="Items"><span>Desktop computer</span></label>
+          <label class="choice"><input type="checkbox" name="items" value="Other" data-label="Items"><span>Other</span></label>
+        </div>
+      </fieldset>
+      <label class="f-row">Brand, model and age <span class="opt">(optional)</span><textarea id="eq-details" name="details" rows="3" data-label="Details" placeholder="Yamaha keyboard, about 5 years old, with stand"></textarea></label>
+      <div class="f-row two"><label>Condition <span class="req">(required)</span><select id="eq-condition" name="condition" data-label="Condition" required><option value="">Choose one</option><option>Like new</option><option>Good, works well</option><option>Works, but needs repair</option><option>Not working</option></select></label><label>Drop-off or pick-up? <span class="req">(required)</span><select id="eq-handoff" name="handoff" data-label="Drop-off or pick-up" required><option value="">Choose one</option><option>I can drop it off</option><option>Please pick it up</option><option>Let’s talk</option></select></label></div>
+    </fieldset>
+    <label class="choice consent"><input type="checkbox" id="eq-consent" name="consent" value="yes" data-label="OK to contact" required><span>It’s OK for Grace Community Church to contact me about this donation. <span class="req">(required)</span></span></label>
+    <div class="hp" aria-hidden="true"><label>Leave this empty <input name="website" tabindex="-1" autocomplete="off"></label></div>
+    <p class="f-error" role="alert" hidden></p>
+    <button class="btn" type="submit">Send</button>
+    <p class="fine">We only use this to arrange your donation, and we never share your information.</p>
+  </form>
+  <div class="d-done" id="eq-done" tabindex="-1" hidden>
+    <h3>Thank you!</h3>
+    <p class="done-msg">We got your donation details and will be in touch soon to arrange it.</p>
+    <button type="button" class="btn" data-close>Close</button>
+  </div>
+</dialog>
+
+<!-- ===== [11] FOOTER: logo, contact, quick links, map ===== -->
+<footer class="band site-footer">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <span class="lockup" role="img" aria-label="Grace Community Church"></span>
+        <p>We love God. We love people. We do good.</p>
+        <div class="social">
+          <a href="https://www.facebook.com/gracecommunityphilly/" target="_blank" rel="noopener" aria-label="Facebook (opens in a new tab)"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+          <a href="https://www.instagram.com/gracecommunityphilly/" target="_blank" rel="noopener" aria-label="Instagram (opens in a new tab)"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="2.5" width="19" height="19" rx="5"/><circle cx="12" cy="12" r="4.2"/><path d="M17.400 6.600h.01"/></svg></a>
+          <a href="https://www.youtube.com/@GraceCommunityPhilly" target="_blank" rel="noopener" aria-label="YouTube (opens in a new tab)"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="4"/><path d="M10 9.200v5.600l5-2.800z"/></svg></a>
+        </div>
+      </div>
+      <div>
+        <h2>Contact</h2>
+        <dl class="contact">
+          <div><dt>Office address</dt><dd>1727 Snyder Ave, Philadelphia, PA&nbsp;19145</dd></div>
+          <div><dt>Phone</dt><dd><a href="tel:+12154879022">(215) 487-9022</a></dd></div>
+          <div><dt>Email</dt><dd><a href="mailto:info@gracecommunityphilly.org">info@gracecommunityphilly.org</a></dd></div>
+        </dl>
+      </div>
+      <div>
+        <h2>Find your way</h2>
+        <ul class="foot-links">
+          <li><a href="index.html#upcoming">Upcoming services</a></li>
+          <li><a href="index.html#visit">Plan your visit</a></li>
+          <li><a href="index.html#serve">Ways to serve</a></li>
+          <li><a href="give.html">Give</a></li>
+          <li><a href="graceonwheels.html">Grace on Wheels</a></li>
+          <li><a href="contact.html">Contact us</a></li>
+        </ul>
+      </div>
+    </div>
+    <!-- Map: the script swaps in this Sunday's place (from SITE.meetingPlaces) and embeds a Google map -->
+    <h2 class="map-h" id="map-h">Where we meet this Sunday</h2>
+    <div class="foot-map" id="map">
+      <a class="map-link" id="map-link" href="https://www.google.com/maps/search/?api=1&amp;query=Meredith+Elementary+School%2C+725+S+5th+St%2C+Philadelphia%2C+PA+19147" target="_blank" rel="noopener">
+        <span class="map-card">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21.5s-7-6.1-7-11.5a7 7 0 0 1 14 0c0 5.400-7 11.500-7 11.500z"/><circle cx="12" cy="10" r="2.6"/></svg>
+          <span><b id="map-place">Meredith Elementary School (cafeteria), 725&nbsp;S&nbsp;5th&nbsp;St, Philadelphia, PA&nbsp;19147</b><i><span id="map-when">Our Sunday home from November&nbsp;1</span>&nbsp;· Open in Google Maps<span class="sr-only"> (opens in a new tab)</span></i></span>
+        </span>
+      </a>
+    </div>
+    <div class="foot-base">
+      <span>© <span id="year">2026</span> Grace Community Church</span>
+      <a href="#top">Back to top</a>
+    </div>
+  </div>
+</footer>
+<!-- ===== /[11] END FOOTER ===== -->
+
+<script src="assets/site.js"></script>
+</body>
+</html>
