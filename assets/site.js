@@ -36,7 +36,7 @@ var SITE = {
   // FORMS (Contact, vehicle donation, equipment donation).
   // Paste the Google Apps Script web app address here (it ends in /exec). See google-apps-script/Code.gs.
   // Left empty, a form opens the visitor's email app with the message filled in, addressed to formEmail.
-  formEndpoint: "",
+  formEndpoint: "https://script.google.com/macros/s/AKfycbxyOB6PrONvOJKWWYSCYagTooND6nfrvlXG1xWh9O1-zSeOUPmBBtZxMAvjKRlPpsPsPg/exec",
   formEmail:    "info@gracecommunityphilly.org"
 };
 var EMBEDS = true; // true on the hosted site; set false to test without Google Maps frames

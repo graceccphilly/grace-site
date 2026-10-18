@@ -1,0 +1,37 @@
+# =====================================================================================
+#  GRACE COMMUNITY CHURCH: .htaccess (server settings for gracecommunityphilly.org)
+#  Clean web addresses: no "index.html" and no ".html" in the browser's address bar.
+#    gracecommunityphilly.org/index.html  ->  gracecommunityphilly.org/
+#    gracecommunityphilly.org/give.html   ->  gracecommunityphilly.org/give
+#  Old .html links (bookmarks, social posts, Google) keep working: they forward to the
+#  clean address with a permanent (301) redirect.
+#  A new page needs no change here: add newpage.html and link to it as /newpage.
+# =====================================================================================
+
+DirectoryIndex index.html
+Options -MultiViews
+
+<IfModule mod_rewrite.c>
+RewriteEngine On
+
+# 1. One address for the site: www.gracecommunityphilly.org -> gracecommunityphilly.org
+RewriteCond %{HTTP_HOST} ^www\.gracecommunityphilly\.org$ [NC]
+RewriteRule ^ https://gracecommunityphilly.org%{REQUEST_URI} [R=301,L]
+
+# 2. /index.html (or /index) -> /
+RewriteCond %{THE_REQUEST} \s/+(.*/)?index(\.html)?[\s?] [NC]
+RewriteRule ^ /%1 [R=301,L]
+
+# 3. /give.html -> /give   (any page; a ?question part such as ?reason=giving is kept)
+RewriteCond %{THE_REQUEST} \s/+([^?\s]+?)\.html[\s?] [NC]
+RewriteRule ^ /%1 [R=301,L]
+
+# 4. /give/ -> /give   (a stray slash at the end would break the page's images)
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.+)/$ /$1 [R=301,L]
+
+# 5. /give quietly shows give.html (the address bar keeps /give)
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}.html -f
+RewriteRule ^(.+)$ $1.html [L]
+</IfModule>
