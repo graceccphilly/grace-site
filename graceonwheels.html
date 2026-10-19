@@ -2,19 +2,16 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<!-- graceonwheels.html: shares its header, footer, CSS (assets/site.css) and script (assets/site.js) with the home page. -->
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Project: Grace on Wheels | Grace Community Church, Philadelphia</title>
-<meta name="description" content="Donate a car, truck, van or bus to Grace Community Church. Tell us about the vehicle in a short form and we will call you about next steps.">
+<title>Donate a Vehicle | Project: Grace on Wheels | Grace Community Church</title>
+<meta name="description" content="Donate a car, truck, van or bus to Grace Community Church in South Philadelphia, running or not. Towing is free, it’s tax-deductible, and it helps neighbors in need.">
 <link rel="canonical" href="https://gracecommunityphilly.org/graceonwheels">
 <meta property="og:url" content="https://gracecommunityphilly.org/graceonwheels">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Grace Community Church">
-<meta property="og:title" content="Project: Grace on Wheels | Grace Community Church, Philadelphia">
-<meta property="og:description" content="Donate a car, truck, van or bus to Grace Community Church. Tell us about the vehicle in a short form and we will call you about next steps.">
-<meta property="og:image" content="https://gracecommunityphilly.org/images/share.jpg">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
+<meta property="og:title" content="Your old vehicle can help a neighbor">
+<meta property="og:description" content="Donate a car, truck, van or bus to Grace Community Church. It supports food pantries, clothing, youth mentoring, and help for unhoused neighbors and survivors of domestic violence.">
+<meta property="og:image" content="https://gracecommunityphilly.org/images/give-grace-on-wheels.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#121110">
 <link rel="icon" href="/favicon.ico" sizes="48x48">
@@ -23,14 +20,727 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wght@400;600;700&family=Archivo+Black&family=Permanent+Marker&display=swap">
-<link rel="stylesheet" href="/assets/site.css">
-<script>document.documentElement.classList.add('js');</script>
+<style>
+/* Layout: flyer logic at page scale. Cream sheets carry the reading, black bands carry
+   times and places, one tilted yellow block per screen carries the emphasis. */
+/* =====================================================================================
+   CSS TABLE OF CONTENTS (search for the heading text in quotes)
+     "Design tokens"          colours, fonts, logo shapes (the two long data: lines), spacing
+     "Base"                   reset, links, focus outline
+     "Page background photo"  the fixed photo behind the whole page
+     "Buttons"                .btn and .btn.quiet
+     "Gaps the church..."     .todo placeholder boxes
+     "Social icons"
+     "Header"                 sticky header, nav, mobile menu (max-width: 1200px)
+     "Hero carousel"          slides, ticket card, the black strip under the hero
+     "Sections"               shared section spacing and headings
+     "Latest sermon"          video box and poster
+     "Bible study panel"
+     "Upcoming service cards"
+     "About accordions"       values row, pastor letter
+     "Ministries"             Ways to serve, food drive
+     "Gallery"                flyer tiles and the lightbox
+     "Visit"                  service times, FAQ, What to expect
+     "Footer"                 map, contact, links
+   Breakpoints used: 1200px (mobile menu), 860px (hero/sermon stack), 820/760/720/700px,
+   640/600/560/520px, 480px and 380px (small phones).
+   ===================================================================================== */
+/* ---------- Design tokens ---------- */
+:root {
+  color-scheme: only light; /* always the cream look, even on devices set to dark mode */
+  --paper: #fbf6ec;
+  --paper-2: #efe4d0;
+  --card: #fffaf2;
+  --ink: #121110;
+  --ink-soft: #46413b;
+  --edge: #121110;
+  --line: #d9cdb6;
+  --sun: #ffc324;
+  --on-sun: #121110;
+  --band: #121110;
+  --band-2: #1e1c19;
+  --on-band: #fbf6ec;
+  --on-band-soft: #d8d0c0;
+  --ring: #121110;
+
+  --display: "Archivo Black", "Arial Black", Impact, sans-serif;
+  --tall: "Anton", "Arial Narrow", Impact, sans-serif;
+  --body: "Archivo", "Helvetica Neue", Arial, sans-serif;
+  --marker: "Permanent Marker", "Comic Sans MS", cursive;
+  --serif: Georgia, "Times New Roman", serif;  /* system serif: no web font needed for the few quotes */
+
+  --gutter: clamp(16px, 4vw, 40px);
+  --header-h: 76px;
+  /* Logo shapes, used as masks so they take the text colour. Retraced from the high-res logo PNG;
+     the same drawings are saved as images/logo/emblem.svg and wordmark.svg. */
+  --emblem: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 924 1026'%3E%3Cpath fill-rule='evenodd' d='M488 1023l-48 1-42-4-42-8-23-7-19-6-24-9-21-9-20-10-18-9-18-12-19-13-16-12-18-15-17-15-18-18-16-18-12-15-13-18-15-23-12-21-9-18-8-17-10-25-7-21-6-21-5-21-4-22-3-22-2-25-1-25 1-26 3-34 7-40 11-41 15-40 10-22 10-19 20-33 24-33 16-19 15-15 30-28 32-25 34-22 36-19 18-8 23-9 21-7 22-6 22-5 20-3v1l-21 78-2 2-29 8-22 8-18 8-24 12-20 12-22 15-19 15-17 15-15 14-16 18-15 19-15 22-13 22-11 22-9 21-8 22-7 24-5 22-4 26-2 21-1 26 1 27 3 28 5 23h131v-171l160-159 23-89v-2l-10-2 2-4 9-22 10-1 26-83 2-1h8v-1v-56l-26-1v-26v-1h1h25v-1l1-20h28l1 20v1h26v27l-26 1v56v1h12l25 84 9 1 2 1 9 25-1 1h-6v1l3 30v1h118h35l2-1-30-19-35-18-33-13-36-11-1-3-6-28-12-45v-3l25 4 25 6 26 8 27 10 25 11 25 13 22 13 25 17 17 13 20 17 18 17 18 18 16 19 18 24 15 23 11 19 11 21 11 25 10 26 7 23 6 23 5 25 4 28 2 25v26v25l-4 40-8 42-12 41-9 24-9 21-10 20-10 18-11 18-13 19-12 16-15 18-17 18-16 15-18 16-15 12-19 14-20 13-17 10-23 13-22 10-20 7-41 14-25 5-22 4-23 4zM634 642v-138l-172-172h-1l-171 172 1 139 78-1v-106h2h73l1 106h36v-106h75v106zM466 487h-8l-9-1-8-4-6-3-6-6-7-8-4-9-2-9v-12l1-6 3-8 5-8 8-8 8-5 8-3 9-2h7l10 2 8 3 8 5 6 7 6 7 3 7 2 9v12l-1 6-3 8-5 8-7 7-8 6-9 4zM150 786l79-69-12-1h-107l-1 2 5 11 13 25 19 30 3 3zM299 912l69-194v-1h-24l-145 126-1 1 25 22 26 19 28 17 17 8 5 3zM488 948l19-2 20-2 24-5 3-2-77-219-2-1h-26l-2 1-77 219 2 1 19 4 35 5 31 2zM626 912l28-14 24-16 23-17 25-21-146-127h-24l1 4 65 184 3 7zM776 786l10-14 12-20 11-21 6-14h-1h-119l79 70h1z'/%3E%3C/svg%3E");
+  --wordmark: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 2587 347'%3E%3Cpath fill-rule='evenodd' d='M103 187h-23l-11-1-10-2-9-3-10-5-8-6-7-7-8-11-7-14-5-16-2-11-1-15 1-17 2-12 3-12 5-11 6-10 4-5 4-5 10-9 12-7 16-4 18-2h24l18 3 11 3 7 5 5 3 7 8 8 14 5 13v2h-1l-48 9h-1l-3-8-4-4-4-4-9-4-11-1-9 2-6 3-7 7-5 8-4 12-2 14v15l3 18 3 9 4 5 6 7 5 3 6 2 7 1h8l6-1 7-2 7-3 8-5 1-2v-13l-1-2h-31h-2v-35l1-2 77-1h1l1 2-1 75-20 14-14 7-15 5zM647 187h-24l-10-1-16-4-12-6-10-8-11-14-8-15-5-14-3-16v-28l4-21 5-14 7-14 12-13 13-9 7-3 13-3 14-2h20l16 3 13 4 8 5 5 4 8 10 7 11 7 18v1l-3 1-42 10-5-11-5-7-5-4-4-2-10-2-8 1-7 3-7 6-6 8-3 8-2 10-1 15 1 17 2 10 4 10 5 6 5 4 7 3 9 1 8-1 7-3 6-6 4-5 4-10 3-10 41 13 3 1 1 2-3 10-6 14-5 9-6 8-9 8-10 6-8 3zM1068 187h-25l-15-2-15-5-10-6-11-11-10-14-6-13-5-19-1-8v-15v-13l1-9 4-18 6-14 5-8 5-6 6-7 7-5 13-7 17-4 17-1 19 1 13 2 12 5 11 8 9 11 9 14 5 14-1 1-3 1-41 10-1-1-3-9-7-8-5-4-4-2-10-2-8 1-7 3-7 7-5 7-3 9-2 10-1 14 1 16 2 11 3 9 3 4 4 5 3 2 7 3 10 1 10-2 6-3 5-5 4-5 4-10 2-9 1-1 43 14 2 2-3 10-7 15-5 8-8 10-10 8-7 4-8 3zM1248 186l-23 1-16-2-13-4-13-7-11-10-8-10-8-15-5-15-2-12-1-14 1-21 2-12 3-10 6-14 5-8 6-7 5-6 8-6 13-6 9-3 9-2 20-1 18 1 17 4 14 7 13 12 9 12 7 15 5 16 1 14 1 10-3 27-4 15-3 8-5 9-9 12-6 6-10 7-8 4-9 3zM542 184h-53l-1-3-7-25-1-1h-56h-1l-8 29h-109l-2-3-28-55-3-6-5-5-4-2-4-1h-6h-1v1l-1 70-51 1v-179l89-1 17 1 11 2 8 3 8 6 4 4 5 7 3 6 4 13v18l-3 10-3 7-3 5-8 9-8 5-12 5v1l8 3 4 3 11 15 25 50 2 4 61-175 1-2h55l1 2 60 173 1 3zM872 184l-139-1-1-175v-2l1-1 135-1 2 1v38l-85 1v27h77l1 1 1 34-1 2h-1l-77 1-1 1v31l2 2h86v1v38zM1531 184l-42-1v-128l-1 2-30 126h-39l-30-127-1-1v128l-42 1v-179h67l24 99 2 7 25-106 1-1 66 1 1 3v173zM1748 184l-42-1v-128l-31 128-38 1-31-130-1 2v127h-42v-176v-2h67l1 2 25 104 25-104 1-2h66l1 2v174v2zM1878 186l-29 1-16-2-11-3-7-3-10-7-11-12-5-8-3-7-3-12-2-9-1-11v-106l2-3 50 1v116l2 7 6 8 4 4 5 3 11 2 11-2 7-4 3-4 3-4 3-9 1-116 1-2 50 1v2v112l-1 9-3 13-3 7-6 11-6 8-10 9-5 3-9 4-12 3zM2130 184l-48-1-61-95v95h-48l-1-176 1-2h47l61 96 1-95 1-2 47 1zM2217 183h-51v-175v-3l50-1 1 2zM2344 184l-50-1-1-133-50-1h-1l-1-42 1-2 154-1 1 2v43h-2l-50 1v131v2zM2518 184l-51-1-1-74-61-100-2-3 1-1 54-1 2 1 31 56 2 2 33-58h56v1l-7 12-56 91v73zM277 77l12-3 4-2 2-3 3-5v-5v-5l-3-5-4-5-6-2-6-1h-26v36zM1238 144h4l6-2 5-3 6-6 2-3 4-8 2-9 1-8v-23l-2-11-3-8-5-7-4-4-6-5-5-2-5-1h-9l-8 2-7 5-5 5-3 5-3 8-2 8-1 8v20l3 16 3 8 3 4 6 5 7 5 10 2zM469 115l-17-61-17 61zM970 344l-12 1-7-1-6-2-8-5-6-6-5-7-4-9-2-8-1-11 1-10 2-9 4-8 4-6 6-6 8-5 9-3 10-1 8 1 6 1 7 3 5 3 7 6 3 4 3 9v4l-1 1h-15l-3-8-5-5-7-4-9-1-7 1-5 2-6 5-5 8-3 12v12l1 7 5 11 5 5 4 4 5 2h7l9-1 7-5 4-5 3-8v-4l1-1h14l2 1-1 7-3 8-3 6-5 5-6 5-5 3zM1492 344l-13 1-6-1-6-2-9-5-7-7-4-7-4-9-2-8-1-10 1-9 2-8 4-10 5-7 7-6 7-4 9-3 9-1 9 1 13 4 6 4 6 7 4 8 1 6v2h-16l-4-9-4-5-6-3-8-1-8 1-5 2-5 4-3 3-3 5-3 9-1 7 1 13 2 7 3 6 4 6 5 3 6 3h6l9-1 4-2 5-6 3-6 3-9h14l2 1-2 8-2 6-3 6-4 5-8 7-6 3zM1128 343l-15-1-1-40-1-1-40 1v40h-16v-91h14h2v35l1 1 40-1v-35h1h15l1 1v90zM1231 344l-15 1-10-2-6-3-5-4-4-5-3-5-2-7-1-8v-60h15h1v52l1 10 1 5 4 7 3 3 4 2 8 1 8-1 5-2 6-6 2-4 1-5v-9v-53h1h14h2v58l-1 10-2 4-3 8-7 7-9 4zM1394 343h-17l-2-7-1-13-1-7-2-5-3-3-3-2-9-1h-23v37h-16v-91h53l7 2 4 2 6 6 4 7v7l-1 8-3 7-2 3-4 4-3 1 7 5 4 6 1 4 1 19 1 4 3 6zM1650 342h-17v-40v-1h-1h-39l-1 1v40h-17l1-91h15h1v35l1 1h40v-36h1h15h1zM1366 291l5-3 2-3 1-4v-8l-2-4-2-2-3-2-8-1h-26v27l1 1h25z'/%3E%3C/svg%3E");
+}
+
+/* ---------- Base: reset, links, focus outline ---------- */
+*, *::before, *::after { box-sizing: border-box; }
+[hidden] { display: none !important; }
+html:not(.js) [data-from] { display: none !important; }
+html { scroll-padding-top: calc(var(--header-h) + 16px); }
+@media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
+body {
+  margin: 0; background: var(--paper); color: var(--ink);
+  font-family: var(--body); font-size: 1.0625rem; line-height: 1.6;
+  overflow-x: hidden; overflow-x: clip;
+}
+h1, h2, h3, h4, p, ul, ol, dl, dd, figure { margin: 0; }
+/* Orphans and widows: headings, labels and short lines break into even lines; body copy never
+   leaves one word alone on its last line. Times, dates and street addresses use non-breaking
+   spaces in the markup (&nbsp;) so "9 AM", "Dec 5" and "725 S 5th St" never split. */
+h1, h2, h3, h4, .when, .date, .label, .tag, .what, .where, .lede, .ref, .min h3, .volunteer h3, dt { text-wrap: balance; }
+p, li, dd, address, blockquote, figcaption { text-wrap: pretty; }
+ul, ol { padding: 0; list-style: none; }
+img { display: block; max-width: 100%; height: auto; }
+a { color: inherit; text-decoration-thickness: 2px; text-underline-offset: 3px; text-decoration-color: var(--sun); }
+a:hover { text-decoration-color: currentColor; }
+:focus-visible { outline: 3px solid var(--ring); outline-offset: 3px; }
+button { font: inherit; color: inherit; }
+
+/* Page background photo: fixed to the screen, so it stays put while the page scrolls.
+   A cream layer at 85% sits over it. Set the image in SITE.pageImage. */
+.has-page-bg body::before, .has-page-bg body::after { content: ""; position: fixed; left: 0; top: 0; width: 100%; height: 100vh; height: 100lvh; z-index: -1; pointer-events: none; }
+.has-page-bg body::before { background: var(--page-image) center / cover no-repeat; }
+@media (max-width: 700px) { .has-page-bg body::before { background-image: var(--page-image-small, var(--page-image)); } }
+.has-page-bg body::after { background: var(--paper); opacity: .85; }
+.has-page-bg .hero { background: transparent; }
+.has-page-bg .section.tint { background: linear-gradient(rgba(239, 228, 208, .6), rgba(239, 228, 208, 0)); }
+
+.wrap { max-width: 1180px; margin-inline: auto; padding-inline: var(--gutter); }
+.band { background: var(--band); color: var(--on-band); --ring: var(--sun); }
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+
+.skip {
+  position: absolute; left: var(--gutter); top: -100px; z-index: 100;
+  background: var(--sun); color: var(--on-sun); padding: 10px 16px; font-weight: 700;
+}
+.skip:focus { top: calc(env(safe-area-inset-top, 0px) + 8px); }
+
+.label {
+  font-size: .8125rem; font-weight: 700; text-transform: uppercase; letter-spacing: .14em;
+}
+.emblem, .lockup { display: block; background: currentColor; }
+.emblem { aspect-ratio: 924 / 1026; -webkit-mask: var(--emblem) center / contain no-repeat; mask: var(--emblem) center / contain no-repeat; }
+/* The full lockup (footer) is the emblem stacked over the wordmark: two mask layers, no third copy of the artwork.
+   49.64% / 35.717% place and size the emblem exactly as in the original lockup artwork. */
+.lockup { aspect-ratio: 2587 / 1479;
+  -webkit-mask: var(--emblem) 49.64% 0 / 35.717% auto no-repeat, var(--wordmark) 0 100% / 100% auto no-repeat;
+          mask: var(--emblem) 49.64% 0 / 35.717% auto no-repeat, var(--wordmark) 0 100% / 100% auto no-repeat; }
+
+/* Browsers without aspect-ratio (Safari 14 and older) */
+@supports not (aspect-ratio: 1 / 1) {
+  .brand .emblem { height: 49px; } .wordmark { width: 224px; } .hero-emblem { height: 333px; }
+  .foot-brand .lockup { height: 149px; } .video { height: 0; padding-top: 56.25%; } .photo-slot { min-height: 340px; }
+}
+
+/* Buttons */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+  min-height: 48px; padding: 10px 22px;
+  background: var(--sun); color: var(--on-sun); border: 3px solid var(--on-sun);
+  font-weight: 700; font-size: .9375rem; text-transform: uppercase; letter-spacing: .06em;
+  text-decoration: none; cursor: pointer; text-align: center;
+  box-shadow: 4px 4px 0 var(--ink);
+}
+.btn:hover { box-shadow: 6px 6px 0 var(--ink); transform: translate(-2px, -2px); }
+.btn.quiet { background: transparent; color: var(--ink); border-color: var(--ink); box-shadow: none; }
+.btn.quiet:hover { background: var(--ink); color: var(--paper); transform: none; }
+.band .btn { border-color: var(--sun); box-shadow: none; }
+.band .btn:hover { background: var(--on-band); border-color: var(--on-band); transform: none; }
+.band .btn.quiet { color: var(--on-band); border-color: var(--on-band); background: transparent; }
+.band .btn.quiet:hover { background: var(--on-band); color: var(--band); }
+@media (prefers-reduced-motion: no-preference) { .btn { transition: transform .12s, box-shadow .12s, background .12s; } }
+
+/* Gaps the church still needs to fill in */
+.todo {
+  border: 2px dashed currentColor; padding: 14px 16px; display: grid; gap: 4px;
+  font-size: .9375rem; line-height: 1.45;
+}
+.todo b { font-family: var(--marker); font-weight: 400; font-size: 1rem; letter-spacing: .04em; text-transform: uppercase; }
+.todo.inline { display: inline-block; padding: 2px 10px; font-size: .875rem; }
+
+/* Social icons */
+.social { display: flex; gap: 8px; }
+.social a { width: 40px; height: 40px; display: grid; place-items: center; background: var(--ink); color: var(--paper); border: 2px solid var(--ink); }
+.band .social a { background: var(--on-band); color: var(--band); border-color: var(--on-band); }
+.social a:hover, .band .social a:hover { background: var(--sun); color: var(--on-sun); border-color: var(--sun); }
+.social svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.site-nav .soc-li { margin-left: 8px; }
+
+/* Header */
+.site-header {
+  position: sticky; top: env(safe-area-inset-top, 0px); z-index: 50;
+  background: var(--paper); border-bottom: 3px solid var(--ink);
+}
+.site-header .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; min-height: var(--header-h); }
+.brand { display: flex; align-items: center; gap: 12px; text-decoration: none; min-width: 0; }
+.brand .emblem { width: 44px; flex: none; }
+.wordmark { display: block; height: 30px; aspect-ratio: 2587 / 347; flex: none; background: currentColor; -webkit-mask: var(--wordmark) center / contain no-repeat; mask: var(--wordmark) center / contain no-repeat; }
+.nav-toggle {
+  display: none; align-items: center; gap: 10px; min-height: 44px; padding: 6px 14px;
+  background: var(--ink); color: var(--paper); border: 0; cursor: pointer;
+  font-weight: 700; font-size: .875rem; text-transform: uppercase; letter-spacing: .1em;
+}
+.nav-toggle .bars { width: 20px; height: 14px; border-block: 2px solid currentColor; position: relative; }
+.nav-toggle .bars::after { content: ""; position: absolute; inset: 4px 0 auto; border-top: 2px solid currentColor; }
+.site-nav ul { display: flex; align-items: center; gap: 4px; }
+.site-nav .m-only { display: none; }
+/* Mobile-only words and the Bible study button; on desktop the links keep their original order */
+.site-nav .m-txt, .site-nav .bs-cta { display: none; }
+.soc-row { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; }
+@media (min-width: 1201px) {
+  .site-nav .d-1 { order: 1; } .site-nav .d-2 { order: 2; } .site-nav .d-3 { order: 3; } .site-nav .d-4 { order: 4; }
+  .site-nav .d-5 { order: 5; } .site-nav .d-6 { order: 6; } .site-nav .d-7 { order: 7; }
+}
+.site-nav li > a {
+  display: block; padding: 10px 9px; white-space: nowrap; text-decoration: none;
+  font-weight: 700; font-size: .875rem; text-transform: uppercase; letter-spacing: .08em;
+}
+.site-nav li > a:not(.btn):hover, .site-nav li > a[aria-current] { box-shadow: inset 0 -4px 0 var(--sun); }
+.site-nav .btn { min-height: 40px; padding: 6px 16px; margin-left: 8px; box-shadow: none; }
+.site-nav .btn:hover { transform: none; box-shadow: none; background: var(--ink); color: var(--paper); border-color: var(--ink); }
+@media (max-width: 1200px) {
+  .js .nav-toggle { display: inline-flex; }
+  .site-nav { position: absolute; left: 0; right: 0; top: 100%; background: var(--paper); border-bottom: 3px solid var(--ink); padding: 8px var(--gutter) 20px; }
+  .site-nav ul { flex-direction: column; align-items: stretch; gap: 0; }
+  .site-nav .m-only { display: block; }
+  .site-nav .m-txt { display: inline; }
+  .site-nav .bs-cta { display: inline-flex; flex: 1 1 150px; padding-inline: 14px; }
+  .site-nav li + li { border-top: 1px solid var(--line); }
+  .site-nav li > a { padding: 14px 4px; font-size: 1rem; }
+  .site-nav .soc-li { padding-block: 14px 4px; }
+  .site-nav .social a { width: 48px; height: 48px; }
+  .site-nav .give-li { border-top: 0; padding-top: 12px; }
+  .site-nav .btn { margin-left: 0; min-height: 48px; }
+  .js .site-nav:not(.open) { display: none; }
+  html:not(.js) .site-header { position: static; }
+  html:not(.js) .site-nav { position: static; border: 0; padding: 0 0 12px; flex-basis: 100%; }
+  html:not(.js) .site-header .wrap { flex-wrap: wrap; }
+}
+@media (max-width: 480px) { .wordmark { height: 24px; } .brand { gap: 8px; } .brand .emblem { width: 36px; } }
+@media (max-width: 380px) { .wordmark { height: 20px; } .brand .emblem { width: 32px; } }
+
+/* Hero carousel: slides share one grid cell so the hero never changes height */
+.hero { background: linear-gradient(var(--paper), var(--paper-2)); overflow-x: hidden; overflow-x: clip; }
+.hero { --hero-overlay: var(--paper); }
+.hero.dark .hero-stage { --hero-overlay: var(--band); --paper: var(--band); --ink: var(--on-band); --ink-soft: var(--on-band-soft); --ring: var(--sun); color: var(--ink); }
+.hero.dark .hero-stage .btn { box-shadow: none; border-color: var(--sun); }
+.hero.dark .hero-stage .btn.quiet { border-color: var(--ink); }
+.hero.dark .ticket { outline: 2px solid var(--sun); }
+.hero-stage { position: relative; }
+.hero-bgs { position: absolute; inset: 0; overflow: hidden; }
+.hero-bg { position: absolute; inset: 0; background: center / cover no-repeat; opacity: 0; }
+.hero-bg.is-active { opacity: 1; }
+.hero-bg.has-img::after { content: ""; position: absolute; inset: 0; background: var(--hero-overlay); opacity: .85; }
+@media (prefers-reduced-motion: no-preference) { .hero-bg { transition: opacity .6s ease; } }
+.hero-inner { position: relative; padding-block: clamp(36px, 6vw, 72px) clamp(20px, 3vw, 32px); }
+.slides { display: grid; }
+.slide {
+  grid-area: 1 / 1; min-width: 0;
+  display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 340px); gap: clamp(28px, 5vw, 56px); align-items: center;
+}
+.js .slide:not(.is-active) { visibility: hidden; opacity: 0; }
+@media (prefers-reduced-motion: no-preference) {
+  .js .slide { transition: opacity .5s ease, visibility 0s linear .5s; }
+  .js .slide.is-active { transition: opacity .5s ease; }
+}
+html:not(.js) .slide { grid-area: auto; }
+html:not(.js) .slides { gap: 56px; }
+.hero-copy { container-type: inline-size; min-width: 0; }
+.hero-h { display: grid; gap: 18px; }
+.h1-name { font-family: var(--body); font-size: .875rem; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; color: var(--ink-soft); }
+.h1-motto { font-family: var(--display); font-weight: 400; text-transform: uppercase; font-size: clamp(1.75rem, 5.2vw, 4.25rem); line-height: 1; white-space: nowrap; letter-spacing: -.02em; display: grid; justify-items: start; gap: .06em; }
+.h1-motto .hl { background: var(--sun); color: var(--on-sun); padding: .04em .22em .08em; margin-left: -.12em; transform: rotate(-2deg); transform-origin: left center; }
+@media (max-width: 860px) { .h1-motto { font-size: clamp(1.5rem, 8.4vw, 3.25rem); } }
+@supports (width: 1cqi) { .h1-motto { font-size: clamp(1.5rem, 9.6cqi, 5rem); } }
+.lede { font-size: clamp(1.0625rem, 1.6vw, 1.25rem); max-width: 34em; margin-top: 30px; color: var(--ink-soft); }
+.actions { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 28px; }
+.zoom-id { display: flex; flex-wrap: wrap; gap: 4px 22px; margin-top: 14px; font-size: .9375rem; font-weight: 600; }
+.zoom-id b { font-family: var(--tall); font-weight: 400; font-size: 1.25rem; letter-spacing: .03em; margin-left: 4px; user-select: all; }
+.hero-emblem { width: min(300px, 100%); justify-self: end; }
+.hero-ctl { display: flex; align-items: center; gap: 6px; margin-top: clamp(24px, 4vw, 44px); flex-wrap: wrap; }
+html:not(.js) .hero-ctl { display: none; }
+.hero-ctl button { min-width: 44px; height: 44px; display: grid; place-items: center; background: transparent; border: 2px solid var(--ink); cursor: pointer; padding: 0; }
+.hero-ctl button:hover { background: var(--ink); color: var(--paper); }
+.hero-ctl svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
+.hero-ctl .dots { display: flex; margin-inline: 6px; }
+.hero-ctl .dots button { border: 0; min-width: 36px; }
+.hero-ctl .dots button:hover { background: transparent; }
+.hero-ctl .dots button::before { content: ""; width: 14px; height: 14px; border: 2px solid var(--ink); }
+.hero-ctl .dots button:hover::before { background: var(--ink); }
+.hero-ctl .dots button[aria-current="true"]::before { width: 30px; background: var(--sun); }
+
+.ticket {
+  background: var(--band); color: var(--on-band); --ring: var(--sun);
+  padding: 28px 26px 30px; display: grid; gap: 10px; justify-items: start;
+  transform: rotate(2deg); box-shadow: 12px 12px 0 var(--sun);
+  max-width: 380px; justify-self: end; width: 100%;
+}
+.ticket .tag { font-family: var(--marker); background: var(--sun); color: var(--on-sun); padding: 2px 14px; font-size: 1.25rem; transform: rotate(-3deg); margin-bottom: 6px; }
+.ticket .when { font-family: var(--tall); font-size: clamp(4rem, 9vw, 5.5rem); line-height: 1; color: var(--sun); text-transform: uppercase; letter-spacing: .01em; }
+.ticket .time { font-family: var(--tall); font-size: 1.75rem; line-height: 1.1; text-transform: uppercase; letter-spacing: .02em; margin-bottom: 6px; }
+.ticket .what { font-family: var(--display); font-size: 1.375rem; line-height: 1.15; text-transform: uppercase; }
+.ticket p.where { color: var(--on-band-soft); font-size: 1rem; }
+.ticket a { font-weight: 700; margin-top: 6px; }
+
+.strip .wrap { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); padding-block: 26px; }
+.strip .cell { padding-inline: clamp(12px, 3vw, 36px); display: grid; gap: 2px; align-content: center; }
+.strip .cell + .cell { border-left: 3px solid var(--sun); }
+.strip .cell:first-child { padding-left: 0; }
+.strip .label { color: var(--sun); }
+.strip .big { font-family: var(--tall); font-size: clamp(2rem, 4.4vw, 3rem); line-height: 1.05; text-transform: uppercase; }
+.strip .small { color: var(--on-band-soft); font-size: .9375rem; }
+.strip a.cell { text-decoration: none; }
+.strip a.cell:hover .big { color: var(--sun); }
+.strip a.cell .small { text-decoration: underline; text-decoration-color: var(--sun); text-underline-offset: 3px; }
+.strip .acts { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; align-content: center; }
+.strip .acts .btn { min-height: 46px; padding: 8px 18px; }
+@media (max-width: 860px) {
+  .slide { grid-template-columns: minmax(0, 1fr); align-items: start; gap: 22px; }
+  .hero-emblem { display: none; }
+  .hero-inner { padding-block: 28px 18px; }
+  .hero-h { gap: 12px; }
+  .lede { margin-top: 18px; font-size: 1rem; line-height: 1.5; }
+  .actions { margin-top: 18px; gap: 10px; }
+  .hero-ctl { margin-top: 20px; }
+  /* the date card becomes a one-line tag */
+  .ticket { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 12px; padding: 10px 14px; transform: none; box-shadow: 5px 5px 0 var(--sun); width: auto; max-width: 100%; justify-self: start; }
+  .ticket .tag { font-size: 1rem; padding: 0 10px; margin: 0; transform: rotate(-2deg); }
+  .ticket .when { font-size: 2rem; }
+  .ticket .time { font-size: 1.25rem; margin: 0; }
+  .ticket .what, .ticket .where { display: none; }
+  .zoom-id { margin-top: 10px; font-size: .875rem; gap: 2px 16px; }
+  .zoom-id b { font-size: 1.0625rem; }
+  .strip .wrap { grid-template-columns: repeat(2, minmax(0, 1fr)); padding-block: 16px; }
+  .strip .cell { padding-inline: 14px; }
+  .strip .cell:first-child { padding-left: 0; }
+  .strip .big { font-size: 1.75rem; }
+  .strip .small { font-size: .8125rem; line-height: 1.35; }
+  .strip .label { font-size: .6875rem; letter-spacing: .1em; }
+  .strip .acts { grid-column: 1 / -1; padding: 14px 0 0; margin-top: 14px; border-left: 0; border-top: 3px solid var(--sun); }
+  .strip .acts .btn { flex: 1 1 140px; font-size: .8125rem; letter-spacing: .04em; padding: 8px 8px; white-space: nowrap; }
+}
+
+/* Sections */
+.section { padding-block: clamp(56px, 8vw, 104px); }
+.section.tint { background: linear-gradient(var(--paper-2), var(--paper)); }
+.band.section { border-top: 8px solid var(--sun); }
+.section-head { display: grid; gap: 12px; margin-bottom: clamp(28px, 4vw, 48px); max-width: 46rem; }
+.section-head h2 { font-family: var(--display); font-weight: 400; text-transform: uppercase; font-size: clamp(2rem, 5.4vw, 3.5rem); line-height: 1; letter-spacing: -.015em; text-wrap: balance; }
+.section-head p { color: var(--ink-soft); font-size: 1.125rem; }
+.band .section-head p { color: var(--on-band-soft); }
+
+/* Latest sermon */
+.sermon { display: grid; grid-template-columns: minmax(0, 3fr) minmax(0, 2fr); gap: clamp(28px, 5vw, 64px); align-items: center; }
+.video { aspect-ratio: 16 / 9; max-width: 100%; background: var(--band); border: 3px solid var(--edge); box-shadow: 10px 10px 0 var(--sun); position: relative; }
+.video iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+.video-poster { position: absolute; inset: 0; display: block; }
+.video-poster img { width: 100%; height: 100%; object-fit: cover; }
+.video-poster .play { position: absolute; left: 50%; top: 50%; width: 84px; height: 84px; margin: -42px 0 0 -42px; background: var(--sun); border: 3px solid var(--on-sun); display: grid; place-items: center; box-shadow: 6px 6px 0 var(--on-sun); }
+.video-poster:hover .play { transform: translate(-2px, -2px); box-shadow: 8px 8px 0 var(--on-sun); }
+.video-poster .play svg { width: 40px; height: 40px; fill: var(--on-sun); }
+.video-poster .host { position: absolute; left: 0; top: 0; background: var(--band); color: var(--on-band); padding: 6px 12px; font-size: .75rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
+.sermon-copy { display: grid; gap: 14px; justify-items: start; }
+.sermon-copy .label { color: var(--ink-soft); }
+.sermon-copy h2 { font-family: var(--display); font-weight: 400; text-transform: uppercase; font-size: clamp(1.75rem, 3.6vw, 2.75rem); line-height: 1.02; letter-spacing: -.015em; text-wrap: balance; }
+.sermon-copy .ref { font-family: var(--tall); font-size: 1.375rem; text-transform: uppercase; letter-spacing: .02em; }
+.sermon-copy p:not(.label):not(.ref) { color: var(--ink-soft); max-width: 40ch; }
+.sermon-copy .actions { margin-top: 10px; }
+@media (max-width: 860px) { .sermon { grid-template-columns: minmax(0, 1fr); } }
+@media (max-width: 480px) { .video { box-shadow: 6px 6px 0 var(--sun); } }
+
+/* Bible study panel: details beside the series graphic, then last week's video */
+.bs-row { display: grid; grid-template-columns: minmax(0, 3fr) minmax(0, 2fr); gap: clamp(28px, 5vw, 56px); align-items: center; }
+.bs-col { display: grid; gap: 16px; align-content: start; }
+.bs-col p { max-width: 60ch; }
+.bs-flyer { display: block; width: 100%; max-width: 400px; justify-self: end; border: 3px solid var(--edge); box-shadow: 8px 8px 0 var(--sun); }
+.bs-flyer img { display: block; width: 100%; height: auto; }
+.bs-watch { margin-top: 10px; padding-top: 30px; border-top: 3px solid var(--edge); }
+.bs-title { font-family: var(--display); font-weight: 400; text-transform: uppercase; font-size: clamp(1.5rem, 3vw, 2.25rem); line-height: 1.02; letter-spacing: -.015em; text-wrap: balance; }
+@media (max-width: 860px) {
+  .bs-row { grid-template-columns: minmax(0, 1fr); }
+  .bs-flyer { justify-self: start; }
+}
+@media (max-width: 480px) { .bs-flyer { box-shadow: 6px 6px 0 var(--sun); } }
+
+/* Upcoming service cards */
+.cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 30px; }
+.svc { background: var(--card); border: 3px solid var(--edge); box-shadow: 10px 10px 0 var(--sun); display: flex; flex-direction: column; min-width: 0; }
+.svc .date { background: var(--band); color: var(--sun); font-family: var(--tall); font-size: clamp(1.75rem, 3.4vw, 2.375rem); line-height: 1.1; text-transform: uppercase; text-align: center; padding: 14px 12px; letter-spacing: .01em; }
+.svc .body { padding: 22px 24px 26px; display: grid; gap: 10px; align-content: start; flex: 1; }
+.svc h3 { font-family: var(--display); font-weight: 400; font-size: 1.25rem; line-height: 1.2; text-transform: uppercase; letter-spacing: .01em; }
+.svc p { color: var(--ink-soft); }
+.svc h3 + p { color: var(--ink); font-weight: 700; }
+.svc address { font-style: normal; color: var(--ink-soft); }
+.svc .go { font-weight: 700; margin-top: 4px; }
+@media (max-width: 480px) { .cards { gap: 26px; } .svc { box-shadow: 6px 6px 0 var(--sun); } }
+
+/* About accordions */
+.acc { border: 3px solid var(--edge); background: var(--card); }
+.acc + .acc { margin-top: 14px; }
+.acc h3 { font: inherit; }
+.acc-btn {
+  display: flex; align-items: center; gap: 16px; width: 100%; text-align: left;
+  padding: 18px 22px; background: transparent; border: 0; cursor: pointer;
+  font-family: var(--display); font-size: clamp(1.0625rem, 2.2vw, 1.3125rem); text-transform: uppercase; letter-spacing: .01em;
+}
+html:not(.js) .acc-btn { cursor: default; }
+.acc-btn .pm { flex: none; width: 32px; height: 32px; background: var(--sun); position: relative; }
+.acc-btn .pm::before, .acc-btn .pm::after { content: ""; position: absolute; left: 8px; right: 8px; top: 14.5px; height: 3px; background: var(--on-sun); }
+.acc-btn .pm::after { transform: rotate(90deg); }
+.acc-btn[aria-expanded="true"] .pm::after, html:not(.js) .acc-btn .pm::after { transform: none; }
+.acc-btn[aria-expanded="true"] { background: var(--band); color: var(--on-band); --ring: var(--sun); outline-offset: -6px; }
+.acc-panel { padding: 26px 22px 30px; display: grid; gap: 18px; border-top: 3px solid var(--edge); }
+.acc-panel > p { max-width: 65ch; }
+.acc-panel > p.src { font-family: var(--serif); font-style: italic; color: var(--ink-soft); }
+.values { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); background: var(--band); color: var(--on-band); }
+.values li { padding: 20px 16px; text-align: center; display: grid; gap: 2px; }
+.values li + li { border-left: 3px solid var(--sun); }
+.values .label { color: var(--sun); }
+.values strong { font-family: var(--tall); font-weight: 400; font-size: clamp(1.75rem, 4vw, 2.75rem); line-height: 1.05; text-transform: uppercase; }
+@media (max-width: 560px) { .values { grid-template-columns: minmax(0, 1fr); } .values li + li { border-left: 0; border-top: 3px solid var(--sun); } }
+.creed { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+.creed li { background: var(--band); color: var(--on-band); border-left: 8px solid var(--sun); padding: 18px 22px 20px; display: grid; gap: 6px; align-content: start; }
+.creed h4 { font-family: var(--display); font-weight: 400; font-size: 1.125rem; text-transform: uppercase; letter-spacing: .02em; }
+.creed q { font-family: var(--serif); font-style: italic; font-size: 1.125rem; line-height: 1.4; color: var(--sun); }
+@media (max-width: 640px) { .creed { grid-template-columns: minmax(0, 1fr); } }
+.pastor { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 300px); gap: 36px; align-items: start; }
+.pastor .col { display: grid; gap: 14px; }
+.photo-slot { aspect-ratio: 4 / 5; max-width: 100%; border: 3px solid var(--edge); box-shadow: 8px 8px 0 var(--sun); overflow: hidden; background: var(--paper-2); }
+.letter p { max-width: 62ch; }
+.letter blockquote { margin: 4px 0; padding: 14px 20px; border-left: 8px solid var(--sun); background: var(--band); color: var(--sun); font-family: var(--serif); font-style: italic; font-size: 1.125rem; line-height: 1.45; }
+.letter cite { font-style: normal; font-family: var(--body); font-size: .875rem; color: var(--on-band-soft); white-space: nowrap; }
+.letter .sign { font-family: var(--serif); font-style: italic; margin-top: 6px; }
+.letter .sign strong { font-family: var(--display); font-style: normal; font-weight: 400; text-transform: uppercase; letter-spacing: .01em; }
+.photo-slot img { width: 100%; height: 100%; object-fit: cover; }
+@media (max-width: 700px) { .pastor { grid-template-columns: minmax(0, 1fr); } .photo-slot { max-width: 280px; order: -1; } }
+
+/* Ministries */
+#serve-empty { color: var(--on-band-soft); }
+.min-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
+.min { background: var(--band-2); padding: 28px 26px 30px; display: grid; gap: 14px; align-content: start; min-width: 0; border-top: 4px solid var(--sun); }
+.min.wide { grid-column: 1 / -1; }
+.min-top { display: flex; align-items: center; gap: 16px; }
+.min svg { width: 44px; height: 44px; flex: none; fill: none; stroke: var(--sun); stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; }
+.min h3 { font-family: var(--display); font-weight: 400; font-size: clamp(1.25rem, 2.6vw, 1.625rem); line-height: 1.1; text-transform: uppercase; }
+.min .when { font-family: var(--tall); font-size: 1.75rem; line-height: 1.1; color: var(--sun); text-transform: uppercase; letter-spacing: .01em; }
+.min p { color: var(--on-band-soft); max-width: 60ch; }
+.min p strong { color: var(--on-band); }
+.min .actions { margin-top: 6px; }
+.food { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 28px 40px; margin-top: 6px; }
+.food h4 { font-size: .8125rem; font-weight: 700; text-transform: uppercase; letter-spacing: .14em; color: var(--sun); margin-bottom: 12px; }
+.items { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+.items li { background: var(--band); border-left: 6px solid var(--sun); padding: 10px 14px; font-weight: 700; }
+.drops { display: grid; gap: 16px; }
+.drops li { display: grid; gap: 2px; }
+.drops strong { font-family: var(--display); font-weight: 400; text-transform: uppercase; font-size: 1rem; }
+.drops address { font-style: normal; color: var(--on-band-soft); }
+.min .where { color: var(--on-band); font-weight: 700; }
+.volunteer { margin-top: 28px; background: var(--sun); color: var(--ink); padding: 26px 28px; display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 10px 32px; align-items: center; }
+.volunteer h3 { font-family: var(--tall); font-weight: 400; font-size: clamp(1.75rem, 4vw, 2.5rem); line-height: 1; text-transform: uppercase; }
+.volunteer p { color: var(--ink); max-width: 62ch; }
+.volunteer a:not(.btn) { color: var(--ink); font-weight: 700; }
+.volunteer .actions { grid-column: 2; margin-top: 4px; }
+.volunteer .btn { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+.volunteer .btn.quiet { background: transparent; color: var(--ink); border-color: var(--ink); }
+@media (max-width: 760px) { .min-grid, .food { grid-template-columns: minmax(0, 1fr); } .volunteer { grid-template-columns: minmax(0, 1fr); } .volunteer .actions { grid-column: 1; } }
+@media (max-width: 400px) { .items { grid-template-columns: minmax(0, 1fr); } }
+
+/* Gallery */
+.gallery { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(20px, 3.5vw, 40px); }
+@media (max-width: 520px) { .gallery { grid-template-columns: minmax(0, 1fr); } }
+.gallery.single { grid-template-columns: minmax(0, 520px); }
+.tile { display: block; width: 100%; padding: 0; margin: 0; border: 3px solid var(--edge); background: var(--card); cursor: zoom-in; aspect-ratio: 1 / 1; max-width: 100%; overflow: hidden; }
+.tile img { width: 100%; height: 100%; object-fit: cover; }
+.tile:hover, .tile:focus-visible { box-shadow: 8px 8px 0 var(--sun); }
+html:not(.js) .tile { cursor: default; }
+dialog.lightbox { border: 0; padding: 0; background: var(--band); color: var(--on-band); --ring: var(--sun); max-width: min(94vw, 1040px); max-height: 94vh; overflow: auto; }
+dialog.lightbox::backdrop { background: rgba(8, 8, 7, .86); }
+.lb-bar { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 10px 10px 10px 18px; position: sticky; top: 0; background: var(--band); }
+.lb-bar p { font-weight: 700; font-size: .9375rem; min-width: 0; }
+.lb-btns { display: flex; gap: 8px; flex: none; }
+.lb-btns button { min-width: 44px; min-height: 44px; padding: 0 14px; background: var(--sun); color: var(--on-sun); border: 0; cursor: pointer; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; font-size: .8125rem; }
+.lightbox img { width: 100%; max-height: calc(94vh - 70px); object-fit: contain; }
+
+/* Visit */
+.visit { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); gap: clamp(32px, 5vw, 64px); align-items: start; }
+.times { background: var(--card); border: 3px solid var(--edge); box-shadow: 10px 10px 0 var(--sun); }
+.times h3 { background: var(--band); color: var(--sun); font-family: var(--tall); font-weight: 400; font-size: 2rem; text-transform: uppercase; padding: 12px 24px; letter-spacing: .01em; }
+.times dl { padding: 8px 24px 18px; }
+.times .row { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 4px 16px; align-items: baseline; padding-block: 16px; }
+.times .row + .row { border-top: 1px solid var(--line); }
+.times dt { font-weight: 700; }
+.times dd.t { font-family: var(--tall); font-size: 1.75rem; line-height: 1; font-variant-numeric: tabular-nums; }
+.times dd.w { grid-column: 1 / -1; color: var(--ink-soft); font-size: .9375rem; }
+.faq { display: grid; gap: 26px; }
+.faq h3 { font-family: var(--display); font-weight: 400; font-size: 1.1875rem; text-transform: uppercase; margin-bottom: 6px; }
+.faq p { color: var(--ink-soft); max-width: 60ch; }
+.meet { display: grid; gap: 12px; color: var(--ink-soft); max-width: 60ch; }
+.meet li { padding-left: 14px; border-left: 4px solid var(--sun); }
+.meet b { display: block; color: var(--ink); }
+.expect { margin-top: clamp(40px, 6vw, 72px); padding-top: clamp(28px, 4vw, 44px); border-top: 3px solid var(--edge); }
+.expect h3 { font-family: var(--display); font-weight: 400; font-size: clamp(1.5rem, 3.4vw, 2.25rem); text-transform: uppercase; letter-spacing: -.01em; margin-bottom: 22px; }
+.expect ul { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px 40px; }
+.expect li { padding-left: 16px; border-left: 4px solid var(--sun); color: var(--ink-soft); max-width: 58ch; }
+.expect li b { display: block; font-family: var(--display); font-weight: 400; text-transform: uppercase; font-size: 1.0625rem; color: var(--ink); margin-bottom: 4px; }
+@media (max-width: 720px) { .expect ul { grid-template-columns: minmax(0, 1fr); } }
+@media (max-width: 820px) { .visit { grid-template-columns: minmax(0, 1fr); } }
+@media (max-width: 480px) { .times { box-shadow: 6px 6px 0 var(--sun); } }
+
+/* Footer */
+.map-h { margin-top: 44px; }
+.foot-map { position: relative; height: clamp(240px, 32vw, 340px); margin-top: 0; border: 3px solid var(--sun); background:
+  linear-gradient(var(--band-2) 2px, transparent 2px) 0 0 / 100% 56px,
+  linear-gradient(90deg, var(--band-2) 2px, transparent 2px) 0 0 / 72px 100%, var(--band); overflow: hidden; }
+.foot-map iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+.map-link { position: absolute; inset: 0; display: grid; place-items: center; text-decoration: none; outline-offset: -8px; }
+.map-card { display: flex; align-items: center; gap: 14px; background: var(--sun); color: var(--on-sun); padding: 12px 20px 12px 14px; border: 3px solid var(--on-sun); box-shadow: 6px 6px 0 var(--on-sun); max-width: calc(100% - 32px); }
+.map-card svg { width: 34px; height: 34px; flex: none; fill: none; stroke: currentColor; stroke-width: 2; stroke-linejoin: round; }
+.map-card > span { display: grid; line-height: 1.25; min-width: 0; }
+.map-card b { font-family: var(--display); font-weight: 400; text-transform: uppercase; overflow-wrap: anywhere; }
+.map-card i { font-style: normal; font-size: .8125rem; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; text-decoration: underline; text-underline-offset: 3px; }
+.foot-map.live .map-link { inset: auto auto 14px 14px; display: block; max-width: calc(100% - 28px); outline-offset: 3px; }
+.foot-map.live .map-card { max-width: 100%; }
+.foot-map.live .map-card { padding: 8px 14px 8px 10px; box-shadow: 4px 4px 0 var(--on-sun); }
+.foot-map.live .map-card svg { width: 26px; height: 26px; }
+@media (max-width: 600px) {
+  .foot-map { height: 320px; }
+  .map-card { gap: 10px; padding: 8px 12px 8px 10px; }
+  .map-card b { font-size: .8125rem; line-height: 1.25; }
+  .map-card i { font-size: .6875rem; letter-spacing: .06em; line-height: 1.4; margin-top: 2px; }
+  .foot-map.live .map-card svg { width: 22px; height: 22px; }
+}
+.site-footer { border-top: 8px solid var(--sun); padding-block: 56px 28px; }
+.foot-grid { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr) minmax(0, 1fr); gap: 40px; }
+.foot-brand { display: grid; gap: 18px; justify-items: start; align-content: start; }
+.foot-brand .lockup { width: min(260px, 100%); }
+.foot-brand p { font-family: var(--marker); font-size: 1.125rem; color: var(--sun); }
+.site-footer h2 { font-size: .8125rem; font-weight: 700; text-transform: uppercase; letter-spacing: .14em; color: var(--sun); margin-bottom: 14px; }
+.contact { display: grid; gap: 14px; }
+.contact dt { font-size: .8125rem; text-transform: uppercase; letter-spacing: .1em; color: var(--on-band-soft); }
+.contact dd { font-weight: 600; overflow-wrap: anywhere; user-select: all; }
+.foot-links { display: grid; gap: 2px; }
+.foot-links a { font-weight: 600; display: inline-block; padding-block: 5px; }
+.contact a, .foot-base a { display: inline-block; padding-block: 4px; }
+.contact .note { font-weight: 400; font-size: .875rem; color: var(--on-band-soft); user-select: auto; margin-top: 4px; }
+.foot-base { margin-top: 44px; padding-top: 20px; border-top: 1px solid var(--band-2); display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; font-size: .875rem; color: var(--on-band-soft); }
+@media (max-width: 820px) { .foot-grid { grid-template-columns: minmax(0, 1fr); gap: 32px; } }
+
+
+
+/* ===== Grace on Wheels page ===== */
+.gw-hero { padding-block: clamp(32px, 6vw, 72px) clamp(40px, 6vw, 72px); }
+.gw-hero-grid { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: clamp(28px, 5vw, 64px); align-items: center; }
+.eyebrow { font-size: .875rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-soft); }
+.gw-hero h1 { margin-top: 12px; font-family: var(--display); font-weight: 400; text-transform: uppercase; font-size: clamp(2.25rem, 6vw, 4rem); line-height: 1; letter-spacing: -.02em; text-wrap: balance; }
+.gw-hero h1 .hl { display: inline-block; background: var(--sun); padding: 0 .18em .06em; transform: rotate(-2deg); }
+.gw-hero .lede { margin-top: 20px; }
+.ln { display: block; text-wrap: balance; }
+.gw-points { margin-top: 24px; display: grid; gap: 10px; }
+.gw-points li { padding-left: 16px; border-left: 5px solid var(--sun); color: var(--ink-soft); }
+.gw-points b { display: block; color: var(--ink); font-family: var(--display); font-weight: 400; text-transform: uppercase; font-size: 1.0625rem; }
+.gw-art { width: 100%; max-width: 440px; justify-self: end; border: 3px solid var(--edge); box-shadow: 10px 10px 0 var(--sun); }
+.gw-steps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px; }
+.gw-steps li { background: var(--card); border: 3px solid var(--edge); padding: 22px; display: grid; gap: 8px; align-content: start; }
+.gw-steps .num { font-family: var(--tall); font-size: 2.25rem; background: var(--sun); width: 52px; height: 52px; display: grid; place-items: center; transform: rotate(-3deg); }
+.gw-steps h3 { font-family: var(--display); font-weight: 400; text-transform: uppercase; font-size: 1.1875rem; }
+.gw-steps p { color: var(--ink-soft); }
+.gw-form-wrap { max-width: 820px; }
+.form, .f-done { display: grid; gap: 22px; background: var(--card); border: 3px solid var(--edge); padding: clamp(18px, 3vw, 32px); box-shadow: 10px 10px 0 var(--sun); }
+.f-done h3 { font-family: var(--display); font-weight: 400; text-transform: uppercase; font-size: 1.75rem; }
+.f-group { border: 0; padding: 0; margin: 0; display: grid; gap: 16px; min-width: 0; }
+.f-group > legend { font-family: var(--display); font-weight: 400; text-transform: uppercase; font-size: 1.125rem; margin-bottom: 8px; }
+.f-group + .f-group { border-top: 2px solid var(--line); padding-top: 20px; }
+.f-row { display: grid; gap: 6px; font-weight: 700; border: 0; margin: 0; padding: 0; min-width: 0; }
+.sub-leg { font-weight: 700; padding: 0; margin-bottom: 8px; }
+.f-row.two, .f-row.three { display: grid; gap: 16px; }
+.f-row.two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.f-row.three { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.f-row label:not(.choice), label.f-row { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px; font-weight: 700; }
+.f-row label:not(.choice) > input, .f-row label > select, label.f-row > input, label.f-row > textarea { flex: 1 1 100%; }
+.req, .opt { font-weight: 400; color: var(--ink-soft); font-size: .875rem; }
+.form input:not([type="radio"]):not([type="checkbox"]), .form textarea, .form select { width: 100%; font: inherit; font-weight: 400; color: var(--ink); background: #fff; border: 3px solid var(--edge); border-radius: 0; padding: 10px 12px; min-height: 50px; }
+.form [aria-invalid="true"] { border-color: #b3261e !important; box-shadow: 0 0 0 3px rgba(179, 38, 30, .25); }
+.choices { display: flex; flex-wrap: wrap; gap: 10px; }
+.choice { display: inline-flex; align-items: center; gap: 10px; min-height: 48px; padding: 8px 14px; border: 2px solid var(--edge); background: #fff; font-weight: 600; cursor: pointer; }
+.choice { flex-direction: row; flex-wrap: nowrap; white-space: nowrap; }
+.choice input { display: inline-block; flex: none; width: 20px; height: 20px; margin: 0; accent-color: var(--ink); }
+.choice span { display: inline; }
+.choice:has(input:checked) { background: var(--sun); }
+.choices.bad .choice { border-color: #b3261e; }
+.hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+.f-error { background: #fbe9e7; border-left: 6px solid #b3261e; padding: 10px 14px; font-weight: 700; }
+.form .btn { justify-self: start; }
+.fine { color: var(--ink-soft); font-size: .9375rem; }
+.gw-why { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(28px, 5vw, 64px); align-items: center; }
+.gw-why h2 { font-family: var(--display); font-weight: 400; text-transform: uppercase; font-size: clamp(1.75rem, 4vw, 2.75rem); line-height: 1.02; margin-bottom: 14px; }
+.gw-why p { color: var(--on-band-soft); max-width: 52ch; }
+.gw-impact { display: grid; gap: 12px; }
+.gw-impact li { border-left: 6px solid var(--sun); padding: 12px 16px; background: var(--band-2); color: var(--on-band-soft); }
+.gw-impact b { display: block; color: var(--on-band); font-family: var(--display); font-weight: 400; text-transform: uppercase; }
+.qa { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px 20px; }
+.qa details { background: var(--card); border: 3px solid var(--edge); }
+.qa summary { list-style: none; cursor: pointer; display: flex; align-items: center; gap: 14px; min-height: 56px; padding: 12px 16px; font-family: var(--display); text-transform: uppercase; font-size: 1rem; line-height: 1.2; }
+.qa summary::-webkit-details-marker { display: none; }
+.qa summary::before { content: "+"; flex: none; width: 28px; height: 28px; display: grid; place-items: center; background: var(--sun); font-family: var(--body); font-weight: 700; font-size: 1.25rem; }
+.qa details[open] summary { background: var(--band); color: var(--on-band); }
+.qa details[open] summary::before { content: "–"; color: var(--on-sun); }
+.qa .a { padding: 14px 18px 18px; color: var(--ink-soft); }
+.section-head a, .qa a { font-weight: 700; color: var(--ink); }
+.tbc { display: inline-block; font-family: var(--marker); font-size: .8125rem; background: var(--sun); padding: 0 8px; margin-right: 6px; transform: rotate(-2deg); }
+.coming { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 20px 40px; }
+.coming h2 { font-family: var(--display); font-weight: 400; text-transform: uppercase; font-size: clamp(1.5rem, 3.6vw, 2.25rem); }
+.coming p { color: var(--ink-soft); margin-top: 6px; }
+.coming .actions { margin-top: 0; }
+@media (max-width: 860px) {
+  .gw-hero-grid, .gw-why { grid-template-columns: minmax(0, 1fr); }
+  .gw-art { justify-self: start; max-width: 320px; box-shadow: 6px 6px 0 var(--sun); order: -1; }
+  .gw-steps { grid-template-columns: minmax(0, 1fr); }
+  .qa { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 560px) {
+  .f-row.two { grid-template-columns: minmax(0, 1fr); }
+  .f-row.three { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+  .f-row.three label:first-child { grid-column: 1 / -1; }
+  .form { box-shadow: 6px 6px 0 var(--sun); }
+  .gw-hero .actions .btn { flex: 1 1 100%; }
+  .gw-art { display: none; }
+}
+
+
+/* ===== Rebuild: hero causes, steps strip, two-part form, reassurance sidebar, sticky bar ===== */
+.gw-causes { background: var(--band); color: var(--on-band); padding: 26px 28px 28px; box-shadow: 10px 10px 0 var(--sun); }
+.gw-causes .label { color: var(--sun); }
+.gw-causes ul { margin-top: 12px; display: grid; gap: 4px; }
+.gw-causes li { font-family: var(--display); text-transform: uppercase; font-size: clamp(1.0625rem, 1.8vw, 1.375rem); line-height: 1.25; padding: 8px 0 8px 18px; border-left: 5px solid var(--sun); }
+.gw-strip { display: flex; flex-wrap: wrap; gap: 8px 22px; margin-bottom: 22px; font-weight: 700; }
+.gw-strip li { display: flex; align-items: center; gap: 10px; color: var(--ink-soft); }
+.gw-strip span { width: 32px; height: 32px; display: grid; place-items: center; border: 2px solid var(--ink); font-family: var(--tall); font-size: 1.125rem; color: var(--ink); }
+.gw-strip li.on span { background: var(--sun); }
+.gw-strip li + li::before { content: ""; width: 22px; height: 2px; background: var(--line); margin-right: 4px; }
+.gw-form-grid { display: grid; grid-template-columns: minmax(0, 1.7fr) minmax(0, 1fr); gap: clamp(24px, 4vw, 48px); align-items: start; }
+.gw-progress { font-weight: 700; font-size: .8125rem; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-soft); }
+.choices.grid3, .choices.grid2 { display: grid; gap: 10px; }
+.choices.grid3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.choices.grid2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.choices.grid3 .choice, .choices.grid2 .choice { white-space: normal; }
+.gw-summary { background: var(--paper-2); padding: 10px 14px; font-weight: 700; }
+.gw-summary:empty { display: none; }
+.gw-send { display: flex; flex-wrap: wrap; align-items: center; gap: 16px; }
+.linkbtn { background: none; border: 0; padding: 8px 4px; min-height: 44px; font-weight: 700; text-decoration: underline; text-decoration-color: var(--sun); text-decoration-thickness: 3px; text-underline-offset: 4px; cursor: pointer; }
+.gw-aside { display: grid; gap: 18px; position: sticky; top: calc(var(--header-h) + 20px); }
+.gw-assure { display: grid; gap: 14px; }
+.gw-assure li { padding-left: 16px; border-left: 5px solid var(--sun); color: var(--ink-soft); }
+.gw-assure b { display: block; color: var(--ink); font-family: var(--display); font-weight: 400; text-transform: uppercase; font-size: 1.0625rem; }
+.gw-talk { background: var(--band); color: var(--on-band); padding: 18px 20px; display: grid; gap: 2px; }
+.gw-talk .label { color: var(--sun); margin-bottom: 4px; }
+.gw-talk a { font-weight: 700; display: inline-flex; min-height: 40px; align-items: center; overflow-wrap: anywhere; }
+.gw-sticky { position: fixed; left: 0; right: 0; bottom: 0; z-index: 40; display: flex; gap: 10px; padding: 10px 16px calc(10px + env(safe-area-inset-bottom)); background: var(--paper); border-top: 3px solid var(--ink); }
+.gw-sticky .btn { flex: 1 1 auto; min-height: 48px; box-shadow: none; }
+.gw-sticky .btn.quiet { flex: 0 0 auto; }
+@media (min-width: 861px) { .gw-sticky { display: none !important; } }
+@media (max-width: 860px) {
+  .gw-form-grid { grid-template-columns: minmax(0, 1fr); }
+  .gw-aside { position: static; order: -1; }
+  .gw-assure { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px 16px; font-size: .9375rem; }
+  .gw-talk { display: none; }
+  .gw-causes { box-shadow: 6px 6px 0 var(--sun); }
+}
+@media (max-width: 480px) {
+  .choices.grid3 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .gw-assure { grid-template-columns: minmax(0, 1fr); }
+  .gw-strip li + li::before { display: none; }
+  .gw-strip { gap: 8px 14px; font-size: .875rem; }
+  .gw-hero .actions .btn { flex: 1 1 100%; }
+}
+.gw-quick { margin-top: 18px; font-weight: 700; font-size: .9375rem; color: var(--ink-soft); }
+
+/* WE'LL TAKE YOUR JUNK band */
+.gw-junk { background: var(--sun); color: var(--on-sun); border-block: 6px solid var(--ink); padding-block: clamp(40px, 6vw, 72px); text-align: center; }
+.gw-junk h2 { font-family: var(--tall); font-weight: 400; text-transform: uppercase; font-size: clamp(3.25rem, 10vw, 7.5rem); line-height: .92; letter-spacing: .01em; }
+.gw-junk h2 span { display: inline-block; background: var(--ink); color: var(--sun); padding: 0 .16em .04em; transform: rotate(-2deg); }
+.gw-kinds { margin-top: 18px; font-family: var(--display); text-transform: uppercase; font-size: clamp(1rem, 2.4vw, 1.5rem); letter-spacing: .02em; text-wrap: balance; }
+.gw-promise { margin: 26px auto 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; max-width: 980px; }
+.gw-promise li { background: var(--ink); color: var(--on-band); font-family: var(--tall); text-transform: uppercase; font-size: clamp(1.25rem, 2.6vw, 1.875rem); line-height: 1.1; padding: 16px 10px; }
+.gw-junk .btn { margin-top: 28px; background: var(--ink); color: var(--sun); border-color: var(--ink); box-shadow: 5px 5px 0 var(--paper); }
+@media (max-width: 700px) { .gw-promise { grid-template-columns: repeat(2, minmax(0, 1fr)); } .gw-junk .btn { width: 100%; } }
+
+/* merged hero */
+.gw-junk .eyebrow { color: var(--on-sun); opacity: .8; }
+.gw-junk h1 { margin-top: 10px; font-family: var(--tall); font-weight: 400; text-transform: uppercase; font-size: clamp(3.25rem, 10vw, 7.5rem); line-height: .92; letter-spacing: .01em; }
+.gw-junk h1 span { display: inline-block; background: var(--ink); color: var(--sun); padding: 0 .16em .04em; transform: rotate(-2deg); }
+.gw-purpose { margin-top: 14px; font-family: var(--serif); font-style: italic; font-size: clamp(1.25rem, 2.6vw, 1.75rem); }
+.gw-junk .actions { justify-content: center; margin-top: 28px; }
+.gw-junk .actions .btn { background: var(--ink); color: var(--sun); border-color: var(--ink); box-shadow: 5px 5px 0 var(--paper); margin-top: 0; width: auto; }
+.gw-junk .actions .btn.quiet { background: transparent; color: var(--ink); box-shadow: none; }
+.gw-why-l { color: var(--sun); margin-bottom: 10px; }
+.gw-why h2 .hl { display: inline-block; background: var(--sun); color: var(--on-sun); padding: 0 .14em; transform: rotate(-2deg); }
+@media (max-width: 700px) { .gw-junk .actions .btn { flex: 1 1 100%; } .gw-junk { padding-top: 32px; } }
+
+/* ===== Color + type pass ===== */
+/* Bigger, darker small text for every age group */
+body { font-size: 1.125rem; }
+.fine, .req, .opt, .gw-progress, .gw-strip, .gw-assure li, .qa .a, .section-head p, .gw-impact span { font-size: 1.0625rem; }
+.req, .opt { font-size: .9375rem; color: #3a352f; }
+.gw-progress { font-size: .875rem; }
+:root { --ink-soft: #3a352f; }
+/* Sentence case for longer headings and questions */
+.qa summary { text-transform: none; font-family: var(--body); font-weight: 700; font-size: 1.0625rem; letter-spacing: 0; }
+.gw-assure b { text-transform: none; font-family: var(--body); font-weight: 700; font-size: 1.125rem; }
+/* Hero: purpose in the brand's handwritten face; checklist instead of button-like tiles */
+.gw-purpose { font-family: var(--marker); font-style: normal; font-size: clamp(1.375rem, 3vw, 2rem); margin-top: 16px; }
+.gw-promise { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px 30px; max-width: none; margin-top: 22px; }
+.gw-promise li { background: none; color: var(--on-sun); padding: 0; font-family: var(--display); font-size: clamp(1.0625rem, 2vw, 1.375rem); text-transform: uppercase; display: flex; align-items: center; gap: 10px; }
+.gw-promise li::before { content: ""; width: 26px; height: 26px; flex: none; border-radius: 50%; background: var(--ink) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23ffc324' stroke-width='3.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12.5l4.5 4.5L19 7.5'/%3E%3C/svg%3E") center / 17px no-repeat; }
+.gw-photos { margin: 36px auto 0; max-width: 1080px; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; }
+.gw-photos li { position: relative; border: 3px solid var(--ink); background: var(--ink); }
+.gw-photos img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; display: block; }
+.gw-photos span { position: absolute; left: 0; bottom: 0; background: var(--ink); color: var(--sun); font-family: var(--display); text-transform: uppercase; font-size: .9375rem; padding: 4px 10px; }
+.gw-photos li:last-child span { background: var(--paper); color: var(--ink); font-family: var(--marker); text-transform: none; font-size: 1.125rem; }
+/* Where your gift goes: warm cream with icons, not a black band */
+.gw-gives { background: var(--paper); }
+.gw-gives .label { color: var(--ink-soft); }
+.gw-gives h2 .hl { display: inline-block; background: var(--sun); padding: 0 .14em; transform: rotate(-2deg); }
+.gw-gives .gw-impact { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 18px; }
+.gw-gives .gw-impact li { background: var(--card); border: 3px solid var(--edge); border-left-width: 3px; padding: 20px 18px 22px; color: var(--ink); display: grid; gap: 8px; align-content: start; }
+.gw-gives .gw-impact b { font-family: var(--display); font-weight: 400; text-transform: none; font-size: 1.1875rem; line-height: 1.2; color: var(--ink); }
+.gw-gives .gw-impact span:not(.gw-ic) { color: var(--ink-soft); line-height: 1.45; }
+.gw-ic { width: 52px; height: 52px; border-radius: 50%; background: var(--sun); display: grid; place-items: center; margin-bottom: 4px; }
+.gw-ic svg { width: 28px; height: 28px; fill: none; stroke: var(--ink); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+@media (max-width: 1000px) { .gw-gives .gw-impact { grid-template-columns: repeat(2, minmax(0, 1fr)); } .gw-gives .gw-impact li:last-child { grid-column: 1 / -1; } }
+@media (max-width: 700px) {
+  .gw-photos { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+  .gw-promise { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); justify-items: start; gap: 12px 14px; max-width: 360px; margin-inline: auto; }
+  .gw-promise li { font-size: .9375rem; text-align: left; line-height: 1.15; }
+  .gw-promise li::before { width: 22px; height: 22px; background-size: 14px; }
+}
+@media (max-width: 480px) { .gw-gives .gw-impact { grid-template-columns: minmax(0, 1fr); } }
+
+/* BLACK HERO variant */
+.gw-junk { background: var(--band); color: var(--on-band); border-top: 0; border-bottom: 8px solid var(--sun); }
+.gw-junk .eyebrow { color: var(--sun); opacity: 1; }
+.gw-junk h1 { color: var(--on-band); }
+.gw-junk h1 span { background: var(--sun); color: var(--on-sun); }
+.gw-purpose { color: var(--sun); }
+.gw-kinds { color: var(--on-band); }
+.gw-promise li { color: var(--on-band); }
+.gw-promise li::before { background-color: var(--sun); background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23121110' stroke-width='3.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12.5l4.5 4.5L19 7.5'/%3E%3C/svg%3E"); }
+.gw-junk .actions .btn { background: var(--sun); color: var(--on-sun); border-color: var(--sun); box-shadow: none; }
+.gw-junk .actions .btn.quiet { background: transparent; color: var(--on-band); border-color: var(--on-band); }
+.gw-photos li { border-color: var(--on-band); }
+.gw-photos span { background: var(--sun); color: var(--on-sun); }
+</style>
 </head>
 <body>
+<script>document.documentElement.classList.add('js');</script>
 <a class="skip" href="#main">Skip to main content</a>
 
-<!-- ===== HEADER + MAIN NAVIGATION (the same as the home page; links go back to its sections) ===== -->
-<header class="site-header" id="top">
+<!-- ===== [2] HEADER + MAIN NAVIGATION ===== -->
+<header class="site-header">
   <div class="wrap">
     <a class="brand" href="/" aria-label="Grace Community Church, home">
       <span class="emblem" aria-hidden="true"></span>
@@ -55,122 +765,201 @@
           <a href="https://www.instagram.com/gracecommunityphilly/" target="_blank" rel="noopener" aria-label="Instagram (opens in a new tab)"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="2.5" width="19" height="19" rx="5"/><circle cx="12" cy="12" r="4.2"/><path d="M17.400 6.600h.01"/></svg></a>
           <a href="https://www.youtube.com/@GraceCommunityPhilly" target="_blank" rel="noopener" aria-label="YouTube (opens in a new tab)"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="4"/><path d="M10 9.200v5.600l5-2.800z"/></svg></a>
         </div><a class="btn quiet bs-cta" href="/#bible-study">Bible study</a></div></li>
-        <li class="give-li d-7"><a class="btn" href="/give">Give</a></li>
+        <li class="give-li d-7"><a class="btn" href="https://give.tithe.ly/?formId=fb740478-bf59-4165-99b2-cd8ca88a021e" target="_blank" rel="noopener">Give<span class="sr-only"> (opens in a new tab)</span></a></li>
       </ul>
     </nav>
   </div>
 </header>
 
-<!--
-  GRACE ON WHEELS (graceonwheels.html): vehicle donations
-    [1] Page heading
-    [2] What it is, and what we accept
-    [3] How it works: four steps
-    [4] The vehicle form #vehicle-form. Where it sends: SITE.formEndpoint in assets/site.js
-        (Google Apps Script → the "Vehicle donations" tab of the church's Google Sheet, plus an email to info@).
-    [5] Questions
--->
 <main id="main">
 
-<header class="page-hero">
+<!-- [A] HERO: the promise (yellow), then the purpose in one line, then the two ways to start -->
+<section class="gw-junk" aria-labelledby="gw-h">
   <div class="wrap">
     <p class="eyebrow">Project: Grace on Wheels</p>
-    <h1>Donate a car, truck or <span class="hl">van.</span></h1>
-    <p class="lede">Put a vehicle you no longer need to work for the ministry and our South Philly&nbsp;neighbors.</p>
-    <div class="actions" style="margin-top:8px">
-      <a class="btn" href="#vehicle">Tell us about your vehicle</a>
-      <a class="btn quiet" href="#how">How it works</a>
+    <h1 id="gw-h">We’ll take your <span>junk.</span></h1>
+    <p class="gw-purpose">and turn it into help for your&nbsp;neighbors.</p>
+    <p class="gw-kinds">Cars&nbsp;· Trucks&nbsp;· Vans&nbsp;· Buses&nbsp;· Semi&nbsp;trucks</p>
+    <ul class="gw-promise">
+      <li>Any condition</li>
+      <li>Running or not</li>
+      <li>Fast &amp; easy</li>
+      <li>Free towing</li>
+    </ul>
+    <div class="actions">
+      <a class="btn" href="#donate">Start your donation</a>
+      <a class="btn quiet" href="tel:+12154879022">Call (215)&nbsp;487-9022</a>
     </div>
-  </div>
-</header>
-
-<section class="section first-sec" aria-labelledby="what-h">
-  <div class="wrap contact-grid">
-    <div class="f-copy">
-      <p class="label">Vehicle donations</p>
-      <h2 id="what-h" class="bs-title">Your old vehicle, a new ministry</h2>
-      <p>Grace Community Church is a church on the move. A donated vehicle helps us carry food to families, bring neighbors to worship and get volunteers where they are&nbsp;needed.</p>
-      <p>Tell us about you and the vehicle in a short form, and someone from Grace will call you about next&nbsp;steps.</p>
-    </div>
-    <div class="side-card band">
-      <h3 class="label">We accept</h3>
-      <p>Cars, station wagons, SUVs, pickup trucks, vans and buses.</p>
-      <h3 class="label">Running or not</h3>
-      <p>Tell us the condition in the form, and we’ll let you know if we can take it.</p>
-      <h3 class="label">Your title</h3>
-      <p>Have it ready if you can. Not sure where it is? Tell us, and we’ll talk it&nbsp;through.</p>
-    </div>
+    <!-- Photo strip: swap in your own photos any time (images/gow-*.jpg, 4:3) -->
+    <ul class="gw-photos">
+      <li><img src="/images/gow-truck.jpg" width="640" height="480" alt="A white pickup truck" loading="lazy"><span>Trucks</span></li>
+      <li><img src="/images/gow-suv.jpg" width="900" height="675" alt="A red SUV with worn paint" loading="lazy"><span>SUVs</span></li>
+      <li><img src="/images/gow-sedan.jpg" width="853" height="640" alt="A green sedan" loading="lazy"><span>Sedans</span></li>
+      <li><img src="/images/gow-junk.jpg" width="900" height="675" alt="An old white car sitting in tall grass and weeds" loading="lazy"><span>Even this one</span></li>
+    </ul>
   </div>
 </section>
 
-<section class="section tint" id="how" aria-labelledby="how-h">
+<!-- [B] THE FORM: steps strip on top, two short parts, reassurances beside it.
+     Where it sends: GOW.formAction in the script at the bottom ("" = opens the visitor's email app, to info@). -->
+<section class="section tint" id="donate" aria-labelledby="donate-h">
   <div class="wrap">
     <div class="section-head">
-      <h2 id="how-h">How it works</h2>
-      <p>Four steps from your driveway to the ministry.</p>
+      <h2 id="donate-h">Start your donation</h2>
+      <p><span class="ln">It takes about two minutes. No paperwork&nbsp;yet.</span> <span class="ln">We’ll call you within two business&nbsp;days.</span></p>
     </div>
-    <ol class="steps">
-      <li><b>Tell us about it</b><p>Fill in the short form below with your details and the vehicle’s.</p></li>
-      <li><b>We call you</b><p>Someone from Grace calls to talk through the vehicle and answer your questions.</p></li>
-      <li><b>Hand it over</b><p>We agree on a day to sign over the title and pick up or drop off the vehicle.</p></li>
-      <li><b>Get your receipt</b><p>We send a written receipt for your records.</p></li>
+    <ol class="gw-strip" aria-label="How it works">
+      <li class="on"><span>1</span>Tell us about it</li>
+      <li><span>2</span>We call you</li>
+      <li><span>3</span>We pick it up</li>
     </ol>
-  </div>
-</section>
-
-<section class="section" id="vehicle" aria-labelledby="vehicle-h">
-  <div class="wrap">
-    <div class="section-head">
-      <h2 id="vehicle-h">Tell us about your vehicle</h2>
-      <p>It takes about three minutes. We’ll call you about next steps.</p>
-    </div>
-    <div class="wheels-form">
+    <div class="gw-form-grid">
       <div>
-        <form class="form" id="vehicle-form" novalidate data-form="vehicle" data-done="v-done" data-subject="Vehicle donation (Project: Grace on Wheels)">
-          <fieldset class="f-group">
-            <legend>Your information</legend>
-            <div class="f-row two"><label>First name <span class="req">(required)</span><input type="text" id="v-first" name="first_name" data-label="First name" autocomplete="given-name" required></label><label>Last name <span class="req">(required)</span><input type="text" id="v-last" name="last_name" data-label="Last name" autocomplete="family-name" required></label></div>
-            <div class="f-row two"><label>Email <span class="req">(required)</span><input type="email" id="v-email" name="email" data-label="Email" autocomplete="email" required></label><label>Phone number <span class="req">(required)</span><input type="tel" id="v-phone" name="phone" data-label="Phone" autocomplete="tel" required></label></div>
-            <div class="f-row"><label>Street address <span class="req">(required)</span><input type="text" id="v-street" name="street" data-label="Street address" autocomplete="street-address" required></label></div>
-            <div class="f-row three addr"><label>City <span class="req">(required)</span><input type="text" id="v-city" name="city" data-label="City" autocomplete="address-level2" required></label><label>State <span class="req">(required)</span><input type="text" id="v-state" name="state" data-label="State" autocomplete="address-level1" required value="PA" maxlength="2"></label><label>ZIP code <span class="req">(required)</span><input type="text" id="v-zip" name="zip" data-label="ZIP code" autocomplete="postal-code" required inputmode="numeric" maxlength="10"></label></div>
+        <form class="form" id="gw-form" novalidate>
+          <p class="gw-progress" id="gw-progress" aria-live="polite">Part 1 of 2: Your vehicle</p>
+
+          <fieldset class="f-group" id="part1">
+            <legend class="sr-only">Your vehicle</legend>
+            <fieldset class="f-row"><legend class="sub-leg">Type <span class="req">(required)</span></legend>
+              <div class="choices grid3">
+                <label class="choice"><input type="radio" name="type" value="Car" required><span>Car</span></label>
+                <label class="choice"><input type="radio" name="type" value="SUV"><span>SUV</span></label>
+                <label class="choice"><input type="radio" name="type" value="Pickup truck"><span>Pickup</span></label>
+                <label class="choice"><input type="radio" name="type" value="Van or minivan"><span>Van</span></label>
+                <label class="choice"><input type="radio" name="type" value="Bus"><span>Bus</span></label>
+                <label class="choice"><input type="radio" name="type" value="Semi truck"><span>Semi truck</span></label>
+                <label class="choice"><input type="radio" name="type" value="Other"><span>Other</span></label>
+              </div>
+            </fieldset>
+            <div class="f-row three">
+              <label>Year <span class="req">(required)</span><input name="year" inputmode="numeric" maxlength="4" placeholder="2014" required></label>
+              <label>Make <span class="req">(required)</span><input name="make" placeholder="Honda" required></label>
+              <label>Model <span class="req">(required)</span><input name="model" placeholder="Odyssey" required></label>
+            </div>
+            <fieldset class="f-row"><legend class="sub-leg">Does it run? <span class="req">(required)</span></legend>
+              <div class="choices grid3">
+                <label class="choice"><input type="radio" name="runs" value="Yes" required><span>Yes</span></label>
+                <label class="choice"><input type="radio" name="runs" value="With a jump"><span>With a jump</span></label>
+                <label class="choice"><input type="radio" name="runs" value="No"><span>No</span></label>
+              </div>
+            </fieldset>
+            <fieldset class="f-row"><legend class="sub-leg">Do you have the title? <span class="req">(required)</span></legend>
+              <div class="choices grid2">
+                <label class="choice"><input type="radio" name="title" value="Yes" required><span>Yes</span></label>
+                <label class="choice"><input type="radio" name="title" value="No or not sure"><span>No, or not sure</span></label>
+              </div>
+            </fieldset>
+            <label class="f-row">Mileage, about <span class="opt">(optional)</span><input name="miles" inputmode="numeric" placeholder="120,000"></label>
+            <button class="btn" type="button" id="gw-next">Next: how to reach you</button>
           </fieldset>
-          <fieldset class="f-group">
-            <legend>The vehicle</legend>
-            <div class="f-row three"><label>Year <span class="req">(required)</span><input type="text" id="v-year" name="year" data-label="Year" required inputmode="numeric" maxlength="4" placeholder="2015"></label><label>Make <span class="req">(required)</span><input type="text" id="v-make" name="make" data-label="Make" required placeholder="Toyota"></label><label>Model <span class="req">(required)</span><input type="text" id="v-model" name="model" data-label="Model" required placeholder="Sienna"></label></div>
-            <div class="f-row two"><label>Miles (about) <span class="req">(required)</span><input type="text" id="v-miles" name="miles" data-label="Miles" required inputmode="numeric" placeholder="85,000"></label><label>Type <span class="req">(required)</span><select id="v-type" name="type" data-label="Type" required><option value="">Choose one</option><option>Sedan</option><option>Station wagon</option><option>SUV</option><option>Pickup truck</option><option>Van</option><option>Bus</option><option>Other</option></select></label></div>
-            <div class="f-row two"><label>Condition <span class="req">(required)</span><select id="v-condition" name="condition" data-label="Condition" required><option value="">Choose one</option><option>Runs and drives</option><option>Runs, but needs work</option><option>Does not run</option></select></label><label>Do you have the title? <span class="req">(required)</span><select id="v-title" name="title" data-label="Title" required><option value="">Choose one</option><option>Yes, in my name</option><option>Yes, but not in my name</option><option>No</option><option>Not sure</option></select></label></div>
-            <div class="f-row two"><label>VIN <span class="opt">(optional)</span><input type="text" id="v-vin" name="vin" data-label="VIN" maxlength="17"></label><label>Color <span class="opt">(optional)</span><input type="text" id="v-color" name="color" data-label="Color"></label></div>
-            <label class="f-row">Anything else we should know? <span class="opt">(optional)</span><textarea id="v-notes" name="notes" rows="3" data-label="Notes" placeholder="Where the vehicle is, keys, recent repairs…"></textarea></label>
+
+          <fieldset class="f-group" id="part2" hidden>
+            <legend class="sr-only">How to reach you</legend>
+            <p class="gw-summary" id="gw-summary"></p>
+            <div class="f-row two">
+              <label>First name <span class="req">(required)</span><input name="first_name" autocomplete="given-name" required></label>
+              <label>Last name <span class="req">(required)</span><input name="last_name" autocomplete="family-name" required></label>
+            </div>
+            <div class="f-row two">
+              <label>Phone <span class="req">(required)</span><input type="tel" name="phone" autocomplete="tel" required></label>
+              <label>Email <span class="opt">(optional)</span><input type="email" name="email" autocomplete="email"></label>
+            </div>
+            <div class="f-row two">
+              <label>ZIP code where the vehicle is <span class="req">(required)</span><input name="zip" inputmode="numeric" maxlength="5" autocomplete="postal-code" required></label>
+              <label>Best time to call <span class="opt">(optional)</span>
+                <select name="call_time"><option value="">Any time</option><option>Mornings</option><option>Afternoons</option><option>Evenings</option></select>
+              </label>
+            </div>
+            <label class="f-row">Anything else we should know? <span class="opt">(optional)</span><textarea name="notes" rows="3" placeholder="Where it’s parked, keys, recent repairs…"></textarea></label>
+            <div class="hp" aria-hidden="true"><label>Leave this empty <input name="website" tabindex="-1" autocomplete="off"></label></div>
+            <div class="gw-send">
+              <button class="btn" type="submit">Send my vehicle details</button>
+              <button class="linkbtn" type="button" id="gw-back">Back</button>
+            </div>
+            <p class="fine">Tax-deductible. You’ll get a written receipt. By sending, you’re OK with Grace calling or emailing you about this donation; we never share your&nbsp;information.</p>
           </fieldset>
-          <label class="choice consent"><input type="checkbox" id="v-consent" name="consent" value="yes" data-label="OK to contact" required><span>It’s OK for Grace Community Church to contact me about this donation. <span class="req">(required)</span></span></label>
-          <div class="hp" aria-hidden="true"><label>Leave this empty <input name="website" tabindex="-1" autocomplete="off"></label></div>
-          <p class="f-error" role="alert" hidden></p>
-          <button class="btn" type="submit">Send vehicle details</button>
-          <p class="fine">We only use this to arrange your donation, and we never share your information.</p>
+          <p class="f-error" id="gw-error" role="alert" hidden></p>
         </form>
-        <div class="f-done" id="v-done" tabindex="-1" hidden>
-          <h2>Thank you!</h2>
-          <p class="done-msg">We got your vehicle details and will call you soon about next steps.</p>
-          <a class="btn quiet" href="/give">See other ways to give</a>
+        <div class="f-done" id="gw-done" tabindex="-1" hidden>
+          <h3>Thank you!</h3>
+          <p id="gw-done-msg">We got your vehicle details and will call you within two business days to schedule the pickup.</p>
         </div>
       </div>
-      <aside class="contact-side">
-        <div class="side-card band">
-          <h2 class="label">Questions first?</h2>
-          <p>Call <a href="tel:+12154879022">(215)&nbsp;487-9022</a> or email <a href="mailto:info@gracecommunityphilly.org?subject=Grace%20on%20Wheels">info@gracecommunityphilly.org</a>.</p>
-        </div>
-        <div class="side-card">
-          <h2 class="label">About taxes</h2>
-          <p>Grace Community Church is a registered 501(c)(3) organization. How much you can deduct for a vehicle depends on what happens to it and on IRS rules, so check with a tax advisor.</p>
+
+      <!-- Reassurances: the questions that stop people mid-form, answered right beside it -->
+      <aside class="gw-aside" aria-label="Good to know">
+        <ul class="gw-assure">
+          <li><b>We’ll help with the title</b> Lost it? We’ll walk you through getting a&nbsp;replacement.</li>
+          <li><b>Keep your plate</b> In Pennsylvania it stays with&nbsp;you.</li>
+          <li><b>Tax-deductible</b> Grace is a 501(c)(3). You’ll get a written&nbsp;receipt.</li>
+        </ul>
+        <div class="gw-talk">
+          <p class="label">Rather talk it through?</p>
+          <a href="tel:+12154879022">(215)&nbsp;487-9022</a>
+          <a href="mailto:info@gracecommunityphilly.org?subject=Grace%20on%20Wheels">info@gracecommunityphilly.org</a>
         </div>
       </aside>
     </div>
   </div>
 </section>
 
+<!-- [C] WHERE YOUR GIFT GOES -->
+<section class="section gw-gives" aria-labelledby="why-h">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="label">Where your gift goes</p>
+      <h2 id="why-h">Your old vehicle can help a <span class="hl">neighbor.</span></h2>
+      <p>Depending on its condition, we’ll either put your vehicle to work or sell it. Either way, it goes straight into helping people in our&nbsp;community.</p>
+    </div>
+    <ul class="gw-impact">
+      <li><span class="gw-ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 11h18l-2 9H5z"/><path d="M8 11l3-6M16 11l-3-6"/></svg></span><b>Food pantries</b><span>Groceries and holiday meals for families who need&nbsp;them</span></li>
+      <li><span class="gw-ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M9 3h6l5 4-2 4-2-1v11H8V10l-2 1-2-4z"/></svg></span><b>Clothing</b><span>Coats and clothes for neighbors in&nbsp;need</span></li>
+      <li><span class="gw-ic" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="9" cy="7" r="3"/><circle cx="17" cy="9" r="2.5"/><path d="M3 20c0-3.5 2.7-6 6-6s6 2.5 6 6M14 20c0-2.5 1.3-4.5 3-4.5s4 2 4 4.5"/></svg></span><b>Youth mentoring</b><span>Caring adults and safe places for young&nbsp;people</span></li>
+      <li><span class="gw-ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 11l9-7 9 7"/><path d="M5 10v10h14V10"/><path d="M10 20v-6h4v6"/></svg></span><b>Unhoused neighbors</b><span>Meals, essentials and a helping&nbsp;hand</span></li>
+      <li><span class="gw-ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"/></svg></span><b>Survivors of domestic violence</b><span>Practical support for a fresh&nbsp;start</span></li>
+    </ul>
+  </div>
+</section>
+
+<!-- [D] QUESTIONS -->
+<section class="section" id="faq" aria-labelledby="faq-h">
+  <div class="wrap">
+    <div class="section-head">
+      <h2 id="faq-h">Good questions</h2>
+      <p>Don’t see yours? Call <a href="tel:+12154879022">(215)&nbsp;487-9022</a> or email <a href="mailto:info@gracecommunityphilly.org?subject=Grace%20on%20Wheels">info@gracecommunityphilly.org</a>.</p>
+    </div>
+    <div class="qa">
+      <details><summary>What kinds of vehicles do you accept?</summary><div class="a"><p>Cars, SUVs, pickup trucks, vans, minivans, buses and semi trucks, in any condition, running or&nbsp;not.</p></div></details>
+      <details><summary>Does it have to run?</summary><div class="a"><p>No. We accept vehicles whether they run or&nbsp;not.</p></div></details>
+      <details><summary>Is towing really free?</summary><div class="a"><p>Yes. Our towing partner picks up your vehicle at no cost to you, running or&nbsp;not.</p></div></details>
+      <details><summary>How does the vehicle get to you?</summary><div class="a"><p>Our towing partner picks it up for free, wherever it’s parked. When we call, we’ll set a time that works for you, and someone from Grace will meet you and the tow truck there. Have the title and keys&nbsp;ready.</p></div></details>
+      <details><summary>How soon will you call?</summary><div class="a"><p>Within two business days of receiving your&nbsp;details.</p></div></details>
+      <details><summary>What if I can’t find my title?</summary><div class="a"><p>Tell us on the form. In Pennsylvania you can request a replacement title from PennDOT, and we’ll walk you through&nbsp;it.</p></div></details>
+      <details><summary>What do I do with my license plate?</summary><div class="a"><p>Keep it. In Pennsylvania the plate belongs to you, not the vehicle, so take it off before you hand over the&nbsp;keys.</p></div></details>
+      <details><summary>Is my donation tax-deductible?</summary><div class="a"><p>Yes. Grace Community Church is a registered 501(c)(3) organization, and you’ll receive a written receipt. How much you can deduct depends on what happens to the vehicle: if Grace sells it, it’s usually the sale price; if Grace uses it, it may be the fair market value. For vehicles worth more than $500, we’ll send the IRS paperwork you need (Form&nbsp;1098-C). Talk with your tax advisor about your&nbsp;situation.</p></div></details>
+    </div>
+  </div>
+</section>
+
+<!-- [E] CLOSING -->
+<section class="section tint" aria-labelledby="end-h">
+  <div class="wrap coming">
+    <div>
+      <h2 id="end-h">Ready when you are</h2>
+      <p>It takes about two minutes. We’ll call within two business days, and the towing is on&nbsp;us.</p>
+    </div>
+    <div class="actions">
+      <a class="btn" href="#donate">Start your donation</a>
+      <a class="btn quiet" href="/give">Other ways to give</a>
+    </div>
+  </div>
+</section>
+
 </main>
 
-<!-- ===== [11] FOOTER: logo, contact, quick links, map ===== -->
+<!-- Phones: a slim "Start your donation" bar that hides while the form is on screen -->
+<div class="gw-sticky" id="gw-sticky" hidden><a class="btn" href="#donate">Start your donation</a><a class="btn quiet" href="tel:+12154879022" aria-label="Call (215) 487-9022">Call</a></div>
+
 <footer class="band site-footer">
   <div class="wrap">
     <div class="foot-grid">
@@ -197,14 +986,13 @@
           <li><a href="/#upcoming">Upcoming services</a></li>
           <li><a href="/#visit">Plan your visit</a></li>
           <li><a href="/#serve">Ways to serve</a></li>
-          <li><a href="/give">Give</a></li>
           <li><a href="/graceonwheels">Grace on Wheels</a></li>
-          <li><a href="/contact">Contact us</a></li>
+          <li><a href="https://give.tithe.ly/?formId=fb740478-bf59-4165-99b2-cd8ca88a021e" target="_blank" rel="noopener">Give online<span class="sr-only"> (opens in a new tab)</span></a></li>
         </ul>
       </div>
     </div>
     <!-- Map: the script swaps in this Sunday's place (from SITE.meetingPlaces) and embeds a Google map -->
-    <h2 class="map-h" id="map-h">Where we meet this Sunday</h2>
+    <h2 class="map-h" id="map-h">Our Sunday home from November&nbsp;1</h2>
     <div class="foot-map" id="map">
       <a class="map-link" id="map-link" href="https://www.google.com/maps/search/?api=1&amp;query=Meredith+Elementary+School%2C+725+S+5th+St%2C+Philadelphia%2C+PA+19147" target="_blank" rel="noopener">
         <span class="map-card">
@@ -219,8 +1007,74 @@
     </div>
   </div>
 </footer>
-<!-- ===== /[11] END FOOTER ===== -->
 
-<script src="/assets/site.js"></script>
+<script>
+/* Grace on Wheels form. Where it sends: formAction "" = the visitor's email app opens with everything filled in,
+   addressed to info@. Paste a form-service or CRM address in formAction to have it send directly. */
+var GOW = { formAction: "", email: "info@gracecommunityphilly.org" };
+(function () {
+  var $ = function (s, r) { return (r || document).querySelector(s); }, $$ = function (s, r) { return [].slice.call((r || document).querySelectorAll(s)); };
+  var y = $("#year"); if (y) y.textContent = Math.max(2026, new Date().getFullYear());
+  var t = $("#nav-toggle"), n = $("#site-nav"), tt = $("#nav-toggle-text");
+  if (t) t.addEventListener("click", function () { var o = !n.classList.contains("open"); n.classList.toggle("open", o); t.setAttribute("aria-expanded", String(o)); tt.textContent = o ? "Close" : "Menu"; });
+
+  var f = $("#gw-form"), err = $("#gw-error"), done = $("#gw-done"), p1 = $("#part1"), p2 = $("#part2"), prog = $("#gw-progress"), steps = $$(".gw-strip li");
+  function clear(scope) { $$("[aria-invalid]", scope).forEach(function (i) { i.removeAttribute("aria-invalid"); }); $$(".choices.bad", scope).forEach(function (c) { c.classList.remove("bad"); }); }
+  function check(scope) {
+    clear(scope); var bad = [];
+    $$(".choices", scope).forEach(function (c) { var r = $("input[required]", c); if (r && !$("input:checked", c)) { c.classList.add("bad"); bad.push($("input", c)); } });
+    $$("input[required]:not([type=radio])", scope).forEach(function (i) {
+      var v = i.value.trim();
+      if (!v || (i.name === "year" && !/^(19|20)\d\d$/.test(v)) || (i.type === "tel" && v.replace(/\D/g, "").length < 10) || (i.name === "zip" && !/^\d{5}$/.test(v))) { i.setAttribute("aria-invalid", "true"); bad.push(i); }
+    });
+    var em = $("input[type=email]", scope); if (em && em.value.trim() && !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(em.value.trim())) { em.setAttribute("aria-invalid", "true"); bad.push(em); }
+    if (bad.length) { err.textContent = "Please check the highlighted items."; err.hidden = false; bad[0].focus(); return false; }
+    err.hidden = true; return true;
+  }
+  function go(part) {
+    p1.hidden = part !== 1; p2.hidden = part !== 2;
+    prog.textContent = part === 1 ? "Part 1 of 2: Your vehicle" : "Part 2 of 2: How to reach you";
+    var top = $("#donate").getBoundingClientRect().top + scrollY - 90; if (scrollY > top) scrollTo(0, top);
+  }
+  $("#gw-next").addEventListener("click", function () {
+    if (!check(p1)) return;
+    var d = new FormData(f), runs = d.get("runs");
+    $("#gw-summary").textContent = d.get("year") + " " + d.get("make") + " " + d.get("model") + " · " + (runs === "Yes" ? "runs" : runs === "No" ? "doesn’t run" : "runs with a jump");
+    go(2); $("input[name=first_name]", f).focus();
+  });
+  $("#gw-back").addEventListener("click", function () { err.hidden = true; go(1); });
+
+  f.addEventListener("submit", function (ev) {
+    ev.preventDefault(); if (f.elements.website.value) return;
+    if (!p2.hidden && !check(p2)) return; if (p2.hidden) { $("#gw-next").click(); return; }
+    var d = new FormData(f), L = [];
+    [["type","Type"],["year","Year"],["make","Make"],["model","Model"],["runs","Runs"],["title","Has title"],["miles","Mileage"],["first_name","First name"],["last_name","Last name"],["phone","Phone"],["email","Email"],["zip","Vehicle ZIP"],["call_time","Best time to call"],["notes","Notes"]]
+      .forEach(function (p) { var v = d.get(p[0]); if (v) L.push(p[1] + ": " + v); });
+    function finish(m) {
+      f.hidden = true; if (m) $("#gw-done-msg").textContent = m; done.hidden = false; done.focus();
+      steps.forEach(function (s, i) { s.classList.toggle("on", i === 1); });
+    }
+    if (GOW.formAction) {
+      d.append("form", "Grace on Wheels vehicle donation");
+      fetch(GOW.formAction, { method: "POST", body: d, headers: { Accept: "application/json" } }).then(function (r) { if (!r.ok) throw 0; finish(); })
+        .catch(function () { err.textContent = "Sorry, that didn’t send. Please call (215) 487-9022 or email " + GOW.email + "."; err.hidden = false; });
+      return;
+    }
+    location.href = "mailto:" + GOW.email + "?subject=" + encodeURIComponent("Grace on Wheels: " + d.get("year") + " " + d.get("make") + " " + d.get("model") + " (" + d.get("first_name") + " " + d.get("last_name") + ")") + "&body=" + encodeURIComponent(L.join("\n"));
+    finish("Your email app should open with everything filled in. Just press Send, and we’ll call you within two business days. If nothing opened, call (215) 487-9022 or email " + GOW.email + ".");
+  });
+
+  /* Phones: show the "Start your donation" bar, except while the form (or the footer) is on screen */
+  var bar = $("#gw-sticky");
+  if (bar && "IntersectionObserver" in window) {
+    var seen = {};
+    var io = new IntersectionObserver(function (es) {
+      es.forEach(function (e) { seen[e.target.id || "foot"] = e.isIntersecting; });
+      bar.hidden = !!(seen.donate || seen.foot || seen["gw-h"]);
+    });
+    io.observe($("#donate")); io.observe($("#gw-h")); var ft = $("footer"); if (ft) io.observe(ft);
+  }
+})();
+</script>
 </body>
 </html>
