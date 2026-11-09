@@ -654,3 +654,20 @@ dialog.donate::backdrop { background: rgba(8, 8, 7, .78); }
 @media (max-width: 520px) { .steps { grid-template-columns: minmax(0, 1fr); } .steps li + li { border-left: 0; border-top: 3px solid var(--sun); } }
 /* Giving initiative cards on the Give page reuse the home page's "Ways to serve" cards (.min) */
 .min .note { font-size: .875rem; }
+
+/* Give page: ways to give live in the hero so they show in the first screen on phones */
+.give-hero .wrap { padding-block: clamp(28px, 5vw, 64px) clamp(28px, 4vw, 48px); }
+.give-hero .ways { width: 100%; margin-top: 14px; }
+.give-hero .tax-note { margin-top: 6px; font-size: .875rem; }
+.way h3.one-line { white-space: nowrap; overflow-wrap: normal; font-size: clamp(1rem, 1.45vw, 1.125rem); }
+@media (max-width: 860px) {
+  .give-hero .wrap { gap: 8px; padding-block: 18px 24px; }
+  .give-hero h1 { font-size: 2rem; }
+  .give-hero .lede { font-size: .9375rem; margin-top: 0; }
+  .give-hero .ways { gap: 10px; margin-top: 6px; }
+  .give-hero .way { gap: 4px; padding: 12px 14px 14px; border-top-width: 6px; }
+  .give-hero .way h3 { font-size: 1.0625rem; overflow-wrap: normal; }
+  .give-hero .way h3.one-line { font-size: 1.0625rem; }
+  .give-hero .way p:not(.label) { font-size: .8125rem; line-height: 1.35; }
+  .give-hero .way .btn { margin-top: 6px; min-height: 42px; }
+}

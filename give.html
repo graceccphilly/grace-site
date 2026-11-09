@@ -5,13 +5,13 @@
 <!-- give.html: shares its header, footer, CSS (assets/site.css) and script (assets/site.js) with the home page. -->
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Give | Grace Community Church, Philadelphia</title>
-<meta name="description" content="Give to Grace Community Church online, by Cash App or in person, and see where your gift goes: weekly ministry, Thanksgiving, winter coats, Christmas toys, vehicles and equipment.">
+<meta name="description" content="Give to Grace Community Church online by card, Apple Pay or bank account, by Cash App or in person, and see where your gift goes: weekly ministry, Thanksgiving, winter coats, Christmas toys, vehicles and equipment.">
 <link rel="canonical" href="https://gracecommunityphilly.org/give">
 <meta property="og:url" content="https://gracecommunityphilly.org/give">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Grace Community Church">
 <meta property="og:title" content="Give | Grace Community Church, Philadelphia">
-<meta property="og:description" content="Give to Grace Community Church online, by Cash App or in person, and see where your gift goes: weekly ministry, Thanksgiving, winter coats, Christmas toys, vehicles and equipment.">
+<meta property="og:description" content="Give to Grace Community Church online by card, Apple Pay or bank account, by Cash App or in person, and see where your gift goes: weekly ministry, Thanksgiving, winter coats, Christmas toys, vehicles and equipment.">
 <meta property="og:image" content="https://gracecommunityphilly.org/images/share.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -23,7 +23,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wght@400;600;700&family=Archivo+Black&family=Permanent+Marker&display=swap">
-<link rel="stylesheet" href="/assets/site.css">
+<link rel="stylesheet" href="/assets/site.css?v=20261101">
 <script>document.documentElement.classList.add('js');</script>
 </head>
 <body>
@@ -63,8 +63,8 @@
 
 <!--
   GIVE (give.html)
-    [1] Page heading
-    [2] Ways to give #ways: online (Tithe.ly), Cash App, in person
+    [1] Page heading + ways to give #ways (in the hero, so they show in the first screen on phones):
+        online (Tithe.ly), Cash App, in person
     [3] Where your gift goes #initiatives: small cards. Seasonal ones have data-until and retire themselves.
         To add one, copy the TEMPLATE at the bottom of the list.
     [4] Giving initiatives #projects: one card each. Each has its own address:
@@ -73,29 +73,22 @@
 -->
 <main id="main">
 
-<header class="page-hero">
+<header class="page-hero give-hero" id="ways" aria-labelledby="give-h">
   <div class="wrap">
     <p class="eyebrow">Give</p>
-    <h1>Thank you for <span class="hl">giving.</span></h1>
+    <h1 id="give-h">Thank you for <span class="hl">giving.</span></h1>
     <p class="lede">Every gift helps us love God, love people and do good in South&nbsp;Philly.</p>
-  </div>
-</header>
-
-<section class="section first-sec" id="ways" aria-labelledby="ways-h">
-  <div class="wrap">
-    <div class="section-head">
-      <h2 id="ways-h">Ways to give</h2>
-    </div>
+    <h2 class="sr-only">Ways to give</h2>
     <div class="ways">
       <div class="way band">
         <p class="label">Online</p>
-        <h3>Give with Tithe.ly</h3>
-        <p>By card or bank account, once or every week.</p>
+        <h3>By card, Apple&nbsp;Pay or bank&nbsp;account</h3>
+        <p>Once or every week, through Tithe.ly.</p>
         <a class="btn" href="https://give.tithe.ly/?formId=fb740478-bf59-4165-99b2-cd8ca88a021e" target="_blank" rel="noopener">Give online<span class="sr-only"> (opens in a new tab)</span></a>
       </div>
       <div class="way band">
         <p class="label">Cash App</p>
-        <h3>$gracecommunityphilly</h3>
+        <h3 class="one-line">$gracecommunityphilly</h3>
         <p>Add a note if your gift is for one of the initiatives below.</p>
         <a class="btn" href="https://cash.app/$gracecommunityphilly" target="_blank" rel="noopener">Open Cash App<span class="sr-only"> (opens in a new tab)</span></a>
       </div>
@@ -108,7 +101,7 @@
     </div>
     <p class="tax-note">Thank you for supporting the ministry and vision of Grace Community Church. We are a registered 501(c)(3) organization, and all financial gifts are tax-deductible to the fullest extent allowed by&nbsp;law.</p>
   </div>
-</section>
+</header>
 
 <section class="section tint" id="initiatives" aria-labelledby="init-h">
   <div class="wrap">
@@ -127,7 +120,7 @@
         <p class="label">Through Nov&nbsp;1</p>
         <h3>Give Thanks &amp; Give Back</h3>
         <p>Holiday sides for <strong>150 families</strong>, with three partner churches. Canned green beans and corn, boxed macaroni and stuffing, cranberry sauce, gravy and cornbread mix.</p>
-        <p class="how"><b>How:</b> bring items to our launch service on Nov&nbsp;1, or see <a href="/#food">drop-off spots</a>.</p>
+        <p class="how"><b>How:</b> bring items to our launch service on Nov&nbsp;1 at Resurrection Community Church, or see <a href="/#food">drop-off spots</a>.</p>
       </article>
       <article class="gift" data-until="2026-12-12">
         <p class="label">$4 a coat</p>
@@ -298,7 +291,7 @@
       <a class="map-link" id="map-link" href="https://www.google.com/maps/search/?api=1&amp;query=Meredith+Elementary+School%2C+725+S+5th+St%2C+Philadelphia%2C+PA+19147" target="_blank" rel="noopener">
         <span class="map-card">
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21.5s-7-6.1-7-11.5a7 7 0 0 1 14 0c0 5.400-7 11.500-7 11.500z"/><circle cx="12" cy="10" r="2.6"/></svg>
-          <span><b id="map-place">Meredith Elementary School (cafeteria), 725&nbsp;S&nbsp;5th&nbsp;St, Philadelphia, PA&nbsp;19147</b><i><span id="map-when">Our Sunday home from November&nbsp;1</span>&nbsp;· Open in Google Maps<span class="sr-only"> (opens in a new tab)</span></i></span>
+          <span><b id="map-place">Meredith Elementary School (cafeteria), 725&nbsp;S&nbsp;5th&nbsp;St, Philadelphia, PA&nbsp;19147</b><i><span id="map-when">Our Sunday home from November&nbsp;15</span>&nbsp;· Open in Google Maps<span class="sr-only"> (opens in a new tab)</span></i></span>
         </span>
       </a>
     </div>
@@ -310,6 +303,6 @@
 </footer>
 <!-- ===== /[11] END FOOTER ===== -->
 
-<script src="/assets/site.js"></script>
+<script src="/assets/site.js?v=20261102"></script>
 </body>
 </html>
