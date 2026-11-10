@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="utf-8">
+<!-- funerals.html: shares its header, footer, CSS (assets/site.css) and script (assets/site.js) with the home page. Page-only styles are in the <style> block below. -->
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Funeral Services in Philadelphia Starting at $2,000 | Grace</title>
+<meta name="description" content="Affordable funeral and memorial services with cremation in Philadelphia, starting at $2,000, led by Rev. Arian B. Harris of Grace Community Church.">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<link rel="canonical" href="https://gracecommunityphilly.org/funerals">
+<meta property="og:url" content="https://gracecommunityphilly.org/funerals">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Grace Community Church">
+<meta property="og:locale" content="en_US">
+<meta property="og:title" content="Funeral & Memorial Services in Philadelphia, Starting at $2,000">
+<meta property="og:description" content="Affordable funeral and memorial services with cremation in Philadelphia, starting at $2,000, led by Rev. Arian B. Harris of Grace Community Church.">
+<meta property="og:image" content="https://gracecommunityphilly.org/images/share.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Funeral & Memorial Services in Philadelphia, Starting at $2,000">
+<meta name="twitter:description" content="Affordable funeral and memorial services with cremation in Philadelphia, starting at $2,000, led by Rev. Arian B. Harris of Grace Community Church.">
+<meta name="twitter:image" content="https://gracecommunityphilly.org/images/share.jpg">
+<meta name="theme-color" content="#121110">
+<meta name="geo.region" content="US-PA">
+<meta name="geo.placename" content="Philadelphia">
+<link rel="icon" href="/favicon.ico" sizes="48x48">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:ital,wght@0,400;0,600;0,700;1,400&family=Archivo+Black&family=Permanent+Marker&family=Source+Serif+4:ital,wght@1,400;1,500&display=swap">
+<link rel="stylesheet" href="/assets/site.css">
+<style>
+/* ===== Wedding officiant pages (wedding-officiant.html, wedding-questionnaire.html) ===== */
+.crumbs { padding-top: 18px; }
+.crumbs ol { display: flex; flex-wrap: wrap; gap: 4px 0; list-style: none; padding: 0; margin: 0; font-size: .8125rem; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; color: var(--ink-soft); }
+.crumbs li + li::before { content: "/"; margin: 0 10px; color: var(--ink-soft); }
+.crumbs a { color: var(--ink); }
+.hero.wed .hero-inner { padding-block: clamp(20px, 4vw, 48px) clamp(36px, 5vw, 64px); }
+.hero.wed .slide { visibility: visible; opacity: 1; }
+.ticket .when.yrs { font-size: clamp(3.5rem, 8vw, 5rem); }
+.prose { display: grid; gap: 16px; }
+.prose p { max-width: 62ch; }
+.prose .label { color: var(--ink-soft); }
+.bio-h { font-family: var(--display); font-weight: 400; text-transform: uppercase; font-size: clamp(2rem, 5vw, 3.25rem); line-height: 1; letter-spacing: -.015em; }
+.bio { display: grid; grid-template-columns: minmax(0, 320px) minmax(0, 1fr); gap: clamp(28px, 5vw, 60px); align-items: start; }
+.bio .photo-slot { max-width: 320px; }
+.facts { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); background: var(--band); color: var(--on-band); margin: 8px 0 0; padding: 0; list-style: none; }
+.facts li { padding: 18px 16px; display: grid; gap: 2px; text-align: center; }
+.facts li + li { border-left: 3px solid var(--sun); }
+.facts strong { font-family: var(--tall); font-weight: 400; font-size: clamp(1.75rem, 3.6vw, 2.5rem); line-height: 1.05; color: var(--sun); text-transform: uppercase; }
+.facts span { font-size: .875rem; color: var(--on-band-soft); line-height: 1.35; }
+@media (max-width: 760px) { .bio { grid-template-columns: minmax(0, 1fr); } .bio .photo-slot { max-width: 260px; } }
+@media (max-width: 520px) { .facts { grid-template-columns: minmax(0, 1fr); } .facts li + li { border-left: 0; border-top: 3px solid var(--sun); } }
+
+.cer-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(20px, 3vw, 36px); }
+.cer { margin: 0; border: 3px solid var(--edge); background: var(--card); box-shadow: 8px 8px 0 var(--sun); }
+.cer img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; }
+.cer figcaption { padding: 10px 14px; font-weight: 700; font-size: .875rem; text-transform: uppercase; letter-spacing: .08em; border-top: 3px solid var(--edge); }
+@media (max-width: 600px) { .cer-grid { grid-template-columns: minmax(0, 1fr); } .cer { box-shadow: 5px 5px 0 var(--sun); } }
+
+.pkgs { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px; align-items: stretch; }
+.pkg { background: var(--card); color: var(--ink); border: 3px solid var(--edge); display: flex; flex-direction: column; min-width: 0; position: relative; }
+.pkg.feat { box-shadow: 10px 10px 0 var(--sun); }
+.pkg .flag { position: absolute; top: -16px; right: 14px; font-family: var(--marker); background: var(--sun); color: var(--on-sun); padding: 2px 12px; transform: rotate(3deg); font-size: 1rem; }
+.pkg-top { background: var(--band); color: var(--on-band); padding: 18px 20px 16px; display: grid; gap: 4px; }
+.pkg-top h3 { font-family: var(--display); font-weight: 400; font-size: 1.1875rem; line-height: 1.15; text-transform: uppercase; }
+.pkg-top .price { font-family: var(--tall); font-size: 2.75rem; line-height: 1; color: var(--sun); }
+.pkg ul { padding: 18px 20px 6px; margin: 0; list-style: none; display: grid; gap: 9px; flex: 1; align-content: start; }
+.pkg li { padding-left: 22px; position: relative; font-size: .9688rem; line-height: 1.45; }
+.pkg li::before { content: ""; position: absolute; left: 0; top: .5em; width: 10px; height: 10px; background: var(--sun); outline: 2px solid var(--ink); }
+.pkg .fit { padding: 0 20px 14px; color: var(--ink-soft); font-size: .9063rem; font-style: italic; font-family: var(--serif); }
+.pkg .btn { margin: 0 20px 22px; }
+.pkg .btn.quiet { color: var(--ink); border-color: var(--ink); background: transparent; }
+.pkg .btn.quiet:hover { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+.pkg .btn:not(.quiet) { border-color: var(--ink); }
+@media (max-width: 1100px) { .pkgs { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 30px 24px; } }
+@media (max-width: 600px) { .pkgs { grid-template-columns: minmax(0, 1fr); } .pkg.feat { box-shadow: 6px 6px 0 var(--sun); } }
+
+.addons { margin-top: clamp(36px, 5vw, 56px); display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 28px 40px; }
+.addons h3 { font-family: var(--display); font-weight: 400; text-transform: uppercase; font-size: 1.25rem; margin-bottom: 12px; color: var(--sun); }
+.rows { display: grid; margin: 0; }
+.rows > div { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 2px 16px; padding-block: 12px; border-top: 1px solid var(--band-2); align-items: baseline; }
+.rows dt { font-weight: 700; }
+.rows dd { margin: 0; }
+.rows dd.p { font-family: var(--tall); font-size: 1.5rem; line-height: 1; color: var(--sun); white-space: nowrap; }
+.rows dd.n { grid-column: 1 / -1; color: var(--on-band-soft); font-size: .9375rem; }
+.small-print { margin-top: 24px; color: var(--on-band-soft); font-size: .9375rem; max-width: 70ch; }
+@media (max-width: 760px) { .addons { grid-template-columns: minmax(0, 1fr); } }
+
+.wsteps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px; counter-reset: s; list-style: none; padding: 0; margin: 0; }
+.wsteps li { counter-increment: s; background: var(--card); border: 3px solid var(--edge); padding: 22px 22px 24px; display: grid; gap: 8px; align-content: start; }
+.wsteps li::before { content: counter(s); font-family: var(--tall); font-size: 2.75rem; line-height: 1; color: var(--on-sun); background: var(--sun); width: 56px; height: 56px; display: grid; place-items: center; border: 3px solid var(--ink); }
+.wsteps h3 { font-family: var(--display); font-weight: 400; text-transform: uppercase; font-size: 1.125rem; line-height: 1.2; }
+.wsteps p { color: var(--ink-soft); font-size: .9688rem; }
+@media (max-width: 900px) { .wsteps { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 560px) { .wsteps { grid-template-columns: minmax(0, 1fr); } }
+
+.lic { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); gap: clamp(28px, 5vw, 56px); align-items: start; }
+.lic .times h3 { font-size: 1.75rem; }
+.lic .src { margin-top: 14px; font-size: .9375rem; color: var(--ink-soft); }
+@media (max-width: 820px) { .lic { grid-template-columns: minmax(0, 1fr); } }
+
+.qa { display: grid; gap: 12px; max-width: 62rem; }
+.qa details { border: 3px solid var(--edge); background: var(--card); }
+.qa summary { cursor: pointer; list-style: none; display: flex; align-items: center; gap: 16px; padding: 16px 20px; font-family: var(--display); font-size: clamp(1rem, 2vw, 1.1875rem); text-transform: uppercase; letter-spacing: .01em; }
+.qa summary::-webkit-details-marker { display: none; }
+.qa summary::before { content: "+"; flex: none; width: 30px; height: 30px; display: grid; place-items: center; background: var(--sun); color: var(--on-sun); font-family: var(--body); font-weight: 700; font-size: 1.375rem; line-height: 1; }
+.qa details[open] summary { background: var(--band); color: var(--on-band); --ring: var(--sun); }
+.qa details[open] summary::before { content: "–"; }
+.qa .a { padding: 18px 20px 22px; border-top: 3px solid var(--edge); display: grid; gap: 12px; }
+.qa .a p { max-width: 66ch; color: var(--ink-soft); }
+
+/* Booking form layout + estimate */
+.wed-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 320px); gap: clamp(28px, 4vw, 48px); align-items: start; }
+@media (max-width: 960px) { .wed-grid { grid-template-columns: minmax(0, 1fr); } }
+.form .help { font-weight: 400; font-size: .875rem; color: var(--ink-soft); flex-basis: 100%; }
+.est { position: sticky; top: calc(var(--header-h) + 20px); background: var(--band); color: var(--on-band); --ring: var(--sun); border-top: 8px solid var(--sun); padding: 22px 22px 24px; display: grid; gap: 12px; }
+.est h3 { font-size: .8125rem; font-weight: 700; text-transform: uppercase; letter-spacing: .14em; color: var(--sun); }
+.est .total { font-family: var(--tall); font-size: 3.25rem; line-height: 1; }
+.est ul { display: grid; gap: 6px; font-size: .9375rem; list-style: none; padding: 0; margin: 0; }
+.est li { display: flex; justify-content: space-between; gap: 12px; border-bottom: 1px solid var(--band-2); padding-bottom: 6px; }
+.est li span:last-child { white-space: nowrap; color: var(--on-band-soft); }
+.est p { font-size: .875rem; color: var(--on-band-soft); }
+@media (max-width: 960px) { .est { position: static; } }
+.narrow { max-width: 52rem; }
+
+/* ===== Funeral services page ===== */
+.fun-hero .crumbs { padding-top: 18px; }
+.fun-hero .crumbs + .wrap { padding-top: clamp(20px, 4vw, 48px); }
+.fun-hero .actions { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 10px; }
+.first-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 2fr); gap: clamp(28px, 5vw, 56px); align-items: start; }
+@media (max-width: 900px) { .first-grid { grid-template-columns: minmax(0, 1fr); } }
+.wsteps.three { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+@media (max-width: 700px) { .wsteps.three { grid-template-columns: minmax(0, 1fr); } }
+.pkgs.two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+@media (max-width: 760px) { .pkgs.two { grid-template-columns: minmax(0, 1fr); } }
+.pkg-desc { padding: 18px 20px 0; color: var(--ink-soft); font-size: .9688rem; max-width: 52ch; }
+.side-big { font-family: var(--tall); font-size: 2rem; line-height: 1.1; }
+</style>
+<script>document.documentElement.classList.add('js');</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "WebPage", "@id": "https://gracecommunityphilly.org/funerals#webpage", "url": "https://gracecommunityphilly.org/funerals", "name": "Funeral Services in Philadelphia Starting at $2,000 | Grace", "description": "Affordable funeral and memorial services with cremation in Philadelphia, starting at $2,000, led by Rev. Arian B. Harris of Grace Community Church.", "inLanguage": "en-US", "isPartOf": {"@type": "WebSite", "name": "Grace Community Church", "url": "https://gracecommunityphilly.org/"}, "about": {"@id": "https://gracecommunityphilly.org/funerals#service"}, "breadcrumb": {"@id": "https://gracecommunityphilly.org/funerals#breadcrumb"}}, {"@type": "BreadcrumbList", "@id": "https://gracecommunityphilly.org/funerals#breadcrumb", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://gracecommunityphilly.org/"}, {"@type": "ListItem", "position": 2, "name": "Funeral services", "item": "https://gracecommunityphilly.org/funerals"}]}, {"@type": "Church", "@id": "https://gracecommunityphilly.org/#church", "name": "Grace Community Church", "url": "https://gracecommunityphilly.org/", "telephone": "+1-215-487-9022", "email": "info@gracecommunityphilly.org", "address": {"@type": "PostalAddress", "streetAddress": "1727 Snyder Ave", "addressLocality": "Philadelphia", "addressRegion": "PA", "postalCode": "19145", "addressCountry": "US"}, "sameAs": ["https://www.facebook.com/gracecommunityphilly/", "https://www.instagram.com/gracecommunityphilly/", "https://www.youtube.com/@GraceCommunityPhilly"]}, {"@type": "Service", "@id": "https://gracecommunityphilly.org/funerals#service", "name": "Funeral and memorial services with cremation in Philadelphia", "serviceType": "Funeral and memorial services", "provider": {"@id": "https://gracecommunityphilly.org/#church"}, "areaServed": [{"@type": "City", "name": "Philadelphia"}], "offers": {"@type": "AggregateOffer", "priceCurrency": "USD", "lowPrice": "2000", "highPrice": "3000", "offerCount": "2", "description": "Funeral and memorial services starting at $2,000", "offers": [{"@type": "Offer", "name": "Memorial service with cremation", "price": "2000", "priceCurrency": "USD", "url": "https://gracecommunityphilly.org/funerals#options"}, {"@type": "Offer", "name": "Viewing and funeral service, then cremation", "price": "3000", "priceCurrency": "USD", "url": "https://gracecommunityphilly.org/funerals#options"}]}}, {"@type": "FAQPage", "@id": "https://gracecommunityphilly.org/funerals#faq", "mainEntity": [{"@type": "Question", "name": "Do we have to be members of Grace Community Church?", "acceptedAnswer": {"@type": "Answer", "text": "No. We serve any family in Philadelphia and the surrounding area who needs help, whether or not they attend Grace."}}, {"@type": "Question", "name": "What is the difference between a memorial service and a funeral?", "acceptedAnswer": {"@type": "Answer", "text": "At a funeral, your loved one is present in a casket and there is usually a viewing. At a memorial service, cremation happens first, so there is no viewing. Both bring family and friends together to remember and pray."}}, {"@type": "Question", "name": "My loved one did not want a viewing. Can we still have a service?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. A memorial service with cremation lets family and friends pay their respects and support one another while honoring your loved one’s wishes."}}, {"@type": "Question", "name": "Where is the service held?", "acceptedAnswer": {"@type": "Answer", "text": "In a church, Monday through Saturday, or at another church or facility you choose. Another venue’s fees are extra, and we will travel to meet your family’s needs."}}, {"@type": "Question", "name": "What is not included in the price?", "acceptedAnswer": {"@type": "Answer", "text": "A repast is $500 extra. Fees for another church or facility, and extra costs when a death occurs at a nursing home, hospice or residence, are quoted before you agree to anything."}}, {"@type": "Question", "name": "Who handles the death certificate?", "acceptedAnswer": {"@type": "Answer", "text": "Our partner funeral home files the death certificate with the state of Pennsylvania and obtains the copies you will need to handle your loved one’s affairs."}}]}]}</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to main content</a>
+
+<!-- ===== HEADER + MAIN NAVIGATION (the same as the home page; links go back to its sections) ===== -->
+<header class="site-header" id="top">
+  <div class="wrap">
+    <a class="brand" href="/" aria-label="Grace Community Church, home">
+      <span class="emblem" aria-hidden="true"></span>
+      <span class="wordmark" aria-hidden="true"></span>
+    </a>
+    <button class="nav-toggle" id="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
+      <span class="bars" aria-hidden="true"></span><span id="nav-toggle-text">Menu</span>
+    </button>
+    <nav class="site-nav" id="site-nav" aria-label="Main">
+      <!-- Nav items are in MOBILE order; .d-1 … .d-7 set the desktop order, .m-only items show on mobile only -->
+      <ul>
+        <li class="m-only"><a href="/#visit">Service times</a></li>
+        <li class="d-5"><a href="https://www.facebook.com/gracecommunityphilly/" target="_blank" rel="noopener">Watch online<span class="sr-only"> (opens in a new tab)</span></a></li>
+        <li class="d-4"><a href="/#visit">Visit</a></li>
+        <li class="m-only"><a href="/#upcoming" data-dir>Get directions</a></li>
+        <li class="m-only"><a href="/#expect">What to expect</a></li>
+        <li class="d-1"><a href="/#about">About<span class="m-txt"> Grace</span></a></li>
+        <li class="d-3"><a href="/#upcoming">Upcoming<span class="m-txt"> services</span></a></li>
+        <li class="d-2"><a href="/#serve">Ways to serve</a></li>
+        <li class="soc-li d-6"><div class="soc-row"><div class="social">
+          <a href="https://www.facebook.com/gracecommunityphilly/" target="_blank" rel="noopener" aria-label="Facebook (opens in a new tab)"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+          <a href="https://www.instagram.com/gracecommunityphilly/" target="_blank" rel="noopener" aria-label="Instagram (opens in a new tab)"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="2.5" width="19" height="19" rx="5"/><circle cx="12" cy="12" r="4.2"/><path d="M17.400 6.600h.01"/></svg></a>
+          <a href="https://www.youtube.com/@GraceCommunityPhilly" target="_blank" rel="noopener" aria-label="YouTube (opens in a new tab)"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="4"/><path d="M10 9.200v5.600l5-2.800z"/></svg></a>
+        </div><a class="btn quiet bs-cta" href="/#bible-study">Bible study</a></div></li>
+        <li class="give-li d-7"><a class="btn" href="/give">Give</a></li>
+        <li class="m-only"><a href="/wedding-officiant">Weddings</a></li>
+        <li class="m-only"><a href="/funerals">Funerals</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+<header class="page-hero fun-hero">
+  <nav class="crumbs wrap" aria-label="Breadcrumb"><ol><li><a href="/">Home</a></li><li aria-current="page">Funeral services</li></ol></nav>
+  <div class="wrap">
+    <p class="eyebrow">Funeral and memorial services · Philadelphia</p>
+    <h1>Honoring a life, with <span class="hl">care.</span></h1>
+    <p class="lede">Grace Community Church helps Philadelphia families plan dignified, affordable funeral and memorial services with cremation, starting at $2,000. Our pastor, Rev. Arian B. Harris, leads the service, and our licensed partner funeral home takes care of everything else, from transportation to paperwork.</p>
+    <div class="actions">
+      <a class="btn" href="tel:+12154879022">Call (215)&nbsp;487-9022</a>
+      <a class="btn quiet" href="#plan">Request help planning</a>
+    </div>
+  </div>
+</header>
+
+<div class="band strip" aria-label="At a glance">
+  <div class="wrap">
+    <a class="cell" href="#options">
+      <span class="label">Services starting at</span>
+      <span class="big">$2,000</span>
+      <span class="small">Two options. See what each includes</span>
+    </a>
+    <div class="cell">
+      <span class="label">Included in both</span>
+      <span class="big">Minister + music</span>
+      <span class="small">Flowers, photo board, portrait, musician and soloist</span>
+    </div>
+    <div class="cell acts">
+      <a class="btn" href="tel:+12154879022">Call us now</a>
+      <a class="btn quiet" href="#first-steps">If a death just occurred</a>
+    </div>
+  </div>
+</div>
+
+<section class="section" id="first-steps" aria-labelledby="first-h">
+  <div class="wrap first-grid">
+    <div class="section-head" style="margin-bottom:0">
+      <h2 id="first-h">If a death has just occurred</h2>
+      <p>You don’t have to work out the next steps alone. Call us and we will walk you through them.</p>
+    </div>
+    <ol class="wsteps three">
+      <li><h3>Call the right people first</h3><p>If your loved one died at home under hospice care, call the hospice nurse. If the death was unexpected, call 911.</p></li>
+      <li><h3>Then call Grace</h3><p>Call <a href="tel:+12154879022">(215)&nbsp;487-9022</a>. We will contact our partner funeral home to bring your loved one into their care.</p></li>
+      <li><h3>Take a breath</h3><p>Nothing else has to be decided today. We will meet with you to plan the service when you are ready.</p></li>
+    </ol>
+  </div>
+</section>
+
+<section class="band section" id="options" aria-labelledby="opt-h">
+  <div class="wrap">
+    <div class="section-head">
+      <h2 id="opt-h">Funeral and memorial service options and prices</h2>
+      <p>Two complete options, starting at $2,000. Each includes cremation, the service, and the people and details that make it meaningful.</p>
+    </div>
+    <div class="pkgs two">
+      <article class="pkg">
+        <div class="pkg-top"><h3>Memorial service with cremation</h3><p class="price">$2,000</p></div>
+        <p class="pkg-desc">Cremation first, then a memorial service to remember and celebrate your loved one. Often chosen when someone asked not to have a viewing, so family and friends can still gather.</p>
+        <ul>
+          <li>Transportation of your loved one from the place of death</li>
+          <li>Local transportation to the crematory and cremation</li>
+          <li>Death certificate filed with the state of Pennsylvania</li>
+          <li>Memorial service led by Rev. Arian B. Harris</li>
+          <li>Flowers, photo board and large portrait</li>
+          <li>Musician and soloist</li>
+        </ul>
+        <a class="btn quiet" href="#plan" data-pick="memorial">Ask about this option</a>
+      </article>
+      <article class="pkg feat">
+        <div class="pkg-top"><h3>Viewing and funeral service, then cremation</h3><p class="price">$3,000</p></div>
+        <p class="pkg-desc">A traditional viewing and funeral service, with your loved one present in a casket, followed by cremation.</p>
+        <ul>
+          <li>Transportation of your loved one from the place of death</li>
+          <li>Embalming and preparation for the viewing</li>
+          <li>Casket for use during the service</li>
+          <li>Funeral directors at the service, and a hearse</li>
+          <li>Death certificate filed with the state of Pennsylvania</li>
+          <li>Funeral service led by Rev. Arian B. Harris</li>
+          <li>Flowers, photo board and large portrait</li>
+          <li>Musician and soloist</li>
+          <li>Cremation after the service</li>
+        </ul>
+        <a class="btn" href="#plan" data-pick="viewing">Ask about this option</a>
+      </article>
+    </div>
+
+    <div class="addons">
+      <div>
+        <h3>Every service also includes</h3>
+        <dl class="rows">
+          <div><dt>Visitation and service</dt><dd class="p">1 hour</dd><dd class="n">A one-hour visitation, followed by the service, Monday through Saturday.</dd></div>
+          <div><dt>Memorial cards and register book</dt><dd class="p">Included</dd><dd class="n">Printed memorial cards in your loved one’s honor and a book for guests to sign.</dd></div>
+          <div><dt>Online obituary</dt><dd class="p">Included</dd><dd class="n">A digital obituary listing survivors and the service time and place.</dd></div>
+          <div><dt>Death certificates</dt><dd class="p">Included</dd><dd class="n">Filed with the state, with the copies you will need to settle your loved one’s affairs.</dd></div>
+          <div><dt>Cremated remains</dt><dd class="p">Returned</dd><dd class="n">Your loved one’s remains are returned to the family.</dd></div>
+        </dl>
+      </div>
+      <div>
+        <h3>Add-ons and extra costs</h3>
+        <dl class="rows">
+          <div><dt>Repast after the service</dt><dd class="p">$500</dd><dd class="n">A meal for family and guests after the service.</dd></div>
+          <div><dt>Service at another church or facility</dt><dd class="p">Quoted</dd><dd class="n">The service can be held at a church or facility of your choice. Its fees are extra.</dd></div>
+          <div><dt>Death at a nursing home, hospice or residence</dt><dd class="p">Quoted</dd><dd class="n">Bringing your loved one into care from these places carries an additional fee.</dd></div>
+        </dl>
+      </div>
+    </div>
+    <p class="small-print">Prices are set in a written agreement before any service begins. Funeral directing, transportation, embalming and cremation are provided by our licensed partner funeral home in Philadelphia.</p>
+  </div>
+</section>
+
+<section class="section" id="pastor" aria-labelledby="pastor-h">
+  <div class="wrap bio">
+    <div class="photo-slot"><img src="/images/pastor.jpg" width="720" height="900" alt="Rev. Arian B. Harris, pastor of Grace Community Church" loading="lazy" decoding="async"></div>
+    <div class="prose">
+      <p class="label">Your minister</p>
+      <h2 id="pastor-h" class="bio-h">Rev. Arian B. Harris</h2>
+      <p>Rev. Harris is the pastor of Grace Community Church and holds a Master of Divinity in Pastoral Counseling. He meets with your family before the service to learn about your loved one, so the words spoken sound like the person you knew.</p>
+      <p>He can lead a traditional Christian funeral or a celebration of life shaped around your family’s wishes.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section tint" id="how" aria-labelledby="how-h">
+  <div class="wrap">
+    <div class="section-head">
+      <h2 id="how-h">How it works</h2>
+      <p>From the first phone call to returning your loved one’s remains, here is what happens.</p>
+    </div>
+    <ol class="wsteps">
+      <li><h3>Call us</h3><p>Call <a href="tel:+12154879022">(215)&nbsp;487-9022</a> or send the form below. We answer your questions and explain both options.</p></li>
+      <li><h3>Your loved one is brought into care</h3><p>Our partner funeral home brings your loved one into their care and starts the paperwork.</p></li>
+      <li><h3>Plan the service</h3><p>Meet with Rev. Harris to choose the date, readings, music, speakers and the obituary.</p></li>
+      <li><h3>Paperwork is filed</h3><p>The funeral home files the death certificate with Pennsylvania and orders your copies.</p></li>
+      <li><h3>Gather and remember</h3><p>A one-hour visitation, then the service, with flowers, music and memorial cards.</p></li>
+      <li><h3>Remains returned</h3><p>After cremation, your loved one’s remains are returned to your family.</p></li>
+    </ol>
+  </div>
+</section>
+
+<section class="section" id="faq" aria-labelledby="faq-h">
+  <div class="wrap">
+    <div class="section-head">
+      <h2 id="faq-h">Funeral service FAQs</h2>
+    </div>
+    <div class="qa">
+      <details><summary>Do we have to be members of Grace Community Church?</summary><div class="a"><p>No. We serve any family in Philadelphia and the surrounding area who needs help, whether or not they attend Grace.</p></div></details>
+      <details><summary>What is the difference between a memorial service and a funeral?</summary><div class="a"><p>At a funeral, your loved one is present in a casket and there is usually a viewing. At a memorial service, cremation happens first, so there is no viewing. Both bring family and friends together to remember and pray.</p></div></details>
+      <details><summary>My loved one did not want a viewing. Can we still have a service?</summary><div class="a"><p>Yes. A memorial service with cremation lets family and friends pay their respects and support one another while honoring your loved one’s wishes.</p></div></details>
+      <details><summary>Where is the service held?</summary><div class="a"><p>In a church, Monday through Saturday, or at another church or facility you choose. Another venue’s fees are extra, and we will travel to meet your family’s needs.</p></div></details>
+      <details><summary>What is not included in the price?</summary><div class="a"><p>A repast is $500 extra. Fees for another church or facility, and extra costs when a death occurs at a nursing home, hospice or residence, are quoted before you agree to anything.</p></div></details>
+      <details><summary>Who handles the death certificate?</summary><div class="a"><p>Our partner funeral home files the death certificate with the state of Pennsylvania and obtains the copies you will need to handle your loved one’s affairs.</p></div></details>
+    </div>
+  </div>
+</section>
+
+<section class="section tint" id="plan" aria-labelledby="plan-h">
+  <div class="wrap">
+    <div class="section-head">
+      <h2 id="plan-h">Request help planning a service</h2>
+      <p>Tell us a little about your situation and we will call you. If you need help right now, please call <a href="tel:+12154879022">(215)&nbsp;487-9022</a> instead, since we may not see a message right away.</p>
+    </div>
+    <div class="contact-grid">
+      <div>
+        <form class="form" id="funeral-form" novalidate data-form="funeral" data-done="fun-done" data-subject="Funeral service request">
+          <fieldset class="f-group">
+            <legend>About you</legend>
+            <div class="f-row two">
+              <label>Your name <span class="req">(required)</span><input id="f-name" name="name" data-label="Name" autocomplete="name" required></label>
+              <label>Relationship to your loved one <span class="opt">(optional)</span><input id="f-rel" name="relationship" data-label="Relationship"></label>
+            </div>
+            <div class="f-row two">
+              <label>Phone <span class="req">(required)</span><input type="tel" id="f-phone" name="phone" data-label="Phone" autocomplete="tel" required></label>
+              <label>Email <span class="opt">(optional)</span><input type="email" id="f-email" name="email" data-label="Email" autocomplete="email"></label>
+            </div>
+          </fieldset>
+          <fieldset class="f-group">
+            <legend>Your loved one</legend>
+            <div class="f-row two">
+              <label>Their name <span class="opt">(optional)</span><input id="f-loved" name="loved_one" data-label="Loved one"></label>
+              <label>Date of passing <span class="opt">(if it has happened)</span><input type="date" id="f-date" name="date_of_passing" data-label="Date of passing"></label>
+            </div>
+            <fieldset class="f-row">
+              <legend>How can we help? <span class="req">(required)</span></legend>
+              <div class="choices" data-need-one>
+                <label class="choice"><input type="radio" name="need" value="A death has just occurred"><span>A death has just occurred</span></label>
+                <label class="choice"><input type="radio" name="need" value="Planning a service soon"><span>Planning a service soon</span></label>
+                <label class="choice"><input type="radio" name="need" value="Planning ahead"><span>Planning ahead</span></label>
+              </div>
+            </fieldset>
+            <label class="f-row">Where is your loved one now? <span class="opt">(optional)</span>
+              <select id="f-where" name="location" data-label="Current location">
+                <option value="">Choose one</option>
+                <option>At home</option>
+                <option>Hospital</option>
+                <option>Nursing home or hospice</option>
+                <option>Medical examiner</option>
+                <option>Another funeral home</option>
+                <option>Not applicable yet</option>
+              </select>
+            </label>
+          </fieldset>
+          <fieldset class="f-group">
+            <legend>The service</legend>
+            <fieldset class="f-row">
+              <legend>Option you are considering <span class="opt">(optional)</span></legend>
+              <div class="choices">
+                <label class="choice"><input type="radio" name="option" value="Memorial service with cremation ($2,000)" data-key="memorial"><span>Memorial service · $2,000</span></label>
+                <label class="choice"><input type="radio" name="option" value="Viewing and funeral, then cremation ($3,000)" data-key="viewing"><span>Viewing and funeral · $3,000</span></label>
+                <label class="choice"><input type="radio" name="option" value="Not sure yet" data-key="unsure"><span>Not sure yet</span></label>
+              </div>
+            </fieldset>
+            <label class="choice consent"><input type="checkbox" name="repast" value="Yes" data-label="Interested in a repast"><span>We may want a repast after the service ($500)</span></label>
+            <label class="f-row">Preferred service date <span class="opt">(if known)</span><input type="date" id="f-svc" name="service_date" data-label="Preferred service date"></label>
+            <label class="f-row">Anything else we should know <span class="opt">(optional)</span><textarea id="f-msg" name="message" data-label="Message" rows="4"></textarea></label>
+            <label class="choice consent"><input type="checkbox" id="f-consent" name="consent" value="yes" data-label="OK to contact" required><span>It’s OK for Grace Community Church to call or email me. <span class="req">(required)</span></span></label>
+          </fieldset>
+          <div class="hp" aria-hidden="true"><label>Leave this empty <input name="website" tabindex="-1" autocomplete="off"></label></div>
+          <p class="f-error" role="alert" hidden></p>
+          <button class="btn" type="submit">Send my request</button>
+          <p class="fine">Only our pastor and church office see this, and we never share your information.</p>
+        </form>
+        <div class="f-done" id="fun-done" tabindex="-1" hidden>
+          <h2>Thank you.</h2>
+          <p class="done-msg">We received your request and will call you soon. If you need us sooner, call (215)&nbsp;487-9022.</p>
+          <a class="btn quiet" href="/">Back to the home page</a>
+        </div>
+      </div>
+      <aside class="contact-side">
+        <div class="side-card band">
+          <h2 class="label">Call us</h2>
+          <p class="side-big"><a href="tel:+12154879022">(215)&nbsp;487-9022</a></p>
+          <h2 class="label">Email</h2>
+          <p><a href="mailto:info@gracecommunityphilly.org">info@gracecommunityphilly.org</a></p>
+          <h2 class="label">Office address</h2>
+          <p>1727 Snyder Ave<br>Philadelphia, PA&nbsp;19145</p>
+        </div>
+        <div class="side-card">
+          <h2 class="label">Options</h2>
+          <p><b>Memorial service with cremation</b><br>$2,000</p>
+          <p><b>Viewing and funeral, then cremation</b><br>$3,000</p>
+          <p><b>Repast</b><br>$500 extra</p>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ===== [11] FOOTER: logo, contact, quick links, map ===== -->
+<footer class="band site-footer">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <span class="lockup" role="img" aria-label="Grace Community Church"></span>
+        <p>We love God. We love people. We do good.</p>
+        <div class="social">
+          <a href="https://www.facebook.com/gracecommunityphilly/" target="_blank" rel="noopener" aria-label="Facebook (opens in a new tab)"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+          <a href="https://www.instagram.com/gracecommunityphilly/" target="_blank" rel="noopener" aria-label="Instagram (opens in a new tab)"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="2.5" width="19" height="19" rx="5"/><circle cx="12" cy="12" r="4.2"/><path d="M17.400 6.600h.01"/></svg></a>
+          <a href="https://www.youtube.com/@GraceCommunityPhilly" target="_blank" rel="noopener" aria-label="YouTube (opens in a new tab)"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="4"/><path d="M10 9.200v5.600l5-2.800z"/></svg></a>
+        </div>
+      </div>
+      <div>
+        <h2>Contact</h2>
+        <dl class="contact">
+          <div><dt>Office address</dt><dd>1727 Snyder Ave, Philadelphia, PA&nbsp;19145</dd></div>
+          <div><dt>Phone</dt><dd><a href="tel:+12154879022">(215) 487-9022</a></dd></div>
+          <div><dt>Email</dt><dd><a href="mailto:info@gracecommunityphilly.org">info@gracecommunityphilly.org</a></dd></div>
+        </dl>
+      </div>
+      <div>
+        <h2>Find your way</h2>
+        <ul class="foot-links">
+          <li><a href="/#upcoming">Upcoming services</a></li>
+          <li><a href="/#visit">Plan your visit</a></li>
+          <li><a href="/#serve">Ways to serve</a></li>
+          <li><a href="/wedding-officiant">Wedding officiant</a></li>
+          <li><a href="/funerals">Funeral services</a></li>
+          <li><a href="/give">Give</a></li>
+          <li><a href="/graceonwheels">Grace on Wheels</a></li>
+          <li><a href="/contact">Contact us</a></li>
+        </ul>
+      </div>
+    </div>
+    <!-- Map: the script swaps in this Sunday's place (from SITE.meetingPlaces) and embeds a Google map -->
+    <h2 class="map-h" id="map-h">Where we meet this Sunday</h2>
+    <div class="foot-map" id="map">
+      <a class="map-link" id="map-link" href="https://www.google.com/maps/search/?api=1&amp;query=Meredith+Elementary+School%2C+725+S+5th+St%2C+Philadelphia%2C+PA+19147" target="_blank" rel="noopener">
+        <span class="map-card">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21.5s-7-6.1-7-11.5a7 7 0 0 1 14 0c0 5.400-7 11.500-7 11.500z"/><circle cx="12" cy="10" r="2.6"/></svg>
+          <span><b id="map-place">Meredith Elementary School (cafeteria), 725&nbsp;S&nbsp;5th&nbsp;St, Philadelphia, PA&nbsp;19147</b><i><span id="map-when">Our Sunday home from November&nbsp;15</span>&nbsp;· Open in Google Maps<span class="sr-only"> (opens in a new tab)</span></i></span>
+        </span>
+      </a>
+    </div>
+    <div class="foot-base">
+      <span>© <span id="year">2026</span> Grace Community Church</span>
+      <a href="#top">Back to top</a>
+    </div>
+  </div>
+</footer>
+<!-- ===== /[11] END FOOTER ===== -->
+
+<script src="/assets/site.js?v=20261102"></script>
+<script>
+/* "Ask about this option" buttons preselect the option in the form below */
+document.querySelectorAll("[data-pick]").forEach(function (a) {
+  a.addEventListener("click", function () {
+    var r = document.querySelector('#funeral-form input[name="option"][data-key="' + a.getAttribute("data-pick") + '"]');
+    if (r) r.checked = true;
+  });
+});
+</script>
+</body>
+</html>

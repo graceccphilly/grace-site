@@ -90,13 +90,13 @@
 .small-print { margin-top: 24px; color: var(--on-band-soft); font-size: .9375rem; max-width: 70ch; }
 @media (max-width: 760px) { .addons { grid-template-columns: minmax(0, 1fr); } }
 
-.steps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px; counter-reset: s; list-style: none; padding: 0; margin: 0; }
-.steps li { counter-increment: s; background: var(--card); border: 3px solid var(--edge); padding: 22px 22px 24px; display: grid; gap: 8px; align-content: start; }
-.steps li::before { content: counter(s); font-family: var(--tall); font-size: 2.75rem; line-height: 1; color: var(--on-sun); background: var(--sun); width: 56px; height: 56px; display: grid; place-items: center; border: 3px solid var(--ink); }
-.steps h3 { font-family: var(--display); font-weight: 400; text-transform: uppercase; font-size: 1.125rem; line-height: 1.2; }
-.steps p { color: var(--ink-soft); font-size: .9688rem; }
-@media (max-width: 900px) { .steps { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-@media (max-width: 560px) { .steps { grid-template-columns: minmax(0, 1fr); } }
+.wsteps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px; counter-reset: s; list-style: none; padding: 0; margin: 0; }
+.wsteps li { counter-increment: s; background: var(--card); border: 3px solid var(--edge); padding: 22px 22px 24px; display: grid; gap: 8px; align-content: start; }
+.wsteps li::before { content: counter(s); font-family: var(--tall); font-size: 2.75rem; line-height: 1; color: var(--on-sun); background: var(--sun); width: 56px; height: 56px; display: grid; place-items: center; border: 3px solid var(--ink); }
+.wsteps h3 { font-family: var(--display); font-weight: 400; text-transform: uppercase; font-size: 1.125rem; line-height: 1.2; }
+.wsteps p { color: var(--ink-soft); font-size: .9688rem; }
+@media (max-width: 900px) { .wsteps { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 560px) { .wsteps { grid-template-columns: minmax(0, 1fr); } }
 
 .lic { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); gap: clamp(28px, 5vw, 56px); align-items: start; }
 .lic .times h3 { font-size: 1.75rem; }
@@ -154,13 +154,14 @@
         <li class="d-1"><a href="/#about">About<span class="m-txt"> Grace</span></a></li>
         <li class="d-3"><a href="/#upcoming">Upcoming<span class="m-txt"> services</span></a></li>
         <li class="d-2"><a href="/#serve">Ways to serve</a></li>
-        <li class="m-only"><a href="/wedding-officiant">Weddings</a></li>
         <li class="soc-li d-6"><div class="soc-row"><div class="social">
           <a href="https://www.facebook.com/gracecommunityphilly/" target="_blank" rel="noopener" aria-label="Facebook (opens in a new tab)"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
           <a href="https://www.instagram.com/gracecommunityphilly/" target="_blank" rel="noopener" aria-label="Instagram (opens in a new tab)"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="2.5" width="19" height="19" rx="5"/><circle cx="12" cy="12" r="4.2"/><path d="M17.400 6.600h.01"/></svg></a>
           <a href="https://www.youtube.com/@GraceCommunityPhilly" target="_blank" rel="noopener" aria-label="YouTube (opens in a new tab)"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="4"/><path d="M10 9.200v5.600l5-2.800z"/></svg></a>
         </div><a class="btn quiet bs-cta" href="/#bible-study">Bible study</a></div></li>
         <li class="give-li d-7"><a class="btn" href="/give">Give</a></li>
+        <li class="m-only"><a href="/wedding-officiant">Weddings</a></li>
+        <li class="m-only"><a href="/funerals">Funerals</a></li>
       </ul>
     </nav>
   </div>
@@ -325,7 +326,7 @@
       <h2 id="how-h">How to book your wedding officiant</h2>
       <p>From first message to signed license, in six steps.</p>
     </div>
-    <ol class="steps">
+    <ol class="wsteps">
       <li><h3>Request your date</h3><p>Fill in the request form below. It takes about five minutes and is not a commitment.</p></li>
       <li><h3>Free 20-minute call</h3><p>Rev. Harris confirms he is free, answers your questions and recommends a package.</p></li>
       <li><h3>Hold your date</h3><p>Sign a short agreement and pay a deposit. Your date is then reserved for you.</p></li>
@@ -548,6 +549,7 @@
           <li><a href="/#visit">Plan your visit</a></li>
           <li><a href="/#serve">Ways to serve</a></li>
           <li><a href="/wedding-officiant">Wedding officiant</a></li>
+          <li><a href="/funerals">Funeral services</a></li>
           <li><a href="/give">Give</a></li>
           <li><a href="/graceonwheels">Grace on Wheels</a></li>
           <li><a href="/contact">Contact us</a></li>
